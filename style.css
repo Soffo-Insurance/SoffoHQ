@@ -10,8 +10,8 @@
 }
 
 ::selection {
-  background-color: #ffffff;
-  color: var(--text);
+  background-color: #0D389B;
+  color: #ffffff;
 }
 
 html, body {
@@ -21,7 +21,7 @@ html, body {
 
 body {
   background-color: var(--bg);
-  font-family: 'Inria Serif', Georgia, serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,7 +36,7 @@ main {
 }
 
 .tagline {
-  font-family: 'Inria Serif', Georgia, serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: clamp(14px, 1.5vw, 20px);
   letter-spacing: 0.01em;
