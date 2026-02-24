@@ -1,0 +1,47 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #d9d9d9;
+  --text: #1a1a1a;
+  --text-hover: #ffffff;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: 'Inria Serif', Georgia, serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  cursor: default;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tagline {
+  font-family: 'Inria Serif', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(14px, 1.5vw, 20px);
+  letter-spacing: 0.01em;
+  color: var(--text);
+  transition: color 0.25s ease;
+  user-select: none;
+  line-height: 1.4;
+}
+
+.tagline:hover {
+  color: var(--text-hover);
+}
