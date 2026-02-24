@@ -7,7 +7,11 @@
 :root {
   --bg: #d9d9d9;
   --text: #1a1a1a;
-  --text-hover: #ffffff;
+}
+
+::selection {
+  background-color: #ffffff;
+  color: var(--text);
 }
 
 html, body {
@@ -37,11 +41,5 @@ main {
   font-size: clamp(14px, 1.5vw, 20px);
   letter-spacing: 0.01em;
   color: var(--text);
-  transition: color 0.25s ease;
-  user-select: none;
   line-height: 1.4;
-}
-
-.tagline:hover {
-  color: var(--text-hover);
 }
