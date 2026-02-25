@@ -39,6 +39,7 @@ header {
   font-weight: 400;
   letter-spacing: 0.01em;
   color: var(--text);
+  text-decoration: none;
 }
 
 .cta {
@@ -86,6 +87,8 @@ main {
   color: #999999;
   text-align: right;
   align-self: end;
+  justify-self: stretch;
+  width: 100%;
   padding-bottom: 8px;
 }
 
