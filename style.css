@@ -124,7 +124,7 @@ main {
   width: 100%;
 }
 
-.image-wrap img {
+.image-wrap video {
   width: 100%;
   display: block;
   object-fit: cover;
