@@ -123,7 +123,7 @@ main {
 .image-wrap {
   width: 100%;
   height: 0;
-  padding-top: 55.75%; /* 1115/2000 = original image ratio */
+  padding-top: 55.75%; /* 1115/2000 — original image ratio */
   overflow: hidden;
   position: relative;
 }
@@ -134,7 +134,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  height: 160%;
+  height: 185%;
   object-fit: cover;
   object-position: center center;
   display: block;
