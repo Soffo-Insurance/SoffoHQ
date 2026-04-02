@@ -67,7 +67,7 @@ header {
 .header-bar {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 36px;
 }
 
 /* Nav toggle */
@@ -83,15 +83,20 @@ header {
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
-  padding: 6px 14px;
+  padding: 3px 8px;
   margin: 4px;
   border-radius: 4px;
-  background-color: #f3f3f3;
+  background-color: transparent;
   transition: background-color 0.15s ease;
 }
 
 .nav-toggle:hover {
-  background-color: #eaeaea;
+  background-color: #f0f0f0;
+}
+
+.nav-toggle:active,
+.header-right.open .nav-toggle {
+  background-color: #ebebeb;
 }
 
 .chevron {
@@ -112,10 +117,10 @@ header {
   font-size: 13px;
   font-weight: 400;
   text-decoration: none;
-  padding: 5px 18px;
+  padding: 5px 12px;
   border-radius: 3px;
   letter-spacing: 0.01em;
-  margin-right: 6px;
+  margin-right: 4px;
   transition: opacity 0.15s ease;
   user-select: none;
   -webkit-user-select: none;
@@ -125,29 +130,20 @@ header {
   opacity: 0.85;
 }
 
-/* Dropdown — absolutely positioned, does not affect layout */
+/* Dropdown — same white block, expands via grid */
 
 .nav-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: #ffffff;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-4px);
-  transition:
-    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0.35s;
-  z-index: 100;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .header-right.open .nav-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  grid-template-rows: 1fr;
+}
+
+.nav-dropdown-inner {
+  overflow: hidden;
 }
 
 .nav-dropdown a {
@@ -167,9 +163,6 @@ header {
     transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-dropdown a:first-child {
-  border-top: 1px solid #eee;
-}
 
 .header-right.open .nav-dropdown a {
   opacity: 1;
