@@ -187,7 +187,7 @@ main {
 
 .hero-section {
   text-align: center;
-  padding: 120px 0 140px;
+  padding: 120px 0 280px;
 }
 
 .heading-container {
@@ -249,6 +249,21 @@ main {
   background: #f5f5f5;
   border-radius: 10px;
   padding: 4px;
+  position: relative;
+}
+
+.pill-slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 180px;
+  height: calc(100% - 8px);
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .pill {
@@ -266,7 +281,9 @@ main {
   font-weight: 400;
   color: #888;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease;
 }
 
 .pill svg {
@@ -288,9 +305,7 @@ main {
 }
 
 .pill.active {
-  background: #ffffff;
   color: var(--text);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06), inset 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 /* Image */

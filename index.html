@@ -43,6 +43,7 @@
 
     <section class="pills-section">
       <div class="pills">
+        <div class="pill-slider"></div>
         <button class="pill active" data-index="0">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
           <span>Add Documents</span>
@@ -130,9 +131,10 @@
 
     setTimeout(typeNextWord, 300);
 
-    // Pill switching with crossfade
+    // Pill switching with crossfade + sliding indicator
     const pills = document.querySelectorAll('.pill');
     const heroImgs = document.querySelectorAll('.hero-img');
+    const slider = document.querySelector('.pill-slider');
 
     pills.forEach(pill => {
       pill.addEventListener('click', () => {
@@ -141,6 +143,7 @@
         pill.classList.add('active');
         heroImgs.forEach(img => img.classList.remove('active'));
         heroImgs[idx].classList.add('active');
+        slider.style.transform = `translateX(${idx * 180}px)`;
       });
     });
   </script>
