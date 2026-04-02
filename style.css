@@ -52,10 +52,10 @@ header {
 /* Header right container — the bordered pill */
 
 .header-right {
+  position: relative;
   border: none;
   border-radius: 0;
   background: #ffffff;
-  overflow: hidden;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -83,12 +83,15 @@ header {
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
-  padding: 10px 20px;
+  padding: 6px 14px;
+  margin: 4px;
+  border-radius: 4px;
+  background-color: #f3f3f3;
   transition: background-color 0.15s ease;
 }
 
 .nav-toggle:hover {
-  background-color: #fafafa;
+  background-color: #eaeaea;
 }
 
 .chevron {
@@ -122,20 +125,29 @@ header {
   opacity: 0.85;
 }
 
-/* Dropdown — expands below the bar inside the same container */
+/* Dropdown — absolutely positioned, does not affect layout */
 
 .nav-dropdown {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.35s;
+  z-index: 100;
 }
 
 .header-right.open .nav-dropdown {
-  grid-template-rows: 1fr;
-}
-
-.nav-dropdown-inner {
-  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .nav-dropdown a {
@@ -182,7 +194,7 @@ main {
 
 .hero-section {
   text-align: center;
-  padding: 100px 0 80px;
+  padding: 120px 0 100px;
 }
 
 .heading-container {
