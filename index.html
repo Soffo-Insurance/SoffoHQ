@@ -10,26 +10,30 @@
 <body>
   <header>
     <a href="/" class="logo">Soffo</a>
-    <nav>
-      <div class="nav-toggle" id="navToggle">
-        <span>Home</span>
-        <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    <div class="header-right" id="headerRight">
+      <div class="header-bar">
+        <div class="nav-toggle" id="navToggle">
+          <span>Home</span>
+          <svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <a href="https://cal.com/seungyong/15min" target="_blank" class="cta">Book a demo</a>
       </div>
       <div class="nav-dropdown" id="navDropdown">
-        <a href="/">Home</a>
-        <a href="/product">Product</a>
-        <a href="/blog">Blog</a>
+        <div class="nav-dropdown-inner">
+          <a href="/">Home</a>
+          <a href="/product">Product</a>
+          <a href="/blog">Blog</a>
+        </div>
       </div>
-    </nav>
-    <a href="https://cal.com/seungyong/15min" target="_blank" class="cta">Book a demo</a>
+    </div>
   </header>
 
   <main>
     <section class="hero-section">
       <h1 class="heading" id="typewriter"></h1>
-      <div class="heading-placeholder" aria-hidden="true">A trusted reasoning layer for insurance carriers to win litigations</div>
+      <div class="heading-placeholder" aria-hidden="true">A trusted reasoning layer for<br>insurance carriers to win litigations</div>
     </section>
 
     <section class="image-section">
@@ -40,52 +44,55 @@
   </main>
 
   <script>
-    // Nav dropdown toggle
     const navToggle = document.getElementById('navToggle');
-    const navDropdown = document.getElementById('navDropdown');
+    const headerRight = document.getElementById('headerRight');
     let dropdownOpen = false;
 
     navToggle.addEventListener('click', () => {
       dropdownOpen = !dropdownOpen;
-      navDropdown.classList.toggle('open', dropdownOpen);
-      navToggle.classList.toggle('active', dropdownOpen);
+      headerRight.classList.toggle('open', dropdownOpen);
     });
 
     document.addEventListener('click', (e) => {
-      if (!navToggle.contains(e.target) && !navDropdown.contains(e.target)) {
+      if (!headerRight.contains(e.target)) {
         dropdownOpen = false;
-        navDropdown.classList.remove('open');
-        navToggle.classList.remove('active');
+        headerRight.classList.remove('open');
       }
     });
 
     // Typewriter animation — word by word
-    // Current word appears grey, then turns black. Next word appears grey, etc.
-    const sentence = "A trusted reasoning layer for insurance carriers to win litigations";
-    const words = sentence.split(' ');
+    const line1 = "A trusted reasoning layer for";
+    const line2 = "insurance carriers to win litigations";
+    const allWords = [...line1.split(' '), '\n', ...line2.split(' ')];
     const container = document.getElementById('typewriter');
     let currentIndex = 0;
 
     function typeNextWord() {
-      if (currentIndex >= words.length) return;
+      if (currentIndex >= allWords.length) return;
+
+      if (allWords[currentIndex] === '\n') {
+        container.appendChild(document.createElement('br'));
+        currentIndex++;
+        setTimeout(typeNextWord, 80);
+        return;
+      }
 
       const span = document.createElement('span');
-      span.textContent = (currentIndex > 0 ? ' ' : '') + words[currentIndex];
+      span.textContent = (currentIndex > 0 && allWords[currentIndex - 1] !== '\n' ? ' ' : '') + allWords[currentIndex];
       span.classList.add('word', 'word-grey');
       container.appendChild(span);
 
-      // After a short delay, turn the grey word black
-      setTimeout(() => {
-        span.classList.remove('word-grey');
-        span.classList.add('word-black');
-        currentIndex++;
-        // Type next word after the current one turns black
-        setTimeout(typeNextWord, 80);
-      }, 200);
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          span.classList.remove('word-grey');
+          span.classList.add('word-black');
+          currentIndex++;
+          setTimeout(typeNextWord, 50);
+        }, 120);
+      });
     }
 
-    // Start after a brief pause
-    setTimeout(typeNextWord, 400);
+    setTimeout(typeNextWord, 300);
   </script>
 </body>
 </html>
