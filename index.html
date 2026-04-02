@@ -3,26 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>soffo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Soffo</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <a href="/" class="logo">soffo</a>
-    <a href="https://cal.com/seungyong/15min" target="_blank" class="cta">book a call</a>
+    <a href="/" class="logo">Soffo</a>
+    <nav>
+      <div class="nav-toggle" id="navToggle">
+        <span>Home</span>
+        <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="nav-dropdown" id="navDropdown">
+        <a href="/">Home</a>
+        <a href="/product">Product</a>
+        <a href="/blog">Blog</a>
+      </div>
+    </nav>
+    <a href="https://cal.com/seungyong/15min" target="_blank" class="cta">Book a demo</a>
   </header>
+
   <main>
-    <div class="hero">
-      <h1 class="heading">Reasoning Layer for<br>Insurance Carriers</h1>
-      <p class="description">Soffo targets the US property insurance market, where carriers face increasing litigation related to coverage disputes, alleged bad-faith claims handling, and economically motivated lawsuits</p>
-    </div>
-    <div class="image-wrap">
-      <video src="video.mp4" autoplay loop muted playsinline></video>
-    </div>
+    <section class="hero-section">
+      <h1 class="heading" id="typewriter"></h1>
+      <div class="heading-placeholder" aria-hidden="true">A trusted reasoning layer for insurance carriers to win litigations</div>
+    </section>
+
+    <section class="image-section">
+      <div class="image-wrap">
+        <img src="hero.png" alt="Soffo product screenshot" />
+      </div>
+    </section>
   </main>
+
+  <script>
+    // Nav dropdown toggle
+    const navToggle = document.getElementById('navToggle');
+    const navDropdown = document.getElementById('navDropdown');
+    let dropdownOpen = false;
+
+    navToggle.addEventListener('click', () => {
+      dropdownOpen = !dropdownOpen;
+      navDropdown.classList.toggle('open', dropdownOpen);
+      navToggle.classList.toggle('active', dropdownOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navDropdown.contains(e.target)) {
+        dropdownOpen = false;
+        navDropdown.classList.remove('open');
+        navToggle.classList.remove('active');
+      }
+    });
+
+    // Typewriter animation — word by word
+    // Current word appears grey, then turns black. Next word appears grey, etc.
+    const sentence = "A trusted reasoning layer for insurance carriers to win litigations";
+    const words = sentence.split(' ');
+    const container = document.getElementById('typewriter');
+    let currentIndex = 0;
+
+    function typeNextWord() {
+      if (currentIndex >= words.length) return;
+
+      const span = document.createElement('span');
+      span.textContent = (currentIndex > 0 ? ' ' : '') + words[currentIndex];
+      span.classList.add('word', 'word-grey');
+      container.appendChild(span);
+
+      // After a short delay, turn the grey word black
+      setTimeout(() => {
+        span.classList.remove('word-grey');
+        span.classList.add('word-black');
+        currentIndex++;
+        // Type next word after the current one turns black
+        setTimeout(typeNextWord, 80);
+      }, 200);
+    }
+
+    // Start after a brief pause
+    setTimeout(typeNextWord, 400);
+  </script>
 </body>
 </html>
