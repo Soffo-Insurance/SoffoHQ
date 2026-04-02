@@ -130,20 +130,29 @@ header {
   opacity: 0.85;
 }
 
-/* Dropdown — same white block, expands via grid */
+/* Dropdown — absolutely positioned, no layout push */
 
 .nav-dropdown {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.35s;
+  z-index: 100;
 }
 
 .header-right.open .nav-dropdown {
-  grid-template-rows: 1fr;
-}
-
-.nav-dropdown-inner {
-  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .nav-dropdown a {
@@ -186,8 +195,11 @@ main {
 /* Hero */
 
 .hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 120px 0 280px;
+  min-height: 50vh;
 }
 
 .heading-container {
@@ -326,7 +338,7 @@ main {
   width: 100%;
   display: block;
   opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.8s ease-in-out;
 }
 
 .hero-img:not(:first-child) {
