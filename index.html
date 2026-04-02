@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soffo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -32,8 +35,9 @@
 
   <main>
     <section class="hero-section">
-      <h1 class="heading" id="typewriter"></h1>
-      <div class="heading-placeholder" aria-hidden="true">A trusted reasoning layer for<br>insurance carriers to win litigations</div>
+      <div class="heading-container">
+        <h1 class="heading" id="typewriter"></h1>
+      </div>
     </section>
 
     <section class="image-section">
@@ -77,10 +81,17 @@
         return;
       }
 
+      if (currentIndex > 0 && allWords[currentIndex - 1] !== '\n') {
+        container.appendChild(document.createTextNode(' '));
+      }
       const span = document.createElement('span');
-      span.textContent = (currentIndex > 0 && allWords[currentIndex - 1] !== '\n' ? ' ' : '') + allWords[currentIndex];
-      span.classList.add('word', 'word-grey');
+      span.textContent = allWords[currentIndex];
+      span.classList.add('word');
       container.appendChild(span);
+
+      // Trigger reflow so the initial state renders before transition starts
+      span.offsetHeight;
+      span.classList.add('word-grey');
 
       requestAnimationFrame(() => {
         setTimeout(() => {

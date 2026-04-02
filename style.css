@@ -52,24 +52,22 @@ header {
 /* Header right container — the bordered pill */
 
 .header-right {
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
+  border: none;
+  border-radius: 0;
   background: #ffffff;
   overflow: hidden;
-  transition:
-    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.3s ease;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .header-right.open {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
-  border-color: #d0d0d0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .header-bar {
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 24px;
 }
 
 /* Nav toggle */
@@ -107,12 +105,12 @@ header {
   display: inline-block;
   background-color: var(--text);
   color: #ffffff;
-  font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: 14px;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
   font-weight: 400;
   text-decoration: none;
-  padding: 7px 18px;
-  border-radius: 6px;
+  padding: 5px 18px;
+  border-radius: 3px;
   letter-spacing: 0.01em;
   margin-right: 6px;
   transition: opacity 0.15s ease;
@@ -183,48 +181,53 @@ main {
 /* Hero */
 
 .hero-section {
+  text-align: center;
+  padding: 100px 0 80px;
+}
+
+.heading-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 100px 0 80px;
-  min-height: 320px;
-  position: relative;
+  /* Fixed height = exactly 2 lines of the heading font.
+     font-size 48px * line-height 1.2 * 2 lines = 115.2px */
+  height: calc(clamp(28px, 3.4vw, 48px) * 1.2 * 2);
 }
 
 .heading {
-  font-size: clamp(36px, 5vw, 72px);
+  font-size: clamp(28px, 3.4vw, 48px);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--text);
-  max-width: 800px;
-}
-
-/* Invisible placeholder to reserve space so layout doesn't shift */
-.heading-placeholder {
-  font-size: clamp(36px, 5vw, 72px);
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  max-width: 800px;
-  visibility: hidden;
-  position: absolute;
-  pointer-events: none;
+  max-width: 700px;
 }
 
 /* Typewriter word animation */
 .word {
-  display: inline;
-  transition: color 0.15s ease;
+  display: inline-block;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(8px);
+  transition:
+    color 0.3s ease,
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .word-grey {
   color: var(--grey);
+  opacity: 0.6;
+  filter: blur(3px);
+  transform: translateY(4px);
 }
 
 .word-black {
   color: var(--text);
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
 }
 
 /* Image */
@@ -258,7 +261,6 @@ main {
 
   .hero-section {
     padding: 60px 0 48px;
-    min-height: 200px;
   }
 
   .image-section {
