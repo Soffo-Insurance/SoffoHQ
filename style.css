@@ -240,7 +240,7 @@ main {
 .pills-section {
   display: flex;
   justify-content: center;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
 .pills {
@@ -255,7 +255,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   width: 180px;
   padding: 10px 0;
   border: none;
@@ -269,6 +269,20 @@ main {
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.pill svg {
+  flex-shrink: 0;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.pill:hover svg {
+  opacity: 0.7;
+}
+
+.pill.active svg {
+  opacity: 1;
+}
+
 .pill:hover {
   color: var(--text);
 }
@@ -276,23 +290,7 @@ main {
 .pill.active {
   background: #ffffff;
   color: var(--text);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-}
-
-.pill-icon {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
-}
-
-.pill.active .pill-icon {
-  opacity: 1;
-}
-
-.pill:hover .pill-icon {
-  opacity: 0.8;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06), inset 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 /* Image */
@@ -302,15 +300,28 @@ main {
 }
 
 .image-wrap {
+  position: relative;
   width: 100%;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.image-wrap img {
+.hero-img {
   width: 100%;
   display: block;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-img:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-img.active {
+  opacity: 1;
 }
 
 /* ---- Responsive ---- */
