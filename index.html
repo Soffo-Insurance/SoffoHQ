@@ -55,7 +55,7 @@
             <img src="image1.png" alt="Classify denials from the source document" loading="eager" />
           </div>
           <div class="feature-text">
-            <h2>Classify denials from the source<br>document accurately</h2>
+            <h2 class="typewriter">Classify denials from the source<br>document accurately</h2>
             <p>Identifies denial codes by line with explanations grounded in policy language, not generic summaries, ensuring precise, defensible claim interpretation</p>
           </div>
         </section>
@@ -63,7 +63,7 @@
         <!-- Feature 2: Text left, image right -->
         <section class="feature feature-reverse">
           <div class="feature-text">
-            <h2>Review denial classifications<br>before you commit</h2>
+            <h2 class="typewriter">Review denial classifications<br>before you commit</h2>
             <p>Each denial activates matched strategies scored on relevance, evidence, and doctrines, with clear prioritization and actionable next-step recommendations</p>
           </div>
           <div class="feature-image">
@@ -77,7 +77,7 @@
             <img src="image3.png" alt="Draft demand letters" loading="lazy" />
           </div>
           <div class="feature-text">
-            <h2>Draft demand letters from<br>your strongest strategies</h2>
+            <h2 class="typewriter">Draft demand letters from<br>your strongest strategies</h2>
             <p>Select rebuttals. Soffo assembles coverage arguments and procedural timelines into a structured draft, aligned with policy terms and jurisdictional requirements</p>
           </div>
         </section>
@@ -85,7 +85,7 @@
 
       <!-- Statement -->
       <section class="statement">
-        <h2>Every argument traced to evidence.<br>Every gap surfaced early.</h2>
+        <h2 class="typewriter">Every argument traced to evidence.<br>Every gap surfaced early.</h2>
         <p>Maps each strategy to supporting documents and flags what is<br>missing for stronger case development and clarity.</p>
       </section>
 
@@ -166,31 +166,65 @@
       }
     });
 
-    // Hero typewriter effect — word by word with fade
+    // Typewriter effect — word by word with fade, scroll-triggered
     (function() {
-      const heading = document.getElementById('heroHeading');
-      const text = 'A trusted defensible reasoning layer for insurance litigation';
-      const words = text.split(' ');
-
-      // Wrap each word in a span, insert line break before "for"
-      words.forEach((word, i) => {
-        if (word === 'for') {
-          heading.appendChild(document.createElement('br'));
-        }
+      // Prepare hero heading (injected via JS since it's empty)
+      const hero = document.getElementById('heroHeading');
+      const heroText = 'A trusted defensible reasoning layer for insurance litigation';
+      heroText.split(' ').forEach((word, i, arr) => {
+        if (word === 'for') hero.appendChild(document.createElement('br'));
         const span = document.createElement('span');
         span.className = 'word';
         span.textContent = word;
-        heading.appendChild(span);
-        if (i < words.length - 1) {
-          heading.appendChild(document.createTextNode(' '));
-        }
+        hero.appendChild(span);
+        if (i < arr.length - 1) hero.appendChild(document.createTextNode(' '));
       });
 
-      // Animate each word
-      const wordEls = heading.querySelectorAll('.word');
-      wordEls.forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), 200 + i * 150);
+      // Prepare all .typewriter elements — wrap text nodes into word spans
+      document.querySelectorAll('.typewriter').forEach(el => {
+        const fragment = document.createDocumentFragment();
+        el.childNodes.forEach(node => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            node.textContent.split(/(\s+)/).forEach(part => {
+              if (part.trim()) {
+                const span = document.createElement('span');
+                span.className = 'word';
+                span.textContent = part;
+                fragment.appendChild(span);
+              } else if (part) {
+                fragment.appendChild(document.createTextNode(part));
+              }
+            });
+          } else {
+            fragment.appendChild(node.cloneNode(true));
+          }
+        });
+        el.innerHTML = '';
+        el.appendChild(fragment);
       });
+
+      // Animate words function
+      function animateWords(el) {
+        const words = el.querySelectorAll('.word');
+        words.forEach((w, i) => {
+          setTimeout(() => w.classList.add('visible'), i * 120);
+        });
+      }
+
+      // Hero animates immediately
+      animateWords(hero);
+
+      // Others animate on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateWords(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('.typewriter').forEach(el => observer.observe(el));
     })();
   </script>
 </body>

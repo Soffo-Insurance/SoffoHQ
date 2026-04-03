@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --bg: #ffffff;
   --text: #1a1a1a;
@@ -291,14 +295,14 @@ main {
   text-align: center;
 }
 
-.hero-heading .word {
+.word {
   display: inline-block;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.hero-heading .word.visible {
+.word.visible {
   opacity: 1;
   transform: translateY(0);
 }
