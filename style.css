@@ -248,8 +248,26 @@ main {
 /* ---- Continuous grid borders ---- */
 
 .content-border {
-  border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
+  position: relative;
+}
+
+.content-border::before,
+.content-border::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--border);
+  pointer-events: none;
+}
+
+.content-border::before {
+  left: 0;
+}
+
+.content-border::after {
+  right: 0;
 }
 
 /* ---- Hero Section ---- */
