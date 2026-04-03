@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="preload" href="hero.png" as="image" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -43,41 +42,138 @@
   </header>
 
   <main>
-    <section class="hero-section">
-      <div class="heading-container">
-        <h1 class="heading" id="typewriter"></h1>
+    <!-- Hero Section with Node Graph Animation -->
+    <section class="hero">
+      <div class="hero-inner">
+        <svg class="hero-graph" viewBox="0 0 960 440" preserveAspectRatio="xMidYMid meet" fill="none">
+          <!-- Lines (drawn between nodes) -->
+          <line class="graph-line" data-order="0" x1="118" y1="68" x2="58" y2="210" stroke="#1a1a1a" stroke-width="1"/>
+          <line class="graph-line" data-order="1" x1="58" y1="210" x2="22" y2="345" stroke="#1a1a1a" stroke-width="1"/>
+          <line class="graph-line" data-order="2" x1="58" y1="210" x2="198" y2="378" stroke="#1a1a1a" stroke-width="1"/>
+          <line class="graph-line" data-order="3" x1="198" y1="378" x2="355" y2="310" stroke="#1a1a1a" stroke-width="1"/>
+          <line class="graph-line" data-order="4" x1="355" y1="310" x2="518" y2="260" stroke="#1a1a1a" stroke-width="1"/>
+          <line class="graph-line" data-order="5" x1="518" y1="260" x2="688" y2="172" stroke="#1a1a1a" stroke-width="1"/>
+          <line class="graph-line" data-order="6" x1="518" y1="260" x2="848" y2="340" stroke="#1a1a1a" stroke-width="1"/>
+
+          <!-- Node 0: denial letter -->
+          <g class="graph-node" data-order="0">
+            <rect x="110" y="60" width="16" height="16" fill="#1a1a1a"/>
+            <text x="110" y="48" font-family="'Times New Roman', serif" font-size="13" fill="#1a1a1a">denial letter</text>
+          </g>
+          <!-- Node 1: notice stamp -->
+          <g class="graph-node" data-order="1">
+            <rect x="50" y="202" width="16" height="16" fill="#1a1a1a"/>
+            <text x="74" y="196" font-family="'Times New Roman', serif" font-size="13" fill="#1a1a1a">notice stamp</text>
+          </g>
+          <!-- Node 2: fault disposition -->
+          <g class="graph-node" data-order="2">
+            <rect x="14" y="337" width="16" height="16" fill="#1a1a1a"/>
+            <text x="14" y="374" font-family="'Times New Roman', serif" font-size="13" fill="#1a1a1a">fault disposition</text>
+          </g>
+          <!-- Node 3: motor report -->
+          <g class="graph-node" data-order="3">
+            <rect x="190" y="370" width="16" height="16" fill="#1a1a1a"/>
+            <text x="190" y="406" font-family="'Times New Roman', serif" font-size="13" fill="#1a1a1a">motor report</text>
+          </g>
+          <!-- Node 4: plumbing failure -->
+          <g class="graph-node" data-order="4">
+            <rect x="347" y="302" width="16" height="16" fill="#1a1a1a"/>
+            <text x="347" y="338" font-family="'Times New Roman', serif" font-size="13" fill="#1a1a1a">plumbing failure</text>
+          </g>
+          <!-- Node 5: policy exclusion -->
+          <g class="graph-node" data-order="5">
+            <rect x="510" y="252" width="16" height="16" fill="#1a1a1a"/>
+            <text x="538" y="264" font-family="'Times New Roman', serif" font-size="13" fill="#1a1a1a">policy exclusion</text>
+          </g>
+          <!-- Node 6: moisture estimate -->
+          <g class="graph-node" data-order="6">
+            <rect x="680" y="164" width="16" height="16" fill="#1a1a1a"/>
+            <text x="708" y="158" font-family="'Times New Roman', serif" font-size="13" fill="#1a1a1a">moisture estimate</text>
+          </g>
+          <!-- Node 7: coverage dispute -->
+          <g class="graph-node" data-order="7">
+            <rect x="840" y="332" width="16" height="16" fill="#1a1a1a"/>
+            <text x="840" y="368" font-family="'Times New Roman', serif" font-size="13" fill="#1a1a1a">coverage dispute</text>
+          </g>
+        </svg>
+
+        <h1 class="hero-heading">A trusted defensible reasoning layer<br>for insurance litigation</h1>
       </div>
     </section>
 
-    <section class="pills-section">
-      <div class="pills">
-        <div class="pill-slider"></div>
-        <button class="pill active" data-index="0">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
-          <span>Add Documents</span>
-        </button>
-        <button class="pill" data-index="1">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 5H3"/><path d="M10 12H3"/><path d="M10 19H3"/><circle cx="17" cy="15" r="3"/><path d="m21 19-1.9-1.9"/></svg>
-          <span>Node Extraction</span>
-        </button>
-        <button class="pill" data-index="2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>
-          <span>Denial Classification</span>
-        </button>
-        <button class="pill" data-index="3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18v-7"/><path d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></svg>
-          <span>Rebuttal Strategy</span>
-        </button>
+    <!-- Feature 1: Image left, text right -->
+    <section class="feature">
+      <div class="feature-image">
+        <img src="image1.png" alt="Classify denials from the source document" loading="eager" />
+      </div>
+      <div class="feature-text">
+        <h2>Classify denials from the<br>source document</h2>
+        <p>Identifies denial codes by line with explanations grounded in policy language, not generic summaries.</p>
       </div>
     </section>
 
-    <section class="image-section">
-      <div class="image-wrap">
-        <img src="image1.png" class="hero-img active" alt="Add Documents" loading="eager" decoding="async" fetchpriority="high" />
-        <img src="image2.png" class="hero-img" alt="Node Extraction" loading="eager" decoding="async" />
-        <img src="image3.png" class="hero-img" alt="Denial Classification" loading="eager" decoding="async" />
-        <img src="image4.png" class="hero-img" alt="Rebuttal Strategy" loading="eager" decoding="async" />
+    <!-- Feature 2: Text left, image right -->
+    <section class="feature feature-reverse">
+      <div class="feature-text">
+        <h2>Review denial classifications<br>before you commit</h2>
+        <p>Each denial activates matched strategies scored on relevance, evidence, and doctrines.</p>
       </div>
+      <div class="feature-image">
+        <img src="image2.png" alt="Review denial classifications" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- Feature 3: Image left, text right -->
+    <section class="feature">
+      <div class="feature-image">
+        <img src="image3.png" alt="Draft demand letters" loading="lazy" />
+      </div>
+      <div class="feature-text">
+        <h2>Draft demand letters from<br>your strongest strategies</h2>
+        <p>Select rebuttals. Soffo assembles coverage arguments and procedural timelines into a structured draft.</p>
+      </div>
+    </section>
+
+    <!-- Statement -->
+    <section class="statement">
+      <h2>Every argument traced to evidence.<br>Every gap surfaced early.</h2>
+      <p>Maps each strategy to supporting documents and flags what is<br>missing for stronger case development and clarity.</p>
+    </section>
+
+    <!-- Gray divider -->
+    <div class="gray-divider"></div>
+
+    <!-- Tagline -->
+    <section class="tagline">
+      <h2>A trusted defensible reasoning layer<br>for insurance litigation</h2>
+    </section>
+
+    <!-- Three cards -->
+    <section class="cards">
+      <div class="card">
+        <div class="card-image">
+          <img src="image4.png" alt="Upload documents" loading="lazy" />
+        </div>
+        <p>Upload documents in any format. Each document is searchable across all cases, allowing knowledge to compound instead of sitting in folders.</p>
+      </div>
+      <div class="card">
+        <div class="card-image">
+          <img src="image5.png" alt="Integrations" loading="lazy" />
+        </div>
+        <p>Connected to Google Workspace, Microsoft 365, and other available integrations to export reports and documents back to your core datastores.</p>
+      </div>
+      <div class="card">
+        <div class="card-image">
+          <img src="image6.png" alt="Litigation strategy" loading="lazy" />
+        </div>
+        <p>Execute a litigation strategy step by step. Track which arguments are supported and which need evidence. Draft with perfect context.</p>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+      <h2>A trusted defensible reasoning layer<br>for insurance litigation</h2>
+      <a href="https://cal.com/seungyong/15min" target="_blank" class="cta-button">Book a Demo</a>
     </section>
   </main>
 
@@ -108,6 +204,7 @@
       }
     })();
 
+    // Navigation dropdown
     const navToggle = document.getElementById('navToggle');
     const headerRight = document.getElementById('headerRight');
     let dropdownOpen = false;
@@ -124,74 +221,49 @@
       }
     });
 
-    // Typewriter animation — word by word
-    const line1 = "A trusted defensible reasoning layer";
-    const line2 = "for insurance litigation";
-    const allWords = [...line1.split(' '), '\n', ...line2.split(' ')];
-    const container = document.getElementById('typewriter');
-    let currentIndex = 0;
+    // Hero graph animation — nodes appear one by one from left, then lines connect
+    (function() {
+      const nodes = document.querySelectorAll('.graph-node');
+      const lines = document.querySelectorAll('.graph-line');
 
-    function typeNextWord() {
-      if (currentIndex >= allWords.length) return;
+      // Set up stroke-dasharray for line drawing animation
+      lines.forEach(line => {
+        const length = line.getTotalLength();
+        line.style.strokeDasharray = length;
+        line.style.strokeDashoffset = length;
+      });
 
-      if (allWords[currentIndex] === '\n') {
-        container.appendChild(document.createElement('br'));
-        currentIndex++;
-        setTimeout(typeNextWord, 80);
-        return;
-      }
+      // Animation sequence:
+      // node0 → line0(0→1) → node1 → line1(1→2) + line2(1→3) → node2 + node3
+      // → line3(3→4) → node4 → line4(4→5) → node5 → line5(5→6) + line6(5→7) → node6 + node7
+      const sequence = [
+        { type: 'node', index: 0, delay: 300 },
+        { type: 'line', index: 0, delay: 550 },
+        { type: 'node', index: 1, delay: 900 },
+        { type: 'line', index: 1, delay: 1100 },
+        { type: 'line', index: 2, delay: 1150 },
+        { type: 'node', index: 2, delay: 1450 },
+        { type: 'node', index: 3, delay: 1500 },
+        { type: 'line', index: 3, delay: 1700 },
+        { type: 'node', index: 4, delay: 2050 },
+        { type: 'line', index: 4, delay: 2250 },
+        { type: 'node', index: 5, delay: 2600 },
+        { type: 'line', index: 5, delay: 2800 },
+        { type: 'line', index: 6, delay: 2850 },
+        { type: 'node', index: 6, delay: 3150 },
+        { type: 'node', index: 7, delay: 3200 },
+      ];
 
-      if (currentIndex > 0 && allWords[currentIndex - 1] !== '\n') {
-        container.appendChild(document.createTextNode(' '));
-      }
-      const span = document.createElement('span');
-      span.textContent = allWords[currentIndex];
-      span.classList.add('word');
-      container.appendChild(span);
-
-      // Trigger reflow so the initial state renders before transition starts
-      span.offsetHeight;
-      span.classList.add('word-grey');
-
-      requestAnimationFrame(() => {
+      sequence.forEach(item => {
         setTimeout(() => {
-          span.classList.remove('word-grey');
-          span.classList.add('word-black');
-          currentIndex++;
-          setTimeout(typeNextWord, 50);
-        }, 120);
+          if (item.type === 'node') {
+            nodes[item.index].classList.add('visible');
+          } else {
+            lines[item.index].classList.add('visible');
+          }
+        }, item.delay);
       });
-    }
-
-    setTimeout(typeNextWord, 300);
-
-    // Pill switching with crossfade + sliding indicator
-    const pills = document.querySelectorAll('.pill');
-    const heroImgs = document.querySelectorAll('.hero-img');
-    const slider = document.querySelector('.pill-slider');
-
-    function updateSlider() {
-      const activePill = document.querySelector('.pill.active');
-      const idx = parseInt(activePill.dataset.index);
-      const pillWidth = pills[0].offsetWidth;
-      slider.style.width = pillWidth + 'px';
-      slider.style.transform = `translateX(${idx * pillWidth}px)`;
-    }
-
-    pills.forEach(pill => {
-      pill.addEventListener('click', () => {
-        const idx = parseInt(pill.dataset.index);
-        pills.forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        heroImgs.forEach(img => img.classList.remove('active'));
-        heroImgs[idx].classList.add('active');
-        updateSlider();
-      });
-    });
-
-    window.addEventListener('resize', updateSlider);
-    updateSlider();
-
+    })();
   </script>
 </body>
 </html>
