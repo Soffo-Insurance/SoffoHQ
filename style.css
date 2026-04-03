@@ -242,7 +242,7 @@ header {
 /* ---- Main ---- */
 
 main {
-  padding: 0 80px;
+  padding: 0;
 }
 
 /* ---- Continuous grid borders ---- */
@@ -259,21 +259,22 @@ main {
   width: 1px;
   height: 100%;
   background: var(--border);
+  z-index: 2;
   pointer-events: none;
 }
 
 .content-border::before {
-  left: 0;
+  left: 80px;
 }
 
 .content-border::after {
-  right: 0;
+  right: 80px;
 }
 
 /* ---- Hero Section ---- */
 
 .hero {
-  padding: 20px 0 0;
+  padding: 20px 80px 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -371,7 +372,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 48px 40px;
+  padding: 48px 80px;
 }
 
 .feature-text h2 {
@@ -396,7 +397,7 @@ main {
 
 .statement {
   text-align: center;
-  padding: 100px 0;
+  padding: 100px 80px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -495,7 +496,7 @@ main {
 
 .footer-cta {
   text-align: center;
-  padding: 80px 0 120px;
+  padding: 80px 80px 120px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -536,12 +537,28 @@ main {
     padding: 24px 48px;
   }
 
-  main {
-    padding: 0 48px;
+  .hero {
+    padding: 20px 48px 0;
+  }
+
+  .content-border::before {
+    left: 48px;
+  }
+
+  .content-border::after {
+    right: 48px;
   }
 
   .feature-text {
-    padding: 30px;
+    padding: 30px 48px;
+  }
+
+  .statement {
+    padding: 100px 48px;
+  }
+
+  .footer-cta {
+    padding: 80px 48px 120px;
   }
 
   .hero-inner {
@@ -551,10 +568,6 @@ main {
   .hero-heading {
     font-size: clamp(28px, 3vw, 40px);
   }
-
-  .feature-text {
-    padding: 30px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -562,8 +575,12 @@ main {
     padding: 20px 24px;
   }
 
-  main {
-    padding: 0 24px;
+  .content-border::before {
+    left: 24px;
+  }
+
+  .content-border::after {
+    right: 24px;
   }
 
   .gray-divider {
@@ -571,7 +588,7 @@ main {
   }
 
   .hero {
-    padding: 10px 0 0;
+    padding: 10px 24px 0;
   }
 
   .hero-inner {
@@ -613,7 +630,7 @@ main {
   }
 
   .statement {
-    padding: 60px 0;
+    padding: 60px 24px;
   }
 
   .statement h2 {
@@ -643,6 +660,6 @@ main {
   }
 
   .footer-cta {
-    padding: 48px 0 80px;
+    padding: 48px 24px 80px;
   }
 }
