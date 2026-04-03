@@ -222,11 +222,6 @@
       const stmtP = document.querySelector('.statement p');
       if (stmtP) stmtP.classList.add('reveal');
 
-      // Tag cards with stagger
-      document.querySelectorAll('.card').forEach((card, i) => {
-        card.classList.add('reveal');
-        card.style.transitionDelay = (i * 0.15) + 's';
-      });
 
       // Tag footer CTA
       const footerCta = document.querySelector('.footer-cta');
