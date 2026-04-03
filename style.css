@@ -309,13 +309,9 @@ main > .gray-divider {
 
 .feature {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   border-bottom: 1px solid var(--border);
-}
-
-.feature-reverse {
-  grid-template-columns: 1fr 1.15fr;
 }
 
 .feature-image {
@@ -323,9 +319,13 @@ main > .gray-divider {
   border-right: 1px solid var(--border);
 }
 
+.feature-reverse .feature-text {
+  order: -1;
+  border-right: 1px solid var(--border);
+}
+
 .feature-reverse .feature-image {
   border-right: none;
-  border-left: 1px solid var(--border);
 }
 
 .feature-image img {
@@ -548,19 +548,18 @@ main > .gray-divider {
     grid-template-columns: 1fr;
   }
 
-  .feature-reverse {
-    grid-template-columns: 1fr;
-  }
-
   .feature-image {
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
 
+  .feature-reverse .feature-text {
+    order: 0;
+    border-right: none;
+  }
+
   .feature-reverse .feature-image {
     order: -1;
-    border-left: none;
-    border-bottom: 1px solid var(--border);
   }
 
   .feature-text {
