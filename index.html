@@ -30,12 +30,10 @@
           </svg>
         </div>
         <div class="clock" id="clock">
-          <svg viewBox="0 0 40 40" width="28" height="28">
+          <svg viewBox="0 0 40 40" width="20" height="20">
             <circle cx="20" cy="20" r="18" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-            <line id="clockHour" x1="20" y1="20" x2="20" y2="10" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round"/>
-            <line id="clockMinute" x1="20" y1="20" x2="20" y2="7" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
-            <line id="clockSecond" x1="20" y1="20" x2="20" y2="6" stroke="#1a1a1a" stroke-width="0.6" stroke-linecap="round"/>
-            <circle cx="20" cy="20" r="1.2" fill="#1a1a1a"/>
+            <line id="clockHour" x1="20" y1="20" x2="20" y2="10" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+            <line id="clockMinute" x1="20" y1="20" x2="20" y2="7" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
         </div>
         <a href="https://cal.com/seungyong/15min" target="_blank" class="cta">Book a demo</a>
@@ -203,19 +201,13 @@
     // Analog clock
     const hourHand = document.getElementById('clockHour');
     const minuteHand = document.getElementById('clockMinute');
-    const secondHand = document.getElementById('clockSecond');
-
     function updateClock() {
       const now = new Date();
-      const s = now.getSeconds() + now.getMilliseconds() / 1000;
-      const m = now.getMinutes() + s / 60;
+      const m = now.getMinutes() + now.getSeconds() / 60;
       const h = (now.getHours() % 12) + m / 60;
 
-      const sDeg = s * 6;
       const mDeg = m * 6;
       const hDeg = h * 30;
-
-      secondHand.setAttribute('transform', `rotate(${sDeg} 20 20)`);
       minuteHand.setAttribute('transform', `rotate(${mDeg} 20 20)`);
       hourHand.setAttribute('transform', `rotate(${hDeg} 20 20)`);
     }
