@@ -158,12 +158,10 @@ header {
   transform: rotate(180deg);
 }
 
-/* Clock */
+/* Header spacer */
 
-.clock {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.header-spacer {
+  flex: 1;
 }
 
 /* CTA Button */
