@@ -293,7 +293,7 @@ main {
   line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--text);
-  max-width: 560px;
+  white-space: nowrap;
   text-align: left;
 }
 
@@ -480,7 +480,6 @@ main {
 
   .hero-heading {
     font-size: clamp(28px, 3vw, 40px);
-    max-width: 440px;
   }
 
   .feature {
@@ -512,8 +511,8 @@ main {
 
   .hero-heading {
     font-size: 24px;
-    max-width: 280px;
     top: 10px;
+    white-space: normal;
   }
 
   .feature {
