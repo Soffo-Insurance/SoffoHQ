@@ -375,6 +375,7 @@ main {
   flex-direction: column;
   justify-content: center;
   padding: 48px 40px;
+  text-align: left;
 }
 
 .feature-text h2 {
