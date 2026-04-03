@@ -245,7 +245,8 @@ main {
 /* ---- Continuous grid borders on all sections ---- */
 
 main > section,
-main > .gray-divider {
+main > .gray-divider,
+main > .features-wrapper {
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
 }
