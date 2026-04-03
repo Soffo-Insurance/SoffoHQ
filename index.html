@@ -176,7 +176,9 @@
         pill.classList.add('active');
         heroImgs.forEach(img => img.classList.remove('active'));
         heroImgs[idx].classList.add('active');
-        slider.style.transform = `translateX(${idx * 180}px)`;
+        const pillWidth = pills[0].offsetWidth;
+        slider.style.width = pillWidth + 'px';
+        slider.style.transform = `translateX(${idx * pillWidth}px)`;
       });
     });
   </script>

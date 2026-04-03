@@ -425,4 +425,17 @@ main {
   .image-wrap {
     border-radius: 6px;
   }
+
+  .pill span {
+    display: none;
+  }
+
+  .pill {
+    width: 48px;
+    padding: 10px 0;
+  }
+
+  .pill-slider {
+    width: 48px;
+  }
 }
