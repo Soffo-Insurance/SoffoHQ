@@ -12,6 +12,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Access Code Wall -->
+  <div id="accessWall" class="access-wall">
+    <form id="accessForm" class="access-form">
+      <input type="text" id="accessInput" class="access-input" placeholder="Enter access code" autocomplete="off" autofocus />
+    </form>
+  </div>
+
   <header>
     <a href="/" class="logo">Soffo</a>
     <div class="header-right" id="headerRight">
@@ -74,6 +81,32 @@
   </main>
 
   <script>
+    // Access code wall
+    (function() {
+      const ACCESS_CODE = 'soffo123';
+      const wall = document.getElementById('accessWall');
+      const form = document.getElementById('accessForm');
+      const input = document.getElementById('accessInput');
+      if (sessionStorage.getItem('soffo_access') === 'granted') {
+        wall.remove();
+      } else {
+        document.body.classList.add('locked');
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          if (input.value.trim() === ACCESS_CODE) {
+            sessionStorage.setItem('soffo_access', 'granted');
+            wall.classList.add('fade-out');
+            document.body.classList.remove('locked');
+            setTimeout(() => wall.remove(), 400);
+          } else {
+            input.value = '';
+            input.classList.add('shake');
+            input.addEventListener('animationend', () => input.classList.remove('shake'), { once: true });
+          }
+        });
+      }
+    })();
+
     const navToggle = document.getElementById('navToggle');
     const headerRight = document.getElementById('headerRight');
     let dropdownOpen = false;
