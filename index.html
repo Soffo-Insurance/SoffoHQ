@@ -212,15 +212,9 @@
       // Hero animates immediately
       animateWords(hero);
 
-      // --- Tag feature elements for directional reveal ---
+      // --- Tag feature text for reveal ---
       document.querySelectorAll('.feature').forEach(el => {
-        const img = el.querySelector('.feature-image');
-        const text = el.querySelector('.feature-text');
-        const p = text.querySelector('p');
-        const isReverse = el.classList.contains('feature-reverse');
-
-        img.classList.add('reveal-image');
-        text.querySelector('.typewriter'); // h2 handled by typewriter
+        const p = el.querySelector('.feature-text p');
         if (p) p.classList.add('reveal');
       });
 
@@ -250,7 +244,7 @@
         });
       }, { threshold: 0.15 });
 
-      document.querySelectorAll('.reveal, .reveal-image, .reveal-left, .reveal-right').forEach(el => {
+      document.querySelectorAll('.reveal').forEach(el => {
         revealObserver.observe(el);
       });
 
