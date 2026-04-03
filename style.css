@@ -245,24 +245,18 @@ main {
   padding: 0 80px;
 }
 
-/* ---- Continuous grid borders on all sections ---- */
+/* ---- Continuous grid borders ---- */
 
-main > section,
-main > .gray-divider,
-main > .features-wrapper {
+.content-border {
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
-}
-
-.hero {
-  border-left: none;
-  border-right: none;
 }
 
 /* ---- Hero Section ---- */
 
 .hero {
   padding: 20px 0 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .hero-inner {
@@ -317,7 +311,6 @@ main > .features-wrapper {
 
 .features-wrapper {
   position: relative;
-  border-top: 1px solid var(--border);
 }
 
 .features-wrapper::after {
