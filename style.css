@@ -409,19 +409,6 @@ main {
   padding: 48px 40px;
 }
 
-.step-badge {
-  display: inline-block;
-  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  color: #999;
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 4px 12px;
-  margin-bottom: 16px;
-  letter-spacing: 0.02em;
-}
-
 .feature-text h2 {
   font-family: "Times New Roman", Times, Georgia, serif;
   font-size: clamp(26px, 2.4vw, 34px);
