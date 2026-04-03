@@ -310,11 +310,13 @@ main > .gray-divider {
 .feature {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: stretch;
   border-bottom: 1px solid var(--border);
 }
 
 .feature-image {
+  display: flex;
+  align-items: center;
   padding: 40px;
   border-right: 1px solid var(--border);
 }
@@ -335,6 +337,9 @@ main > .gray-divider {
 }
 
 .feature-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 48px 40px;
 }
 
