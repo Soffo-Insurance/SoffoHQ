@@ -145,9 +145,12 @@ header {
   background-color: #f0f0f0;
 }
 
-.nav-toggle:active,
-.header-right.open .nav-toggle {
+.nav-toggle:active {
   background-color: #ebebeb;
+}
+
+.header-right.open .nav-toggle {
+  background-color: transparent;
 }
 
 .chevron {
