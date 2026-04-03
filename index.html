@@ -166,9 +166,9 @@
       }
     });
 
-    // Typewriter effect — word by word with fade, scroll-triggered
+    // Scroll animations
     (function() {
-      // Prepare hero heading (injected via JS since it's empty)
+      // --- Hero typewriter ---
       const hero = document.getElementById('heroHeading');
       const heroText = 'A trusted defensible reasoning layer for property insurance litigation';
       heroText.split(' ').forEach((word, i, arr) => {
@@ -180,7 +180,7 @@
         if (i < arr.length - 1) hero.appendChild(document.createTextNode(' '));
       });
 
-      // Prepare all .typewriter elements — wrap text nodes into word spans
+      // --- Prepare .typewriter elements ---
       document.querySelectorAll('.typewriter').forEach(el => {
         const fragment = document.createDocumentFragment();
         el.childNodes.forEach(node => {
@@ -203,10 +203,8 @@
         el.appendChild(fragment);
       });
 
-      // Animate words function
       function animateWords(el) {
-        const words = el.querySelectorAll('.word');
-        words.forEach((w, i) => {
+        el.querySelectorAll('.word').forEach((w, i) => {
           setTimeout(() => w.classList.add('visible'), i * 120);
         });
       }
@@ -214,17 +212,59 @@
       // Hero animates immediately
       animateWords(hero);
 
-      // Others animate on scroll
-      const observer = new IntersectionObserver((entries) => {
+      // --- Tag feature elements for directional reveal ---
+      document.querySelectorAll('.feature').forEach(el => {
+        const img = el.querySelector('.feature-image');
+        const text = el.querySelector('.feature-text');
+        const p = text.querySelector('p');
+        const isReverse = el.classList.contains('feature-reverse');
+
+        img.classList.add('reveal-image');
+        text.querySelector('.typewriter'); // h2 handled by typewriter
+        if (p) p.classList.add('reveal');
+      });
+
+      // Tag statement paragraph
+      const stmtP = document.querySelector('.statement p');
+      if (stmtP) stmtP.classList.add('reveal');
+
+      // Tag cards with stagger
+      document.querySelectorAll('.card').forEach((card, i) => {
+        card.classList.add('reveal');
+        card.style.transitionDelay = (i * 0.15) + 's';
+      });
+
+      // Tag footer CTA
+      const footerCta = document.querySelector('.footer-cta');
+      if (footerCta) {
+        footerCta.querySelectorAll('h2, .cta-button').forEach(el => el.classList.add('reveal'));
+      }
+
+      // --- Single IntersectionObserver for all reveals ---
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal, .reveal-image, .reveal-left, .reveal-right').forEach(el => {
+        revealObserver.observe(el);
+      });
+
+      // --- Typewriter observer ---
+      const typewriterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             animateWords(entry.target);
-            observer.unobserve(entry.target);
+            typewriterObserver.unobserve(entry.target);
           }
         });
       }, { threshold: 0.3 });
 
-      document.querySelectorAll('.typewriter').forEach(el => observer.observe(el));
+      document.querySelectorAll('.typewriter').forEach(el => typewriterObserver.observe(el));
     })();
   </script>
 </body>
