@@ -91,6 +91,10 @@ body {
 /* ---- Header ---- */
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
