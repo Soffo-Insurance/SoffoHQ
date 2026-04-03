@@ -169,6 +169,14 @@
     const heroImgs = document.querySelectorAll('.hero-img');
     const slider = document.querySelector('.pill-slider');
 
+    function updateSlider() {
+      const activePill = document.querySelector('.pill.active');
+      const idx = parseInt(activePill.dataset.index);
+      const pillWidth = pills[0].offsetWidth;
+      slider.style.width = pillWidth + 'px';
+      slider.style.transform = `translateX(${idx * pillWidth}px)`;
+    }
+
     pills.forEach(pill => {
       pill.addEventListener('click', () => {
         const idx = parseInt(pill.dataset.index);
@@ -176,11 +184,12 @@
         pill.classList.add('active');
         heroImgs.forEach(img => img.classList.remove('active'));
         heroImgs[idx].classList.add('active');
-        const pillWidth = pills[0].offsetWidth;
-        slider.style.width = pillWidth + 'px';
-        slider.style.transform = `translateX(${idx * pillWidth}px)`;
+        updateSlider();
       });
     });
+
+    window.addEventListener('resize', updateSlider);
+    updateSlider();
   </script>
 </body>
 </html>
