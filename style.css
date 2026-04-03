@@ -348,6 +348,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: stretch;
+  padding: 0 80px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -372,7 +373,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 48px 80px;
+  padding: 48px 40px;
 }
 
 .feature-text h2 {
@@ -452,6 +453,7 @@ main {
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  padding: 0 80px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -549,12 +551,20 @@ main {
     right: 48px;
   }
 
+  .feature {
+    padding: 0 48px;
+  }
+
   .feature-text {
-    padding: 30px 48px;
+    padding: 30px;
   }
 
   .statement {
     padding: 100px 48px;
+  }
+
+  .cards {
+    padding: 0 48px;
   }
 
   .footer-cta {
@@ -603,6 +613,7 @@ main {
 
   .feature {
     grid-template-columns: 1fr;
+    padding: 0 24px;
   }
 
   .features-wrapper::after {
@@ -647,6 +658,7 @@ main {
 
   .cards {
     grid-template-columns: 1fr;
+    padding: 0 24px;
   }
 
   .card {
