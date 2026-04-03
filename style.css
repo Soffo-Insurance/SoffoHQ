@@ -455,9 +455,9 @@ main {
 }
 
 .card h3 {
-  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 15px;
+  font-weight: 400;
   color: var(--text);
   margin: 16px 20px 6px;
 }
