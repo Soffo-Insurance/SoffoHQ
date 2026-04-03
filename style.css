@@ -323,7 +323,7 @@ main {
 .feature-image img {
   width: 100%;
   display: block;
-  border-radius: 6px;
+  border-radius: 0;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
@@ -423,7 +423,7 @@ main {
 
 .card-image {
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 
