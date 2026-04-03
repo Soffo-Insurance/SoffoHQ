@@ -13,8 +13,8 @@
 }
 
 ::selection {
-  background-color: var(--selection);
-  color: #ffffff;
+  background-color: #b4d5fe;
+  color: inherit;
 }
 
 html, body {
@@ -242,6 +242,14 @@ main {
   padding: 0 80px;
 }
 
+/* ---- Continuous grid borders on all sections ---- */
+
+main > section,
+main > .gray-divider {
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
 /* ---- Hero Section ---- */
 
 .hero {
@@ -311,8 +319,8 @@ main {
 }
 
 .feature-image {
-  padding: 40px;
   border-right: 1px solid var(--border);
+  overflow: hidden;
 }
 
 .feature-reverse .feature-image {
@@ -322,9 +330,9 @@ main {
 
 .feature-image img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  border-radius: 0;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .feature-text {
@@ -368,8 +376,8 @@ main {
 }
 
 .statement p {
-  font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: 15px;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
   font-weight: 400;
   line-height: 1.55;
   color: #999;
@@ -382,7 +390,6 @@ main {
 .gray-divider {
   height: 100px;
   background: #f0f0f0;
-  margin: 0 -80px;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -391,7 +398,7 @@ main {
 
 .tagline {
   text-align: right;
-  padding: 80px 0;
+  padding: 80px 40px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -413,7 +420,6 @@ main {
 }
 
 .card {
-  padding: 40px;
   border-right: 1px solid var(--border);
 }
 
@@ -423,8 +429,6 @@ main {
 
 .card-image {
   overflow: hidden;
-  border-radius: 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 
 .card-image img {
@@ -437,8 +441,7 @@ main {
   font-size: 13px;
   font-weight: 500;
   color: var(--text);
-  margin-top: 16px;
-  margin-bottom: 6px;
+  margin: 16px 20px 6px;
 }
 
 .card p {
@@ -447,6 +450,7 @@ main {
   font-weight: 400;
   line-height: 1.55;
   color: #999;
+  margin: 0 20px 20px;
 }
 
 /* ---- Footer CTA ---- */
@@ -497,8 +501,8 @@ main {
     padding: 0 48px;
   }
 
-  .gray-divider {
-    margin: 0 -48px;
+  .feature-text {
+    padding: 30px;
   }
 
   .hero-inner {
@@ -509,7 +513,6 @@ main {
     font-size: clamp(28px, 3vw, 40px);
   }
 
-  .feature-image,
   .feature-text {
     padding: 30px;
   }
@@ -525,7 +528,6 @@ main {
   }
 
   .gray-divider {
-    margin: 0 -24px;
     height: 60px;
   }
 
@@ -554,7 +556,6 @@ main {
   .feature-image {
     border-right: none;
     border-bottom: 1px solid var(--border);
-    padding: 24px;
   }
 
   .feature-reverse .feature-image {
