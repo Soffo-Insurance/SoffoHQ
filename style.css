@@ -259,11 +259,21 @@ main {
 
 .logo-wall {
   display: flex;
-  border-bottom: 1px solid var(--border);
   margin: 0 80px;
   overflow: hidden;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
+  position: relative;
+}
+
+.logo-wall::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -80px;
+  right: -80px;
+  height: 1px;
+  background: var(--border);
 }
 
 .logo-wall-label {
@@ -312,6 +322,11 @@ main {
   max-width: 90px;
   max-height: 36px;
   object-fit: contain;
+}
+
+.logo-wall-item--sm img {
+  max-width: 60px;
+  max-height: 24px;
 }
 
 @keyframes logoScroll {
