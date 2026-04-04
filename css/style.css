@@ -694,7 +694,7 @@ html.dark .statement {
 .footer-cta {
   display: flex;
   align-items: center;
-  padding: 60px 80px 60px 120px;
+  padding: 60px 80px 60px 160px;
   border-bottom: 1px solid var(--border);
   gap: 0;
   overflow: hidden;
