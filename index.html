@@ -33,8 +33,8 @@
       </div>
       <div class="nav-dropdown" id="navDropdown">
         <div class="nav-dropdown-inner">
-          <a href="/">Home</a>
-          <a href="/product">Product</a>
+          <a href="#" data-scroll>Home</a>
+          <a href="#product" data-scroll>Product</a>
           <a href="/blog">Blog</a>
         </div>
       </div>
@@ -50,7 +50,7 @@
     <!-- Logo Wall -->
     <section class="logo-wall">
       <div class="logo-wall-label">
-        <span>Trusted by<br>Actuarial Managers</span>
+        <span>Trusted by Actuarial Managers from</span>
       </div>
       <div class="logo-wall-track">
         <div class="logo-wall-scroll">
@@ -71,7 +71,7 @@
     </section>
 
     <div class="content-border">
-      <div class="features-wrapper">
+      <div class="features-wrapper" id="product">
         <!-- Feature 1: Image left, text right -->
         <section class="feature">
           <div class="feature-image">
@@ -195,6 +195,24 @@
         dropdownOpen = false;
         headerRight.classList.remove('open');
       }
+    });
+
+    // Smooth scroll for in-page nav links & update toggle label
+    document.querySelectorAll('.nav-dropdown-inner a[data-scroll]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (href === '#') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+        // Close dropdown & update toggle text
+        dropdownOpen = false;
+        headerRight.classList.remove('open');
+        navToggle.querySelector('span').textContent = link.textContent;
+      });
     });
 
     // Scroll animations
