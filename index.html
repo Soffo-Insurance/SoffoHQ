@@ -148,7 +148,7 @@
       <!-- Footer CTA -->
       <section class="footer-cta">
         <div class="footer-cta-content">
-          <h2>A trusted defensible reasoning layer<br>for property insurance litigation</h2>
+          <h2>Powered by a structured ontology<br>that transforms documents into<br>powerful, evidence-backed arguments</h2>
           <a href="https://cal.com/seungyong/15min" target="_blank" class="cta-button">Book a Demo</a>
         </div>
         <div class="footer-cta-graph">
@@ -324,19 +324,34 @@
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
-      const NODE_COUNT = 11;
-      const NODE_SIZE = 5;
-      const DRIFT = 18;
-      const SPEED = 0.0004;
+      const SPEED = 0.00035;
 
-      let w, h, center, nodes;
+      // Fixed node definitions: [angle_deg, radius_fraction, size_px, drift_px]
+      // radius_fraction is relative to canvas width
+      // Center is placed at ~58% x, 48% y so the graph fans left and right naturally
+      const NODE_DEFS = [
+        [ -60,  0.20,  4, 10],  // upper-right short
+        [ -30,  0.27,  3,  8],  // upper-right medium
+        [  10,  0.30,  5, 12],  // right medium
+        [  35,  0.26,  4,  9],  // lower-right short
+        [  70,  0.22,  3,  7],  // lower-right
+        [ 110,  0.28,  6, 14],  // lower medium-large
+        [ 150,  0.38,  9, 16],  // bottom-left large (long line)
+        [ 170,  0.19,  3,  8],  // left-bottom short
+        [-170,  0.44,  4, 12],  // far left (very long)
+        [-130,  0.23,  3,  8],  // upper-left short
+        [-100,  0.31,  4, 10],  // upper-left medium
+        [ -80,  0.17,  3,  6],  // upper close
+      ];
+
+      let w, h, cx, cy, nodes;
 
       function getColor() {
-        return document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0.85)';
+        return document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.88)';
       }
 
       function getLineColor() {
-        return document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)';
+        return document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.28)';
       }
 
       function initNodes() {
@@ -344,22 +359,22 @@
         h = canvas.offsetHeight;
         canvas.width = w * devicePixelRatio;
         canvas.height = h * devicePixelRatio;
-        ctx.scale(devicePixelRatio, devicePixelRatio);
+        ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
 
-        center = { x: w * 0.55, y: h * 0.5 };
+        cx = w * 0.58;
+        cy = h * 0.48;
 
-        nodes = [];
-        const angles = Array.from({ length: NODE_COUNT }, (_, i) => (i / NODE_COUNT) * Math.PI * 2);
-        const radii = [w * 0.18, w * 0.22, w * 0.28, w * 0.24, w * 0.32, w * 0.2, w * 0.26, w * 0.19, w * 0.29, w * 0.23, w * 0.31];
-        angles.forEach((angle, i) => {
-          const r = radii[i % radii.length];
-          nodes.push({
-            bx: center.x + Math.cos(angle) * r,
-            by: center.y + Math.sin(angle) * r,
-            ox: (Math.random() - 0.5) * DRIFT,
-            oy: (Math.random() - 0.5) * DRIFT,
+        nodes = NODE_DEFS.map(([deg, rf, size, drift]) => {
+          const rad = (deg * Math.PI) / 180;
+          const r = w * rf;
+          return {
+            bx: cx + Math.cos(rad) * r,
+            by: cy + Math.sin(rad) * r,
+            dx: (Math.random() - 0.5) * drift,
+            dy: (Math.random() - 0.5) * drift,
             phase: Math.random() * Math.PI * 2,
-          });
+            size,
+          };
         });
       }
 
@@ -368,48 +383,43 @@
         const col = getColor();
         const lineCol = getLineColor();
 
-        const leafPositions = nodes.map(n => ({
-          x: n.bx + Math.sin(t * SPEED + n.phase) * n.ox,
-          y: n.by + Math.cos(t * SPEED + n.phase) * n.oy,
+        const pts = nodes.map(n => ({
+          x: n.bx + Math.sin(t * SPEED + n.phase) * n.dx,
+          y: n.by + Math.cos(t * SPEED + n.phase) * n.dy,
+          size: n.size,
         }));
 
-        // Lines
         ctx.strokeStyle = lineCol;
-        ctx.lineWidth = 0.8;
-        leafPositions.forEach(pos => {
+        ctx.lineWidth = 0.75;
+        pts.forEach(p => {
           ctx.beginPath();
-          ctx.moveTo(center.x, center.y);
-          ctx.lineTo(pos.x, pos.y);
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(p.x, p.y);
           ctx.stroke();
         });
 
-        // Leaf nodes
         ctx.fillStyle = col;
-        leafPositions.forEach(pos => {
-          ctx.fillRect(pos.x - NODE_SIZE / 2, pos.y - NODE_SIZE / 2, NODE_SIZE, NODE_SIZE);
+        pts.forEach(p => {
+          ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
         });
 
-        // Center node (slightly larger)
-        ctx.fillRect(center.x - NODE_SIZE * 0.8, center.y - NODE_SIZE * 0.8, NODE_SIZE * 1.6, NODE_SIZE * 1.6);
+        // Center node
+        const cs = 7;
+        ctx.fillRect(cx - cs / 2, cy - cs / 2, cs, cs);
       }
 
       let rafId;
-      function loop(t) {
-        draw(t);
-        rafId = requestAnimationFrame(loop);
-      }
+      function loop(t) { draw(t); rafId = requestAnimationFrame(loop); }
 
       initNodes();
       rafId = requestAnimationFrame(loop);
 
-      // Re-init on resize
       window.addEventListener('resize', () => {
         cancelAnimationFrame(rafId);
         initNodes();
         rafId = requestAnimationFrame(loop);
       });
 
-      // Re-draw on theme toggle so colors update
       document.getElementById('themeToggle').addEventListener('click', () => {
         cancelAnimationFrame(rafId);
         rafId = requestAnimationFrame(loop);
