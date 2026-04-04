@@ -318,9 +318,15 @@
       const toggle = document.getElementById('themeToggle');
 
       function swapImages(isDark) {
+        const scrollY = window.scrollY;
         document.querySelectorAll('img[data-light][data-dark]').forEach(img => {
-          img.src = isDark ? img.dataset.dark : img.dataset.light;
+          const newSrc = isDark ? img.dataset.dark : img.dataset.light;
+          const preload = new Image();
+          preload.src = newSrc;
+          preload.onload = () => { img.src = newSrc; };
+          if (preload.complete) img.src = newSrc;
         });
+        requestAnimationFrame(() => window.scrollTo(0, scrollY));
       }
 
       const stored = localStorage.getItem('theme');
