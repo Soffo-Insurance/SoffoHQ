@@ -259,7 +259,6 @@ main {
 
 .logo-wall {
   display: flex;
-  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   margin: 0 80px;
   overflow: hidden;
@@ -386,7 +385,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 80px;
+  padding: 180px 80px;
   border-bottom: 1px solid var(--border);
 }
 
