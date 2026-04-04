@@ -146,20 +146,28 @@
   </main>
 
   <script>
-    // Access code wall
+    // Access code wall (SHA-256 hashed)
     (function() {
-      const ACCESS_CODE = 'soffo123';
+      const H = '18f2909c5a236cf1123aa28ddd66adce2ea36b1454d23b25fc80ab1cb69de9a2';
+      const SK = '__s_a';
       const wall = document.getElementById('accessWall');
       const form = document.getElementById('accessForm');
       const input = document.getElementById('accessInput');
-      if (sessionStorage.getItem('soffo_access') === 'granted') {
+
+      async function digest(v) {
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(v));
+        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+
+      if (sessionStorage.getItem(SK) === '1') {
         wall.remove();
       } else {
         document.body.classList.add('locked');
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
           e.preventDefault();
-          if (input.value.trim() === ACCESS_CODE) {
-            sessionStorage.setItem('soffo_access', 'granted');
+          const hash = await digest(input.value.trim());
+          if (hash === H) {
+            sessionStorage.setItem(SK, '1');
             wall.classList.add('fade-out');
             document.body.classList.remove('locked');
             setTimeout(() => wall.remove(), 400);
