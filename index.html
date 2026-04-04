@@ -326,52 +326,47 @@
 
       const SPEED = 0.00035;
 
-      // Fixed node definitions: [angle_deg, radius_fraction, size_px, drift_px]
-      // radius_fraction is relative to canvas width
-      // Center is placed at ~58% x, 48% y so the graph fans left and right naturally
+      // [angle_deg, radius_px, node_size_px, drift_px]
+      // Fixed pixel radii so layout never blows out on wide canvases
       const NODE_DEFS = [
-        [ -60,  0.20,  4, 10],  // upper-right short
-        [ -30,  0.27,  3,  8],  // upper-right medium
-        [  10,  0.30,  5, 12],  // right medium
-        [  35,  0.26,  4,  9],  // lower-right short
-        [  70,  0.22,  3,  7],  // lower-right
-        [ 110,  0.28,  6, 14],  // lower medium-large
-        [ 150,  0.38,  9, 16],  // bottom-left large (long line)
-        [ 170,  0.19,  3,  8],  // left-bottom short
-        [-170,  0.44,  4, 12],  // far left (very long)
-        [-130,  0.23,  3,  8],  // upper-left short
-        [-100,  0.31,  4, 10],  // upper-left medium
-        [ -80,  0.17,  3,  6],  // upper close
+        [ -58,  95,  5,  7],   // upper-right
+        [ -28, 130,  4,  6],   // upper-right medium
+        [  12, 140,  6,  9],   // right
+        [  38, 105,  5,  7],   // lower-right
+        [  72,  80,  4,  6],   // lower-right short
+        [ 108, 115,  7, 10],   // lower
+        [ 148, 185, 12, 12],   // lower-left large (long arm)
+        [ 170,  75,  4,  6],   // left-bottom short
+        [-172, 230,  5,  9],   // far left (longest arm)
+        [-138,  90,  4,  6],   // upper-left
+        [-103, 125,  5,  8],   // upper-left medium
+        [ -78,  62,  4,  5],   // upper close
       ];
 
       let w, h, cx, cy, nodes;
 
-      function getColor() {
-        return document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.88)';
-      }
-
-      function getLineColor() {
-        return document.documentElement.classList.contains('dark') ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.28)';
-      }
+      function isDark() { return document.documentElement.classList.contains('dark'); }
+      function nodeColor() { return isDark() ? '#ffffff' : '#111111'; }
+      function lineColor() { return isDark() ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.35)'; }
 
       function initNodes() {
         w = canvas.offsetWidth;
         h = canvas.offsetHeight;
-        canvas.width = w * devicePixelRatio;
-        canvas.height = h * devicePixelRatio;
+        canvas.width = Math.round(w * devicePixelRatio);
+        canvas.height = Math.round(h * devicePixelRatio);
         ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
 
-        cx = w * 0.58;
-        cy = h * 0.48;
+        // Place center at 60% x so arms fan naturally left and right
+        cx = w * 0.60;
+        cy = h * 0.50;
 
-        nodes = NODE_DEFS.map(([deg, rf, size, drift]) => {
+        nodes = NODE_DEFS.map(([deg, r, size, drift]) => {
           const rad = (deg * Math.PI) / 180;
-          const r = w * rf;
           return {
             bx: cx + Math.cos(rad) * r,
             by: cy + Math.sin(rad) * r,
-            dx: (Math.random() - 0.5) * drift,
-            dy: (Math.random() - 0.5) * drift,
+            dx: (Math.random() < 0.5 ? 1 : -1) * drift,
+            dy: (Math.random() < 0.5 ? 1 : -1) * drift,
             phase: Math.random() * Math.PI * 2,
             size,
           };
@@ -380,8 +375,6 @@
 
       function draw(t) {
         ctx.clearRect(0, 0, w, h);
-        const col = getColor();
-        const lineCol = getLineColor();
 
         const pts = nodes.map(n => ({
           x: n.bx + Math.sin(t * SPEED + n.phase) * n.dx,
@@ -389,8 +382,8 @@
           size: n.size,
         }));
 
-        ctx.strokeStyle = lineCol;
-        ctx.lineWidth = 0.75;
+        ctx.strokeStyle = lineColor();
+        ctx.lineWidth = 0.8;
         pts.forEach(p => {
           ctx.beginPath();
           ctx.moveTo(cx, cy);
@@ -398,13 +391,14 @@
           ctx.stroke();
         });
 
-        ctx.fillStyle = col;
+        ctx.fillStyle = nodeColor();
         pts.forEach(p => {
-          ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
+          const s = p.size;
+          ctx.fillRect(p.x - s / 2, p.y - s / 2, s, s);
         });
 
-        // Center node
-        const cs = 7;
+        // Center hub node
+        const cs = 8;
         ctx.fillRect(cx - cs / 2, cy - cs / 2, cs, cs);
       }
 
