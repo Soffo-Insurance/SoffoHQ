@@ -43,7 +43,10 @@ html.dark {
 }
 
 html.dark .footer-cta {
-  background-image: radial-gradient(circle, #333333 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, var(--bg) 80px, transparent 80px, transparent calc(100% - 80px), var(--bg) calc(100% - 80px)),
+    radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
+  background-size: 100% 100%, 10px 10px;
 }
 
 ::selection {
@@ -684,8 +687,10 @@ main {
   border-bottom: 1px solid var(--border);
   gap: 0;
   overflow: hidden;
-  background-image: radial-gradient(circle, #c8c8c8 1px, transparent 1px);
-  background-size: 18px 18px;
+  background-image:
+    linear-gradient(to right, var(--bg) 80px, transparent 80px, transparent calc(100% - 80px), var(--bg) calc(100% - 80px)),
+    radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
+  background-size: 100% 100%, 10px 10px;
 }
 
 .footer-cta-content {
