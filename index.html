@@ -335,7 +335,7 @@
         [  38, 105,  5,  7],   // lower-right
         [  72,  80,  4,  6],   // lower-right short
         [ 108, 115,  7, 10],   // lower
-        [ 148, 185, 12, 12],   // lower-left large (long arm)
+        [-150, 185, 12, 12],   // upper-left large
         [ 170,  75,  4,  6],   // left-bottom short
         [ 170, 420,  4,  6],   // far left — extended, angled toward Book a Demo button
         [-138,  90,  4,  6],   // upper-left
@@ -360,11 +360,14 @@
         cx = w * 0.60;
         cy = h * 0.50;
 
+        const scale = Math.min(1, w / 680);
+
         nodes = NODE_DEFS.map(([deg, r, size, drift]) => {
           const rad = (deg * Math.PI) / 180;
+          const sr = r * scale;
           return {
-            bx: cx + Math.cos(rad) * r,
-            by: cy + Math.sin(rad) * r,
+            bx: cx + Math.cos(rad) * sr,
+            by: cy + Math.sin(rad) * sr,
             dx: (Math.random() < 0.5 ? 1 : -1) * drift,
             dy: (Math.random() < 0.5 ? 1 : -1) * drift,
             phase: Math.random() * Math.PI * 2,

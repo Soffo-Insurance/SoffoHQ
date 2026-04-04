@@ -784,6 +784,15 @@ html.dark .statement {
 
   .statement {
     padding: 100px 48px;
+    background-image:
+      linear-gradient(to right, var(--bg) 48px, transparent 48px, transparent calc(100% - 48px), var(--bg) calc(100% - 48px)),
+      radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
+  }
+
+  html.dark .statement {
+    background-image:
+      linear-gradient(to right, var(--bg) 48px, transparent 48px, transparent calc(100% - 48px), var(--bg) calc(100% - 48px)),
+      radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
   }
 
   .cards {
@@ -794,11 +803,20 @@ html.dark .statement {
     padding: 60px 48px;
     flex-direction: column;
     align-items: flex-start;
+    background-image:
+      linear-gradient(to right, var(--bg) 48px, transparent 48px, transparent calc(100% - 48px), var(--bg) calc(100% - 48px)),
+      radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
+  }
+
+  html.dark .footer-cta {
+    background-image:
+      linear-gradient(to right, var(--bg) 48px, transparent 48px, transparent calc(100% - 48px), var(--bg) calc(100% - 48px)),
+      radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
   }
 
   .footer-cta-content {
     width: 100%;
-    max-width: 480px;
+    max-width: 520px;
   }
 
   .footer-cta-graph {
@@ -872,6 +890,15 @@ html.dark .statement {
 
   .statement {
     padding: 60px 24px;
+    background-image:
+      linear-gradient(to right, var(--bg) 24px, transparent 24px, transparent calc(100% - 24px), var(--bg) calc(100% - 24px)),
+      radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
+  }
+
+  html.dark .statement {
+    background-image:
+      linear-gradient(to right, var(--bg) 24px, transparent 24px, transparent calc(100% - 24px), var(--bg) calc(100% - 24px)),
+      radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
   }
 
   .statement h2 {
@@ -905,6 +932,15 @@ html.dark .statement {
     padding: 48px 24px 60px;
     flex-direction: column;
     align-items: flex-start;
+    background-image:
+      linear-gradient(to right, var(--bg) 24px, transparent 24px, transparent calc(100% - 24px), var(--bg) calc(100% - 24px)),
+      radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
+  }
+
+  html.dark .footer-cta {
+    background-image:
+      linear-gradient(to right, var(--bg) 24px, transparent 24px, transparent calc(100% - 24px), var(--bg) calc(100% - 24px)),
+      radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
   }
 
   .footer-cta-graph {
