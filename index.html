@@ -147,13 +147,8 @@
 
       <!-- Footer CTA -->
       <section class="footer-cta">
-        <div class="footer-cta-content">
-          <h2>Powered by a structured ontology that<br>transforms documents into powerful,<br>evidence-backed arguments</h2>
-          <a href="https://cal.com/seungyong/15min" target="_blank" class="cta-button">Book a Demo</a>
-        </div>
-        <div class="footer-cta-graph">
-          <canvas id="graphCanvas"></canvas>
-        </div>
+        <h2>Powered by a structured ontology that transforms documents into powerful,<br>evidence-backed arguments</h2>
+        <a href="https://cal.com/seungyong/15min" target="_blank" class="cta-button">Book a Demo</a>
       </section>
     </div>
   </main>
@@ -316,111 +311,6 @@
       }, { threshold: 0.3 });
 
       document.querySelectorAll('.typewriter').forEach(el => typewriterObserver.observe(el));
-    })();
-
-    // Graph canvas
-    (function() {
-      const canvas = document.getElementById('graphCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-
-      const SPEED = 0.00035;
-
-      // [angle_deg, radius_px, node_size_px, drift_px]
-      // Fixed pixel radii so layout never blows out on wide canvases
-      const NODE_DEFS = [
-        [ -58,  95,  5,  7],   // upper-right
-        [ -28, 130,  4,  6],   // upper-right medium
-        [  12, 140,  6,  9],   // right
-        [  38, 105,  5,  7],   // lower-right
-        [  72,  80,  4,  6],   // lower-right short
-        [ 108, 115,  7, 10],   // lower
-        [-150, 185, 12, 12],   // upper-left large
-        [ 170,  75,  4,  6],   // left-bottom short
-        [ 170, 420,  4,  6],   // far left — extended, angled toward Book a Demo button
-        [-138,  90,  4,  6],   // upper-left
-        [-103, 125,  5,  8],   // upper-left medium
-        [ -78,  62,  4,  5],   // upper close
-      ];
-
-      let w, h, cx, cy, nodes;
-
-      function isDark() { return document.documentElement.classList.contains('dark'); }
-      function nodeColor() { return isDark() ? '#ffffff' : '#111111'; }
-      function lineColor() { return isDark() ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.35)'; }
-
-      function initNodes() {
-        w = canvas.offsetWidth;
-        h = canvas.offsetHeight;
-        canvas.width = Math.round(w * devicePixelRatio);
-        canvas.height = Math.round(h * devicePixelRatio);
-        ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-
-        // Place center at 60% x so arms fan naturally left and right
-        cx = w * 0.60;
-        cy = h * 0.50;
-
-        const scale = Math.min(1, w / 680);
-
-        nodes = NODE_DEFS.map(([deg, r, size, drift]) => {
-          const rad = (deg * Math.PI) / 180;
-          const sr = r * scale;
-          return {
-            bx: cx + Math.cos(rad) * sr,
-            by: cy + Math.sin(rad) * sr,
-            dx: (Math.random() < 0.5 ? 1 : -1) * drift,
-            dy: (Math.random() < 0.5 ? 1 : -1) * drift,
-            phase: Math.random() * Math.PI * 2,
-            size,
-          };
-        });
-      }
-
-      function draw(t) {
-        ctx.clearRect(0, 0, w, h);
-
-        const pts = nodes.map(n => ({
-          x: n.bx + Math.sin(t * SPEED + n.phase) * n.dx,
-          y: n.by + Math.cos(t * SPEED + n.phase) * n.dy,
-          size: n.size,
-        }));
-
-        ctx.strokeStyle = lineColor();
-        ctx.lineWidth = 0.8;
-        pts.forEach(p => {
-          ctx.beginPath();
-          ctx.moveTo(cx, cy);
-          ctx.lineTo(p.x, p.y);
-          ctx.stroke();
-        });
-
-        ctx.fillStyle = nodeColor();
-        pts.forEach(p => {
-          const s = p.size;
-          ctx.fillRect(p.x - s / 2, p.y - s / 2, s, s);
-        });
-
-        // Center hub node
-        const cs = 8;
-        ctx.fillRect(cx - cs / 2, cy - cs / 2, cs, cs);
-      }
-
-      let rafId;
-      function loop(t) { draw(t); rafId = requestAnimationFrame(loop); }
-
-      initNodes();
-      rafId = requestAnimationFrame(loop);
-
-      window.addEventListener('resize', () => {
-        cancelAnimationFrame(rafId);
-        initNodes();
-        rafId = requestAnimationFrame(loop);
-      });
-
-      document.getElementById('themeToggle').addEventListener('click', () => {
-        cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(loop);
-      });
     })();
 
     // Dark mode toggle
