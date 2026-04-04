@@ -42,6 +42,10 @@ html.dark {
   --cta-text: #111111;
 }
 
+html.dark .footer-cta {
+  background-image: radial-gradient(circle, #333333 1px, transparent 1px);
+}
+
 ::selection {
   background-color: #b4d5fe;
   color: inherit;
@@ -680,6 +684,8 @@ main {
   border-bottom: 1px solid var(--border);
   gap: 0;
   overflow: hidden;
+  background-image: radial-gradient(circle, #c8c8c8 1px, transparent 1px);
+  background-size: 18px 18px;
 }
 
 .footer-cta-content {
