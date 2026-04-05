@@ -354,23 +354,5 @@
       });
     })();
   </script>
-
-  <script>
-    (function() {
-      const cursor = document.createElement('div');
-      cursor.id = 'custom-cursor';
-      cursor.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20"><polygon points="0,0 16,10 0,20" fill="#DF3E11"/></svg><span id="custom-cursor-tag">You</span>';
-      document.body.appendChild(cursor);
-
-      document.addEventListener('mousemove', function(e) {
-        cursor.style.transform = 'translate(' + (e.clientX - 16) + 'px, ' + (e.clientY - 10) + 'px)';
-      });
-
-      document.querySelectorAll('img[src$=".webp"]').forEach(function(img) {
-        img.addEventListener('mouseenter', function() { cursor.classList.add('visible'); });
-        img.addEventListener('mouseleave', function() { cursor.classList.remove('visible'); });
-      });
-    })();
-  </script>
 </body>
 </html>
