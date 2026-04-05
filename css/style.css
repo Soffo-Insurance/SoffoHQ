@@ -881,8 +881,23 @@ img[src$=".webp"] {
   transition: opacity 0.2s ease;
   z-index: 99999;
   will-change: transform;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 #custom-cursor.visible {
   opacity: 1;
+}
+
+#custom-cursor-tag {
+  background: #DF3E11;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  line-height: 1.4;
 }
