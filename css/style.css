@@ -43,10 +43,6 @@ html.dark {
 }
 
 html.dark .footer-cta {
-  background-image:
-    linear-gradient(to right, var(--bg) 80px, transparent 80px, transparent calc(100% - 80px), var(--bg) calc(100% - 80px)),
-    radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
-  background-size: 100% 100%, 10px 10px;
 }
 
 ::selection {
@@ -162,7 +158,7 @@ header {
   background: var(--dropdown-bg);
   box-shadow: 0 1px 6px var(--card-shadow), 0 1px 3px var(--card-shadow);
   transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  min-width: 320px;
+  min-width: 280px;
 }
 
 .header-right.open {
@@ -584,17 +580,9 @@ main {
   text-align: center;
   padding: 100px 80px;
   border-bottom: 1px solid var(--border);
-  background-image:
-    linear-gradient(to right, var(--bg) 80px, transparent 80px, transparent calc(100% - 80px), var(--bg) calc(100% - 80px)),
-    radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
-  background-size: 100% 100%, 10px 10px;
 }
 
 html.dark .statement {
-  background-image:
-    linear-gradient(to right, var(--bg) 80px, transparent 80px, transparent calc(100% - 80px), var(--bg) calc(100% - 80px)),
-    radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
-  background-size: 100% 100%, 10px 10px;
 }
 
 .statement h2 {
@@ -696,10 +684,6 @@ html.dark .statement {
   text-align: center;
   padding: 80px 80px 120px;
   border-bottom: 1px solid var(--border);
-  background-image:
-    linear-gradient(to right, var(--bg) 80px, transparent 80px, transparent calc(100% - 80px), var(--bg) calc(100% - 80px)),
-    radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
-  background-size: 100% 100%, 10px 10px;
 }
 
 .footer-cta h2 {
@@ -762,15 +746,9 @@ html.dark .statement {
 
   .statement {
     padding: 100px 48px;
-    background-image:
-      linear-gradient(to right, var(--bg) 48px, transparent 48px, transparent calc(100% - 48px), var(--bg) calc(100% - 48px)),
-      radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
   }
 
   html.dark .statement {
-    background-image:
-      linear-gradient(to right, var(--bg) 48px, transparent 48px, transparent calc(100% - 48px), var(--bg) calc(100% - 48px)),
-      radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
   }
 
   .cards {
@@ -779,17 +757,9 @@ html.dark .statement {
 
   .footer-cta {
     padding: 60px 48px 100px;
-    background-image:
-      linear-gradient(to right, var(--bg) 48px, transparent 48px, transparent calc(100% - 48px), var(--bg) calc(100% - 48px)),
-      radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
-    background-size: 100% 100%, 10px 10px;
   }
 
   html.dark .footer-cta {
-    background-image:
-      linear-gradient(to right, var(--bg) 48px, transparent 48px, transparent calc(100% - 48px), var(--bg) calc(100% - 48px)),
-      radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
-    background-size: 100% 100%, 10px 10px;
   }
 
   .hero {
@@ -857,15 +827,9 @@ html.dark .statement {
 
   .statement {
     padding: 60px 24px;
-    background-image:
-      linear-gradient(to right, var(--bg) 24px, transparent 24px, transparent calc(100% - 24px), var(--bg) calc(100% - 24px)),
-      radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
   }
 
   html.dark .statement {
-    background-image:
-      linear-gradient(to right, var(--bg) 24px, transparent 24px, transparent calc(100% - 24px), var(--bg) calc(100% - 24px)),
-      radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
   }
 
   .statement h2 {
@@ -897,16 +861,8 @@ html.dark .statement {
 
   .footer-cta {
     padding: 48px 24px 80px;
-    background-image:
-      linear-gradient(to right, var(--bg) 24px, transparent 24px, transparent calc(100% - 24px), var(--bg) calc(100% - 24px)),
-      radial-gradient(circle, #bdbdbd 0.75px, transparent 0.75px);
-    background-size: 100% 100%, 10px 10px;
   }
 
   html.dark .footer-cta {
-    background-image:
-      linear-gradient(to right, var(--bg) 24px, transparent 24px, transparent calc(100% - 24px), var(--bg) calc(100% - 24px)),
-      radial-gradient(circle, #2e2e2e 0.75px, transparent 0.75px);
-    background-size: 100% 100%, 10px 10px;
   }
 }
