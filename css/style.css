@@ -457,128 +457,99 @@ main {
 }
 
 
-/* ---- Crosshatch Pattern ---- */
+/* ---- Isometric Layers ---- */
 
-.crosshatch-section {
+.iso-section {
   display: flex;
   justify-content: center;
-  padding: 80px 80px;
+  align-items: center;
+  padding: 80px;
   border-bottom: 1px solid var(--border);
   overflow: hidden;
 }
 
-.crosshatch-card {
+.iso-card {
   position: relative;
-  width: 100%;
-  max-width: 925px;
+  width: 350px;
   height: 300px;
-  background: var(--bg);
-  overflow: hidden;
   transition: height 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.crosshatch-section.expanded .crosshatch-card {
-  height: 640px;
+.iso-section.expanded .iso-card {
+  height: 520px;
 }
 
-.crosshatch-layer {
+.iso-layer {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  width: 414px;
-  height: 259px;
-  background:
-    repeating-linear-gradient(
-      30.31deg,
-      transparent,
-      transparent 34px,
-      rgba(0, 0, 0, 0.15) 34px,
-      rgba(0, 0, 0, 0.15) 34.5px
-    ),
-    repeating-linear-gradient(
-      -30.31deg,
-      transparent,
-      transparent 34px,
-      rgba(0, 0, 0, 0.15) 34px,
-      rgba(0, 0, 0, 0.15) 34.5px
-    );
-  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 350px;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.crosshatch-layer--1 {
-  top: 0;
+/* Collapsed: tight stack */
+.iso-layer--1 {
+  transform: translateX(-50%) translateY(0);
+}
+
+.iso-layer--2 {
   transform: translateX(-50%) translateY(20px);
 }
 
-.crosshatch-layer--2 {
-  top: 0;
-  transform: translateX(-50%) translateY(37px);
+.iso-layer--3 {
+  transform: translateX(-50%) translateY(40px);
 }
 
-.crosshatch-layer--3 {
-  top: 0;
-  transform: translateX(-50%) translateY(54px);
+/* Expanded: spread apart */
+.iso-section.expanded .iso-layer--1 {
+  transform: translateX(-50%) translateY(0);
 }
 
-.crosshatch-section.expanded .crosshatch-layer--1 {
-  transform: translateX(-50%) translateY(0px);
+.iso-section.expanded .iso-layer--2 {
+  transform: translateX(-50%) translateY(130px);
 }
 
-.crosshatch-section.expanded .crosshatch-layer--2 {
-  transform: translateX(-50%) translateY(101px);
-}
-
-.crosshatch-section.expanded .crosshatch-layer--3 {
-  transform: translateX(-50%) translateY(203px);
+.iso-section.expanded .iso-layer--3 {
+  transform: translateX(-50%) translateY(260px);
 }
 
 @media (max-width: 1024px) {
-  .crosshatch-section {
+  .iso-section {
     padding: 60px 48px;
   }
 }
 
 @media (max-width: 768px) {
-  .crosshatch-section {
+  .iso-section {
     padding: 40px 24px;
   }
 
-  .crosshatch-card {
-    height: 200px;
+  .iso-card {
+    width: 260px;
+    height: 220px;
   }
 
-  .crosshatch-section.expanded .crosshatch-card {
+  .iso-section.expanded .iso-card {
     height: 400px;
   }
 
-  .crosshatch-layer {
-    width: 280px;
-    height: 175px;
+  .iso-layer {
+    width: 260px;
   }
 
-  .crosshatch-layer--1 {
-    transform: translateX(-50%) translateY(12px);
+  .iso-layer--2 {
+    transform: translateX(-50%) translateY(15px);
   }
 
-  .crosshatch-layer--2 {
-    transform: translateX(-50%) translateY(24px);
+  .iso-layer--3 {
+    transform: translateX(-50%) translateY(30px);
   }
 
-  .crosshatch-layer--3 {
-    transform: translateX(-50%) translateY(36px);
+  .iso-section.expanded .iso-layer--2 {
+    transform: translateX(-50%) translateY(100px);
   }
 
-  .crosshatch-section.expanded .crosshatch-layer--1 {
-    transform: translateX(-50%) translateY(0px);
-  }
-
-  .crosshatch-section.expanded .crosshatch-layer--2 {
-    transform: translateX(-50%) translateY(65px);
-  }
-
-  .crosshatch-section.expanded .crosshatch-layer--3 {
-    transform: translateX(-50%) translateY(130px);
+  .iso-section.expanded .iso-layer--3 {
+    transform: translateX(-50%) translateY(200px);
   }
 }
 
