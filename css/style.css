@@ -466,6 +466,27 @@ main {
   padding: 80px;
   border-bottom: 1px solid var(--border);
   overflow: hidden;
+  position: relative;
+}
+
+.iso-section::before,
+.iso-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--border);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.iso-section::before {
+  left: 80px;
+}
+
+.iso-section::after {
+  right: 80px;
 }
 
 .iso-card {
@@ -927,11 +948,13 @@ main {
     padding: 20px 48px 0;
   }
 
-  .content-border::before {
+  .content-border::before,
+  .iso-section::before {
     left: 48px;
   }
 
-  .content-border::after {
+  .content-border::after,
+  .iso-section::after {
     right: 48px;
   }
 
@@ -984,11 +1007,13 @@ main {
     padding: 20px 24px;
   }
 
-  .content-border::before {
+  .content-border::before,
+  .iso-section::before {
     left: 24px;
   }
 
-  .content-border::after {
+  .content-border::after,
+  .iso-section::after {
     right: 24px;
   }
 
