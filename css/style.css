@@ -459,14 +459,22 @@ main {
 
 /* ---- Isometric Layers ---- */
 
+.iso-scroll-wrap {
+  position: relative;
+  height: 300vh;
+}
+
 .iso-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 100px 80px;
-  border-bottom: 1px solid var(--border);
   overflow: hidden;
-  position: relative;
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  z-index: 1;
 }
 
 .iso-section::before,

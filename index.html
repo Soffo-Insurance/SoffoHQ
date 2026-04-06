@@ -71,7 +71,8 @@
     </section>
 
     <!-- Isometric Layers Animation -->
-    <section class="iso-section" id="product">
+    <div class="iso-scroll-wrap" id="product">
+    <section class="iso-section">
       <div class="iso-left">
         <div class="iso-card">
           <svg class="iso-layer iso-layer--1" viewBox="0 0 414 259" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,6 +107,7 @@
         </div>
       </div>
     </section>
+    </div>
 
     <div class="content-border">
       <div class="features-wrapper">
@@ -400,16 +402,16 @@
       document.querySelectorAll('.diagram').forEach(el => diagramObserver.observe(el));
 
       // --- Isometric layers scroll-driven animation ---
+      const isoWrap = document.querySelector('.iso-scroll-wrap');
       const isoSection = document.querySelector('.iso-section');
-      const isoCard = isoSection.querySelector('.iso-card');
       const isoLayers = isoSection.querySelectorAll('.iso-layer');
       const isoTextItems = isoSection.querySelectorAll('.iso-text-item');
       const isMobile = () => window.innerWidth <= 768;
 
       function updateIsoLayers() {
-        const rect = isoSection.getBoundingClientRect();
-        const vh = window.innerHeight;
-        const raw = (vh - rect.top) / (vh * 0.8);
+        const wrapRect = isoWrap.getBoundingClientRect();
+        const scrollable = isoWrap.offsetHeight - window.innerHeight;
+        const raw = -wrapRect.top / scrollable;
         const t = Math.max(0, Math.min(1, raw));
 
         // Determine active item (0, 1, or 2) based on scroll progress
@@ -420,7 +422,6 @@
         });
 
         const mobile = isMobile();
-        // Layer positions: spread apart smoothly, active layer separates more
         const baseOffsets = mobile ? [0, 15, 30] : [0, 20, 40];
         const spreadOffsets = mobile ? [0, 100, 200] : [0, 130, 260];
 
