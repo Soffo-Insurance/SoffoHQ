@@ -187,6 +187,9 @@
     </div>
 
   <footer class="footer content-border">
+    <div class="footer-pixel-wrap">
+      <canvas id="pixelCanvas"></canvas>
+    </div>
     <div class="footer-logo" id="footerLogo">
       <span class="footer-letter" data-target="s">s</span><span class="footer-letter" data-target="o">o</span><span class="footer-letter" data-target="f">f</span><span class="footer-letter" data-target="f">f</span><span class="footer-letter" data-target="o">o</span>
     </div>
@@ -412,6 +415,92 @@
       }, { threshold: 0.3 });
 
       footerObserver.observe(footerLogo);
+    })();
+
+    // Pixel terrain animation
+    (function() {
+      const canvas = document.getElementById('pixelCanvas');
+      const ctx = canvas.getContext('2d');
+      const PIXEL = 6;
+      let cols, rows, terrains, offset = 0;
+      let animId;
+      let started = false;
+
+      function resize() {
+        const wrap = canvas.parentElement;
+        const w = wrap.clientWidth;
+        const h = wrap.clientHeight;
+        canvas.width = w;
+        canvas.height = h;
+        cols = Math.ceil(w / PIXEL) + 60;
+        rows = Math.ceil(h / PIXEL);
+      }
+
+      function generateTerrain(baseHeight, amplitude, speed, freq) {
+        const heights = [];
+        const seedOffset = Math.random() * 1000;
+        for (let i = 0; i < cols + 200; i++) {
+          let h = baseHeight;
+          h += Math.sin((i + seedOffset) * freq) * amplitude;
+          h += Math.sin((i + seedOffset) * freq * 2.3) * (amplitude * 0.5);
+          h += Math.sin((i + seedOffset) * freq * 5.1) * (amplitude * 0.2);
+          heights.push(Math.round(h));
+        }
+        return { heights, speed, baseHeight };
+      }
+
+      function init() {
+        resize();
+        terrains = [
+          generateTerrain(rows * 0.35, rows * 0.25, 0.3, 0.025),
+          generateTerrain(rows * 0.5, rows * 0.3, 0.6, 0.03),
+          generateTerrain(rows * 0.65, rows * 0.28, 1.0, 0.02),
+        ];
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const color = getComputedStyle(document.documentElement).getPropertyValue('--text').trim() || '#1a1a1a';
+
+        terrains.forEach(terrain => {
+          const shift = Math.floor(offset * terrain.speed);
+          for (let c = 0; c < Math.ceil(canvas.width / PIXEL); c++) {
+            const hi = (c + shift) % terrain.heights.length;
+            const terrainTop = terrain.heights[Math.abs(hi)];
+            for (let r = terrainTop; r < rows; r++) {
+              const x = c * PIXEL;
+              const y = r * PIXEL;
+              const fade = 1 - ((r - terrainTop) / (rows - terrainTop)) * 0.3;
+              const distFromPeak = r - terrainTop;
+              if (distFromPeak < 3 && Math.random() > 0.6) continue;
+              ctx.globalAlpha = Math.min(1, fade * (0.7 + Math.random() * 0.3));
+              ctx.fillStyle = color;
+              ctx.fillRect(x, y, PIXEL - 1, PIXEL - 1);
+            }
+          }
+        });
+        ctx.globalAlpha = 1;
+        offset += 0.5;
+        animId = requestAnimationFrame(draw);
+      }
+
+      init();
+      window.addEventListener('resize', init);
+
+      const pixelObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !started) {
+            started = true;
+            draw();
+          } else if (entry.isIntersecting && started) {
+            draw();
+          } else if (!entry.isIntersecting && started) {
+            cancelAnimationFrame(animId);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      pixelObserver.observe(canvas);
     })();
 
   </script>
