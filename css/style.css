@@ -493,11 +493,8 @@ main {
   position: relative;
   width: 350px;
   height: 300px;
+  cursor: pointer;
   transition: height 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.iso-section.expanded .iso-card {
-  height: 520px;
 }
 
 .iso-layer {
@@ -507,7 +504,7 @@ main {
   transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Collapsed: tight stack */
+/* Step 0: tight stack (default) */
 .iso-layer--1 {
   transform: translateX(-50%) translateY(0);
 }
@@ -520,16 +517,37 @@ main {
   transform: translateX(-50%) translateY(40px);
 }
 
-/* Expanded: spread apart */
-.iso-section.expanded .iso-layer--1 {
+/* Step 1: first layer separates */
+.iso-section.step-1 .iso-card {
+  height: 400px;
+}
+
+.iso-section.step-1 .iso-layer--1 {
   transform: translateX(-50%) translateY(0);
 }
 
-.iso-section.expanded .iso-layer--2 {
+.iso-section.step-1 .iso-layer--2 {
+  transform: translateX(-50%) translateY(20px);
+}
+
+.iso-section.step-1 .iso-layer--3 {
+  transform: translateX(-50%) translateY(170px);
+}
+
+/* Step 2: all layers spread */
+.iso-section.step-2 .iso-card {
+  height: 520px;
+}
+
+.iso-section.step-2 .iso-layer--1 {
+  transform: translateX(-50%) translateY(0);
+}
+
+.iso-section.step-2 .iso-layer--2 {
   transform: translateX(-50%) translateY(130px);
 }
 
-.iso-section.expanded .iso-layer--3 {
+.iso-section.step-2 .iso-layer--3 {
   transform: translateX(-50%) translateY(260px);
 }
 
@@ -549,10 +567,6 @@ main {
     height: 220px;
   }
 
-  .iso-section.expanded .iso-card {
-    height: 400px;
-  }
-
   .iso-layer {
     width: 260px;
   }
@@ -565,11 +579,23 @@ main {
     transform: translateX(-50%) translateY(30px);
   }
 
-  .iso-section.expanded .iso-layer--2 {
+  .iso-section.step-1 .iso-card {
+    height: 300px;
+  }
+
+  .iso-section.step-1 .iso-layer--3 {
+    transform: translateX(-50%) translateY(130px);
+  }
+
+  .iso-section.step-2 .iso-card {
+    height: 400px;
+  }
+
+  .iso-section.step-2 .iso-layer--2 {
     transform: translateX(-50%) translateY(100px);
   }
 
-  .iso-section.expanded .iso-layer--3 {
+  .iso-section.step-2 .iso-layer--3 {
     transform: translateX(-50%) translateY(200px);
   }
 }

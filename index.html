@@ -383,17 +383,16 @@
 
       document.querySelectorAll('.diagram').forEach(el => diagramObserver.observe(el));
 
-      // --- Isometric layers expansion animation ---
-      const isoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('expanded');
-            isoObserver.unobserve(entry.target);
-          }
+      // --- Isometric layers click animation ---
+      document.querySelectorAll('.iso-section').forEach(section => {
+        let step = 0;
+        section.querySelector('.iso-card').addEventListener('click', () => {
+          if (step >= 2) return;
+          step++;
+          section.classList.remove('step-1', 'step-2');
+          section.classList.add('step-' + step);
         });
-      }, { threshold: 0.15 });
-
-      document.querySelectorAll('.iso-section').forEach(el => isoObserver.observe(el));
+      });
 
       // --- Footer scramble animation ---
       const footerLogo = document.getElementById('footerLogo');
