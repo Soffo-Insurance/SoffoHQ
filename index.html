@@ -381,13 +381,18 @@
           const interval = setInterval(() => {
             if (current >= targetIndex) {
               el.textContent = target;
+              el.style.opacity = '1';
               clearInterval(interval);
               resolve();
             } else {
               current++;
-              el.textContent = alpha[current];
+              el.style.opacity = '0.3';
+              setTimeout(() => {
+                el.textContent = alpha[current];
+                el.style.opacity = '1';
+              }, 20);
             }
-          }, 40);
+          }, 60);
         });
       }
 

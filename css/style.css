@@ -792,7 +792,7 @@ main {
 .footer-letter {
   display: inline-block;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.15s ease;
 }
 
 .footer-letter.visible {
