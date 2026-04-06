@@ -436,14 +436,28 @@
         rows = Math.ceil(h / PIXEL);
       }
 
+      function noise(x, seed) {
+        const n = Math.sin(x * 127.1 + seed * 311.7) * 43758.5453;
+        return n - Math.floor(n);
+      }
+
+      function smoothNoise(x, seed) {
+        const ix = Math.floor(x);
+        const fx = x - ix;
+        const t = fx * fx * (3 - 2 * fx);
+        return noise(ix, seed) * (1 - t) + noise(ix + 1, seed) * t;
+      }
+
       function generateTerrain(baseHeight, amplitude, speed, freq) {
         const heights = [];
-        const seedOffset = Math.random() * 1000;
+        const seed = Math.random() * 999;
         for (let i = 0; i < cols + 200; i++) {
           let h = baseHeight;
-          h += Math.sin((i + seedOffset) * freq) * amplitude;
-          h += Math.sin((i + seedOffset) * freq * 2.3) * (amplitude * 0.5);
-          h += Math.sin((i + seedOffset) * freq * 5.1) * (amplitude * 0.2);
+          h += (smoothNoise(i * freq, seed) - 0.5) * amplitude * 2;
+          h += (smoothNoise(i * freq * 3.7, seed + 50) - 0.5) * amplitude * 0.8;
+          h += (smoothNoise(i * freq * 8.3, seed + 100) - 0.5) * amplitude * 0.4;
+          h += (smoothNoise(i * freq * 17.1, seed + 200) - 0.5) * amplitude * 0.2;
+          h += (Math.random() - 0.5) * amplitude * 0.15;
           heights.push(Math.round(h));
         }
         return { heights, speed, baseHeight };
