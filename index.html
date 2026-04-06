@@ -387,10 +387,9 @@
       document.querySelectorAll('.iso-section').forEach(section => {
         let step = 0;
         section.querySelector('.iso-card').addEventListener('click', () => {
-          if (step >= 2) return;
-          step++;
+          step = (step + 1) % 3;
           section.classList.remove('step-1', 'step-2');
-          section.classList.add('step-' + step);
+          if (step > 0) section.classList.add('step-' + step);
         });
       });
 
