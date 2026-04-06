@@ -791,6 +791,11 @@ main {
 
 .footer-letter {
   display: inline-block;
+  opacity: 0;
+}
+
+.footer-letter.visible {
+  opacity: 1;
 }
 
 .footer-copy {
