@@ -737,7 +737,7 @@ main {
 /* ---- Diagram Section ---- */
 
 .diagram-spacer {
-  height: 200px;
+  height: 100px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -1062,7 +1062,7 @@ main {
   }
 
   .diagram-spacer {
-    height: 200px;
+    height: 100px;
   }
 
   .feature {
