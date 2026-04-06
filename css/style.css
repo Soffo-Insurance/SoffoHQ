@@ -460,10 +460,10 @@ main {
 /* ---- Isometric Layers ---- */
 
 .iso-section {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  padding: 80px;
+  padding: 100px 80px;
   border-bottom: 1px solid var(--border);
   overflow: hidden;
   position: relative;
@@ -489,10 +489,16 @@ main {
   right: 80px;
 }
 
+.iso-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .iso-card {
   position: relative;
   width: 350px;
-  height: 300px;
+  height: 400px;
 }
 
 .iso-layer {
@@ -514,20 +520,55 @@ main {
   transform: translateX(-50%) translateY(40px);
 }
 
+.iso-right {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.iso-text-item {
+  transition: opacity 0.5s ease;
+  opacity: 0.2;
+}
+
+.iso-text-item.active {
+  opacity: 1;
+}
+
+.iso-text-item h3 {
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.iso-text-item p {
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
 @media (max-width: 1024px) {
   .iso-section {
-    padding: 60px 48px;
+    padding: 80px 48px;
   }
 }
 
 @media (max-width: 768px) {
   .iso-section {
-    padding: 40px 24px;
+    grid-template-columns: 1fr;
+    padding: 60px 24px;
+    gap: 48px;
   }
 
   .iso-card {
     width: 260px;
-    height: 220px;
+    height: 300px;
   }
 
   .iso-layer {

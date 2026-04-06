@@ -72,22 +72,38 @@
 
     <!-- Isometric Layers Animation -->
     <section class="iso-section" id="product">
-      <div class="iso-card">
-        <svg class="iso-layer iso-layer--1" viewBox="0 0 414 259" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M207 0 L414 121 L207 242 L0 121 Z" stroke="#000" stroke-width="0.5"/>
-          <path d="M414 121 L414 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
-          <path d="M0 121 L0 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
-        </svg>
-        <svg class="iso-layer iso-layer--2" viewBox="0 0 414 259" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M207 0 L414 121 L207 242 L0 121 Z" stroke="#000" stroke-width="0.5"/>
-          <path d="M414 121 L414 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
-          <path d="M0 121 L0 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
-        </svg>
-        <svg class="iso-layer iso-layer--3" viewBox="0 0 414 259" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M207 0 L414 121 L207 242 L0 121 Z" stroke="#000" stroke-width="0.5"/>
-          <path d="M414 121 L414 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
-          <path d="M0 121 L0 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
-        </svg>
+      <div class="iso-left">
+        <div class="iso-card">
+          <svg class="iso-layer iso-layer--1" viewBox="0 0 414 259" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M207 0 L414 121 L207 242 L0 121 Z" stroke="#000" stroke-width="0.5"/>
+            <path d="M414 121 L414 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
+            <path d="M0 121 L0 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
+          </svg>
+          <svg class="iso-layer iso-layer--2" viewBox="0 0 414 259" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M207 0 L414 121 L207 242 L0 121 Z" stroke="#000" stroke-width="0.5"/>
+            <path d="M414 121 L414 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
+            <path d="M0 121 L0 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
+          </svg>
+          <svg class="iso-layer iso-layer--3" viewBox="0 0 414 259" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M207 0 L414 121 L207 242 L0 121 Z" stroke="#000" stroke-width="0.5"/>
+            <path d="M414 121 L414 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
+            <path d="M0 121 L0 138 L207 259 L207 242 Z" stroke="#000" stroke-width="0.5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="iso-right">
+        <div class="iso-text-item" data-layer="1">
+          <h3>Coverage disputes</h3>
+          <p>Identifies gaps between policy language and carrier positions that create grounds for denial challenges.</p>
+        </div>
+        <div class="iso-text-item" data-layer="2">
+          <h3>Alleged bad-faith claims handling</h3>
+          <p>Surfaces patterns of unreasonable delay, inadequate investigation, or lowball valuations across the claim file.</p>
+        </div>
+        <div class="iso-text-item" data-layer="3">
+          <h3>Economically motivated lawsuits</h3>
+          <p>Quantifies the delta between paid and owed amounts to build the economic basis for litigation.</p>
+        </div>
       </div>
     </section>
 
@@ -387,26 +403,29 @@
       const isoSection = document.querySelector('.iso-section');
       const isoCard = isoSection.querySelector('.iso-card');
       const isoLayers = isoSection.querySelectorAll('.iso-layer');
+      const isoTextItems = isoSection.querySelectorAll('.iso-text-item');
       const isMobile = () => window.innerWidth <= 768;
 
       function updateIsoLayers() {
         const rect = isoSection.getBoundingClientRect();
         const vh = window.innerHeight;
-        // progress 0 when section enters viewport, 1 when top reaches ~40% up
         const raw = (vh - rect.top) / (vh * 0.8);
         const t = Math.max(0, Math.min(1, raw));
 
-        const mobile = isMobile();
-        const offsets = [
-          [0, 0],
-          [mobile ? 15 : 20, mobile ? 100 : 130],
-          [mobile ? 30 : 40, mobile ? 200 : 260]
-        ];
-        const cardH = [mobile ? 220 : 300, mobile ? 400 : 520];
+        // Determine active item (0, 1, or 2) based on scroll progress
+        const activeIdx = t < 0.33 ? 0 : t < 0.66 ? 1 : 2;
 
-        isoCard.style.height = (cardH[0] + (cardH[1] - cardH[0]) * t) + 'px';
+        isoTextItems.forEach((item, i) => {
+          item.classList.toggle('active', i === activeIdx);
+        });
+
+        const mobile = isMobile();
+        // Layer positions: spread apart smoothly, active layer separates more
+        const baseOffsets = mobile ? [0, 15, 30] : [0, 20, 40];
+        const spreadOffsets = mobile ? [0, 100, 200] : [0, 130, 260];
+
         isoLayers.forEach((layer, i) => {
-          const y = offsets[i][0] + (offsets[i][1] - offsets[i][0]) * t;
+          const y = baseOffsets[i] + (spreadOffsets[i] - baseOffsets[i]) * t;
           layer.style.transform = 'translateX(-50%) translateY(' + y + 'px)';
         });
       }
