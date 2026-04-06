@@ -25,26 +25,6 @@ html {
   --cta-text: #ffffff;
 }
 
-html.dark {
-  --bg: #111111;
-  --text: #e5e5e5;
-  --grey: #555;
-  --selection: #DF3E11;
-  --border: #2a2a2a;
-  --hover: #1a1a1a;
-  --hover-active: #222;
-  --dropdown-bg: #181818;
-  --card-shadow: rgba(0, 0, 0, 0.3);
-  --card-shadow-lg: rgba(0, 0, 0, 0.4);
-  --muted: #777;
-  --divider-bg: #1a1a1a;
-  --cta-bg: #e5e5e5;
-  --cta-text: #111111;
-}
-
-html.dark .footer-cta {
-}
-
 ::selection {
   background-color: #b4d5fe;
   color: inherit;
@@ -55,7 +35,6 @@ html, body {
   width: 100%;
   background: var(--bg);
   color: var(--text);
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.locked {
@@ -233,31 +212,6 @@ header {
 .cta:hover {
   opacity: 0.85;
 }
-
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--text);
-  border-radius: 4px;
-  margin-right: 4px;
-  transition: background-color 0.15s ease;
-}
-
-.theme-toggle:hover {
-  background-color: var(--hover);
-}
-
-.theme-icon--dark { display: none; }
-.theme-icon--light { display: block; }
-
-html.dark .theme-icon--dark { display: block; }
-html.dark .theme-icon--light { display: none; }
 
 .nav-dropdown {
   position: absolute;
@@ -582,9 +536,6 @@ main {
   border-bottom: 1px solid var(--border);
 }
 
-html.dark .statement {
-}
-
 .statement h2 {
   font-family: "Times New Roman", Times, Georgia, serif;
   font-size: clamp(26px, 2.8vw, 38px);
@@ -632,6 +583,24 @@ html.dark .statement {
 }
 
 /* ---- Diagram Section ---- */
+
+.diagram-spacer {
+  height: 80px;
+  border-bottom: 1px solid var(--border);
+}
+
+.step-badge {
+  display: inline-block;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 1.5px;
+  padding: 2px 8px;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
 
 .diagram {
   display: grid;
@@ -815,8 +784,6 @@ html.dark .statement {
     padding: 100px 48px;
   }
 
-  html.dark .statement {
-  }
 
   .diagram {
     padding: 0 48px;
@@ -830,8 +797,6 @@ html.dark .statement {
     padding: 60px 48px 100px;
   }
 
-  html.dark .footer-cta {
-  }
 
   .hero {
     padding: 80px 48px;
@@ -901,8 +866,6 @@ html.dark .statement {
     padding: 60px 24px;
   }
 
-  html.dark .statement {
-  }
 
   .statement h2 {
     font-size: 24px;
@@ -950,7 +913,5 @@ html.dark .statement {
     padding: 48px 24px 80px;
   }
 
-  html.dark .footer-cta {
-  }
 }
 
