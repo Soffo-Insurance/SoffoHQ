@@ -777,7 +777,7 @@ main {
 }
 
 .footer-logo {
-  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Times New Roman", Times, Georgia, serif;
   font-size: clamp(140px, 22vw, 360px);
   font-weight: 400;
   letter-spacing: 0.04em;
