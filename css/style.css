@@ -804,10 +804,13 @@ main {
   font-size: 12px;
   font-weight: 400;
   color: var(--muted);
-  padding: 20px 0;
+  padding: 10px 0;
   border-top: 1px solid var(--border);
   margin-left: -80px;
   margin-right: -80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ---- Responsive ---- */
