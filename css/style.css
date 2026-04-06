@@ -778,9 +778,9 @@ main {
 
 .footer-logo {
   font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: clamp(120px, 18vw, 280px);
+  font-size: clamp(140px, 22vw, 360px);
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   line-height: 1;
   color: var(--text);
   margin-bottom: 40px;
