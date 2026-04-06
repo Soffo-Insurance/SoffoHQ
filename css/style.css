@@ -804,8 +804,10 @@ main {
   font-size: 12px;
   font-weight: 400;
   color: var(--muted);
-  padding-top: 20px;
+  padding: 20px 0;
   border-top: 1px solid var(--border);
+  margin-left: -80px;
+  margin-right: -80px;
 }
 
 /* ---- Responsive ---- */
@@ -850,6 +852,15 @@ main {
 
   .footer-cta {
     padding: 60px 48px 100px;
+  }
+
+  .footer {
+    padding: 40px 48px 24px;
+  }
+
+  .footer-copy {
+    margin-left: -48px;
+    margin-right: -48px;
   }
 
 
@@ -968,5 +979,18 @@ main {
     padding: 48px 24px 80px;
   }
 
+  .footer {
+    padding: 32px 24px 20px;
+  }
+
+  .footer-logo {
+    font-size: 18vw;
+    white-space: nowrap;
+  }
+
+  .footer-copy {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
 }
 
