@@ -592,7 +592,7 @@ main {
 /* ---- Diagram Section ---- */
 
 .diagram-spacer {
-  height: 80px;
+  height: 400px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -909,6 +909,10 @@ main {
   }
 
   .section-spacer {
+    height: 200px;
+  }
+
+  .diagram-spacer {
     height: 200px;
   }
 
