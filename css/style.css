@@ -622,6 +622,15 @@ main {
   border-right: none;
 }
 
+.diagram-col {
+  transition: background-color 0.2s ease, opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.diagram-col:hover {
+  background-color: var(--hover);
+}
+
 .diagram-icon {
   display: flex;
   align-items: center;
@@ -663,7 +672,6 @@ main {
 .diagram-col {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .diagram.animated .diagram-col {
