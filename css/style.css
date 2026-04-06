@@ -389,6 +389,7 @@ main {
 
 .content-border {
   position: relative;
+  border-top: 1px solid var(--border);
 }
 
 .content-border::before,
@@ -599,15 +600,6 @@ main {
   border-bottom: 1px solid var(--border);
 }
 
-/* ---- Section Divider ---- */
-
-.section-divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 0;
-  width: 100%;
-}
-
 /* ---- Feature Sections ---- */
 
 .features-wrapper {
@@ -736,7 +728,7 @@ main {
 /* ---- Diagram Section ---- */
 
 .diagram-spacer {
-  height: 400px;
+  height: 200px;
   border-bottom: 1px solid var(--border);
 }
 
