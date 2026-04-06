@@ -677,137 +677,26 @@ html.dark .statement {
 }
 
 /* Diagram animations */
-.diagram-icon .dot,
-.diagram-icon .node,
-.diagram-icon .edge,
-.diagram-icon .cell {
+.diagram-icon img {
+  max-width: 160px;
+  height: auto;
+  display: block;
+}
+
+.diagram-col {
   opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.diagram.animated .diagram-icon--scatter .dot {
-  animation: dotAppear 0.5s ease forwards;
+.diagram.animated .diagram-col {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.diagram.animated .diagram-icon--scatter .dot:nth-child(1)  { animation-delay: 0.05s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(2)  { animation-delay: 0.12s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(3)  { animation-delay: 0.18s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(4)  { animation-delay: 0.25s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(5)  { animation-delay: 0.30s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(6)  { animation-delay: 0.36s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(7)  { animation-delay: 0.42s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(8)  { animation-delay: 0.48s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(9)  { animation-delay: 0.54s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(10) { animation-delay: 0.60s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(11) { animation-delay: 0.66s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(12) { animation-delay: 0.72s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(13) { animation-delay: 0.78s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(14) { animation-delay: 0.84s; }
-.diagram.animated .diagram-icon--scatter .dot:nth-child(15) { animation-delay: 0.90s; }
-
-@keyframes dotAppear {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.3);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.diagram.animated .diagram-icon--graph .edge {
-  animation: edgeDraw 0.4s ease forwards;
-}
-
-.diagram.animated .diagram-icon--graph .node {
-  animation: nodeAppear 0.35s ease forwards;
-}
-
-.diagram.animated .diagram-icon--graph .edge:nth-child(1)  { animation-delay: 0.6s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(2)  { animation-delay: 0.7s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(3)  { animation-delay: 0.8s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(4)  { animation-delay: 0.85s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(5)  { animation-delay: 0.9s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(6)  { animation-delay: 0.95s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(7)  { animation-delay: 1.0s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(8)  { animation-delay: 1.05s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(9)  { animation-delay: 1.1s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(10) { animation-delay: 1.15s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(11) { animation-delay: 1.2s; }
-.diagram.animated .diagram-icon--graph .edge:nth-child(12) { animation-delay: 1.25s; }
-
-.diagram.animated .diagram-icon--graph .node:nth-child(13) { animation-delay: 0.55s; }
-.diagram.animated .diagram-icon--graph .node:nth-child(14) { animation-delay: 0.6s; }
-.diagram.animated .diagram-icon--graph .node:nth-child(15) { animation-delay: 0.65s; }
-.diagram.animated .diagram-icon--graph .node:nth-child(16) { animation-delay: 0.75s; }
-.diagram.animated .diagram-icon--graph .node:nth-child(17) { animation-delay: 0.8s; }
-.diagram.animated .diagram-icon--graph .node:nth-child(18) { animation-delay: 0.9s; }
-.diagram.animated .diagram-icon--graph .node:nth-child(19) { animation-delay: 1.0s; }
-.diagram.animated .diagram-icon--graph .node:nth-child(20) { animation-delay: 1.1s; }
-
-@keyframes edgeDraw {
-  0% {
-    opacity: 0;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-  }
-  100% {
-    opacity: 1;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes nodeAppear {
-  0% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  70% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.diagram.animated .diagram-icon--grid .cell {
-  animation: cellAppear 0.3s ease forwards;
-}
-
-.diagram.animated .diagram-icon--grid .cell:nth-child(1)  { animation-delay: 1.2s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(2)  { animation-delay: 1.25s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(3)  { animation-delay: 1.3s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(4)  { animation-delay: 1.35s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(5)  { animation-delay: 1.4s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(6)  { animation-delay: 1.45s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(7)  { animation-delay: 1.5s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(8)  { animation-delay: 1.55s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(9)  { animation-delay: 1.6s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(10) { animation-delay: 1.65s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(11) { animation-delay: 1.7s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(12) { animation-delay: 1.75s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(13) { animation-delay: 1.8s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(14) { animation-delay: 1.85s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(15) { animation-delay: 1.9s; }
-.diagram.animated .diagram-icon--grid .cell:nth-child(16) { animation-delay: 1.95s; }
-
-@keyframes cellAppear {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+.diagram.animated .diagram-col:nth-child(1) { transition-delay: 0.1s; }
+.diagram.animated .diagram-col:nth-child(2) { transition-delay: 0.3s; }
+.diagram.animated .diagram-col:nth-child(3) { transition-delay: 0.5s; }
 
 /* ---- Three Cards ---- */
 
