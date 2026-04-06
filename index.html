@@ -70,8 +70,16 @@
       </div>
     </section>
 
+    <!-- Crosshatch Pattern Animation -->
+    <section class="crosshatch-section" id="product">
+      <div class="crosshatch-card">
+        <div class="crosshatch-layer crosshatch-layer--1"></div>
+        <div class="crosshatch-layer crosshatch-layer--2"></div>
+        <div class="crosshatch-layer crosshatch-layer--3"></div>
+      </div>
+    </section>
+
     <div class="content-border">
-      <div class="section-spacer" id="product"></div>
       <div class="features-wrapper">
         <!-- Feature 1: Image left, text right -->
         <section class="feature">
@@ -365,6 +373,18 @@
       }, { threshold: 0.2 });
 
       document.querySelectorAll('.diagram').forEach(el => diagramObserver.observe(el));
+
+      // --- Crosshatch expansion animation ---
+      const crosshatchObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('expanded');
+            crosshatchObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      document.querySelectorAll('.crosshatch-section').forEach(el => crosshatchObserver.observe(el));
 
       // --- Footer scramble animation ---
       const footerLogo = document.getElementById('footerLogo');
