@@ -771,7 +771,7 @@ main {
 /* ---- Footer ---- */
 
 .footer {
-  padding: 40px 80px 24px;
+  padding: 40px 80px 0;
   text-align: center;
   border-top: 1px solid var(--border);
 }
@@ -804,13 +804,13 @@ main {
   font-size: 12px;
   font-weight: 400;
   color: var(--muted);
-  padding: 10px 0;
+  padding: 16px 0;
   border-top: 1px solid var(--border);
   margin-left: -80px;
   margin-right: -80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 0;
+  text-align: center;
+  line-height: 1;
 }
 
 /* ---- Responsive ---- */
