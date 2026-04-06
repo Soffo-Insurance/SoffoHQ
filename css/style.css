@@ -623,8 +623,7 @@ main {
 }
 
 .diagram-col {
-  transition: background-color 0.2s ease, opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: default;
+  transition: background-color 0.08s ease, opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .diagram-col:hover {
