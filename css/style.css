@@ -493,18 +493,15 @@ main {
   position: relative;
   width: 350px;
   height: 300px;
-  cursor: pointer;
-  transition: height 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .iso-layer {
   position: absolute;
   left: 50%;
   width: 350px;
-  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
-/* Step 0: tight stack (default) */
 .iso-layer--1 {
   transform: translateX(-50%) translateY(0);
 }
@@ -515,40 +512,6 @@ main {
 
 .iso-layer--3 {
   transform: translateX(-50%) translateY(40px);
-}
-
-/* Step 1: first layer separates */
-.iso-section.step-1 .iso-card {
-  height: 400px;
-}
-
-.iso-section.step-1 .iso-layer--1 {
-  transform: translateX(-50%) translateY(0);
-}
-
-.iso-section.step-1 .iso-layer--2 {
-  transform: translateX(-50%) translateY(20px);
-}
-
-.iso-section.step-1 .iso-layer--3 {
-  transform: translateX(-50%) translateY(170px);
-}
-
-/* Step 2: all layers spread */
-.iso-section.step-2 .iso-card {
-  height: 520px;
-}
-
-.iso-section.step-2 .iso-layer--1 {
-  transform: translateX(-50%) translateY(0);
-}
-
-.iso-section.step-2 .iso-layer--2 {
-  transform: translateX(-50%) translateY(130px);
-}
-
-.iso-section.step-2 .iso-layer--3 {
-  transform: translateX(-50%) translateY(260px);
 }
 
 @media (max-width: 1024px) {
@@ -577,26 +540,6 @@ main {
 
   .iso-layer--3 {
     transform: translateX(-50%) translateY(30px);
-  }
-
-  .iso-section.step-1 .iso-card {
-    height: 300px;
-  }
-
-  .iso-section.step-1 .iso-layer--3 {
-    transform: translateX(-50%) translateY(130px);
-  }
-
-  .iso-section.step-2 .iso-card {
-    height: 400px;
-  }
-
-  .iso-section.step-2 .iso-layer--2 {
-    transform: translateX(-50%) translateY(100px);
-  }
-
-  .iso-section.step-2 .iso-layer--3 {
-    transform: translateX(-50%) translateY(200px);
   }
 }
 
