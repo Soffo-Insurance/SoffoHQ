@@ -617,11 +617,6 @@ main {
   pointer-events: none;
 }
 
-.feature-spacer {
-  height: 80px;
-  border-bottom: 1px solid var(--border);
-}
-
 .feature {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1058,10 +1053,6 @@ main {
 
   .diagram-spacer {
     height: 200px;
-  }
-
-  .feature-spacer {
-    height: 48px;
   }
 
   .feature {
