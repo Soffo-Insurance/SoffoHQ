@@ -575,7 +575,7 @@ main {
 
   .iso-section {
     grid-template-columns: 1fr;
-    padding: 40px 24px;
+    padding: 40px 40px;
     gap: 32px;
     min-height: auto;
   }
