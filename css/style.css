@@ -569,10 +569,19 @@ main {
 }
 
 @media (max-width: 768px) {
+  .iso-scroll-wrap {
+    height: 200vh;
+  }
+
   .iso-section {
     grid-template-columns: 1fr;
-    padding: 60px 24px;
-    gap: 48px;
+    padding: 40px 24px;
+    gap: 32px;
+    min-height: auto;
+  }
+
+  .iso-right {
+    gap: 24px;
   }
 
   .iso-card {
