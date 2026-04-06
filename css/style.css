@@ -457,6 +457,13 @@ main {
 }
 
 
+/* ---- Section Spacer ---- */
+
+.section-spacer {
+  height: 400px;
+  border-bottom: 1px solid var(--border);
+}
+
 /* ---- Feature Sections ---- */
 
 .features-wrapper {
@@ -899,6 +906,10 @@ main {
 
   .hero-heading {
     font-size: 24px;
+  }
+
+  .section-spacer {
+    height: 200px;
   }
 
   .feature {
