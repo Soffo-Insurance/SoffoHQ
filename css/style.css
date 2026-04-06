@@ -813,49 +813,6 @@ main {
   overflow: hidden;
 }
 
-/* Interactive diagram icons */
-.dia-interactive {
-  position: relative;
-  width: 195px;
-  height: 122px;
-}
-
-.dia-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--text);
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-}
-
-.dia-line {
-  position: absolute;
-  height: 0;
-  border-top: 0.5px solid var(--text);
-  transform-origin: 0 0;
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-  pointer-events: none;
-}
-
-.dia-cell {
-  position: absolute;
-  box-sizing: border-box;
-  width: 20px;
-  height: 20px;
-  border: 0.5px solid var(--text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-}
-
-.dia-cell .dia-dot {
-  position: static;
-}
-
 /* Diagram animations */
 
 .diagram-col {
