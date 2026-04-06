@@ -187,6 +187,13 @@
     </div>
   </main>
 
+  <footer class="footer">
+    <div class="footer-logo" id="footerLogo">
+      <span class="footer-letter" data-target="s">s</span><span class="footer-letter" data-target="o">o</span><span class="footer-letter" data-target="f">f</span><span class="footer-letter" data-target="f">f</span><span class="footer-letter" data-target="o">o</span>
+    </div>
+    <p class="footer-copy">&copy; Copyright 2026. All Rights Reserved.</p>
+  </footer>
+
   <script>
     // Access code wall (SHA-256 hashed)
     (function() {
@@ -357,6 +364,41 @@
       }, { threshold: 0.2 });
 
       document.querySelectorAll('.diagram').forEach(el => diagramObserver.observe(el));
+
+      // --- Footer scramble animation ---
+      const footerLogo = document.getElementById('footerLogo');
+      const letters = footerLogo.querySelectorAll('.footer-letter');
+      const alpha = 'abcdefghijklmnopqrstuvwxyz';
+
+      function scrambleLetter(el, delay) {
+        const target = el.dataset.target;
+        const targetIndex = alpha.indexOf(target);
+        let current = 0;
+        el.textContent = alpha[0];
+
+        setTimeout(() => {
+          const interval = setInterval(() => {
+            if (current >= targetIndex) {
+              el.textContent = target;
+              clearInterval(interval);
+            } else {
+              current++;
+              el.textContent = alpha[current];
+            }
+          }, 40);
+        }, delay);
+      }
+
+      const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            letters.forEach((el, i) => scrambleLetter(el, i * 150));
+            footerObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      footerObserver.observe(footerLogo);
     })();
 
   </script>

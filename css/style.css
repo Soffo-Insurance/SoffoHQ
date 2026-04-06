@@ -768,6 +768,40 @@ main {
   opacity: 0.85;
 }
 
+/* ---- Footer ---- */
+
+.footer {
+  padding: 80px 80px 40px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.footer-logo {
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(120px, 18vw, 280px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 40px;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+
+.footer-letter {
+  display: inline-block;
+}
+
+.footer-copy {
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
 /* ---- Responsive ---- */
 
 @media (max-width: 1024px) {
