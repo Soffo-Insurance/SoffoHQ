@@ -814,6 +814,11 @@ main {
 }
 
 /* Diagram animations */
+.diagram-icon img {
+  max-width: 160px;
+  height: auto;
+  display: block;
+}
 
 .diagram-col {
   opacity: 0;
