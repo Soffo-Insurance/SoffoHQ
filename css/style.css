@@ -613,6 +613,9 @@ main {
   text-align: center;
   padding: 60px 32px 48px;
   border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .diagram-col:last-child {
@@ -625,6 +628,7 @@ main {
   justify-content: center;
   margin: 0 auto 28px;
   color: var(--text);
+  height: 120px;
 }
 
 .diagram-col h3 {
@@ -643,6 +647,10 @@ main {
   color: var(--muted);
   max-width: 280px;
   margin: 0 auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Diagram animations */
