@@ -297,7 +297,9 @@ main {
   align-items: center;
   justify-content: center;
   padding: 0 32px;
+  border-top: 1px solid var(--border);
   border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   background: var(--bg);
   z-index: 2;
 }
@@ -317,7 +319,9 @@ main {
   justify-content: center;
   padding: 0 32px;
   height: 72px;
+  border-top: 1px solid var(--border);
   border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .logo-wall-logo img {
@@ -385,7 +389,6 @@ main {
   align-items: center;
   justify-content: center;
   padding: 180px 80px;
-  border-bottom: 1px solid var(--border);
 }
 
 .hero-heading {
