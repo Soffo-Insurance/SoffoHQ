@@ -319,6 +319,13 @@ main {
   justify-content: center;
   padding: 0 32px;
   height: 72px;
+  border-right: 1px solid var(--border);
+}
+
+.logo-wall-logo img {
+  max-width: 90px;
+  max-height: 36px;
+  object-fit: contain;
 }
 
 @media (max-width: 1024px) {
