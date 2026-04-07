@@ -928,7 +928,7 @@ main {
   cursor: default;
 }
 
-.footer-letter:hover {
+.footer-logo.ready:hover .footer-letter {
   color: transparent;
   -webkit-text-stroke: 1px var(--border);
 }
