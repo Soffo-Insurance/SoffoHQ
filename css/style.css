@@ -302,6 +302,17 @@ main {
   border-bottom: 1px solid var(--border);
   background: var(--bg);
   z-index: 2;
+  position: relative;
+}
+
+.logo-wall-label::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -81px;
+  width: 81px;
+  height: 1px;
+  background: var(--border);
 }
 
 .logo-wall-label span {
@@ -913,7 +924,13 @@ main {
 .footer-letter {
   display: inline-block;
   opacity: 0;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s ease, color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
+  cursor: default;
+}
+
+.footer-letter:hover {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
 }
 
 .footer-letter.visible {
