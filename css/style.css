@@ -277,9 +277,7 @@ main {
 .logo-wall {
   display: flex;
   margin: 0 80px;
-  overflow: hidden;
   border-left: 1px solid var(--border);
-  border-right: 1px solid var(--border);
   position: relative;
 }
 
