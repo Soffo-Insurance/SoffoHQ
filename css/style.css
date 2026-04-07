@@ -313,46 +313,12 @@ main {
   color: var(--text);
 }
 
-.logo-wall-track {
-  flex: 1;
-  overflow: hidden;
-  position: relative;
-}
-
-.logo-wall-scroll {
-  display: flex;
-  animation: logoScroll 20s linear infinite;
-  width: max-content;
-}
-
-.logo-wall-item {
-  flex-shrink: 0;
+.logo-wall-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 160px;
+  padding: 0 32px;
   height: 72px;
-  border-right: 1px solid var(--border);
-}
-
-.logo-wall-item img {
-  max-width: 90px;
-  max-height: 36px;
-  object-fit: contain;
-}
-
-.logo-wall-item--sm img {
-  max-width: 60px;
-  max-height: 24px;
-}
-
-@keyframes logoScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 
 @media (max-width: 1024px) {
@@ -374,14 +340,9 @@ main {
     font-size: 13px;
   }
 
-  .logo-wall-item {
-    width: 130px;
+  .logo-wall-logo {
+    padding: 0 20px;
     height: 60px;
-  }
-
-  .logo-wall-item img {
-    max-width: 80px;
-    max-height: 32px;
   }
 }
 
