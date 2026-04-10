@@ -1,2 +1,0 @@
-# SoffoHQ
-getsoffo.com
