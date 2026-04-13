@@ -1003,6 +1003,31 @@ main {
   border-radius: 0;
   letter-spacing: 0;
   line-height: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.cta-button.cta-button--lg:hover { opacity: 1; }
+
+.cta-text {
+  display: inline-flex;
+  line-height: 1;
+}
+
+.cta-letter {
+  display: inline-block;
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 25ms);
+  will-change: transform;
+}
+
+.cta-button.cta-button--lg:hover .cta-letter {
+  transform: translateY(-6px);
+}
+
+.cta-button.cta-button--lg:not(:hover) .cta-letter {
+  transition-delay: calc((10 - var(--i)) * 25ms);
 }
 
 @media (max-width: 768px) {

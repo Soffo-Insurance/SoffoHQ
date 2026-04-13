@@ -236,7 +236,7 @@
       <!-- Footer CTA -->
       <section class="footer-cta">
         <h2>Win With Soffo</h2>
-        <a href="mailto:seungyong@getsoffo.com" class="cta-button cta-button--lg">Book a Demo</a>
+        <a href="mailto:seungyong@getsoffo.com" class="cta-button cta-button--lg" id="bigCta"><span class="cta-text" data-text="Book a Demo">Book a Demo</span></a>
       </section>
     </div>
 
@@ -469,6 +469,20 @@
       }, { threshold: 0.3 });
 
       footerObserver.observe(footerLogo);
+
+      // --- Big CTA letter animation ---
+      const ctaText = document.querySelector('#bigCta .cta-text');
+      if (ctaText) {
+        const raw = ctaText.textContent;
+        ctaText.textContent = '';
+        [...raw].forEach((ch, i) => {
+          const s = document.createElement('span');
+          s.className = 'cta-letter';
+          s.style.setProperty('--i', i);
+          s.textContent = ch === ' ' ? '\u00a0' : ch;
+          ctaText.appendChild(s);
+        });
+      }
 
       // --- Value cards expand/collapse ---
       const valueCards = document.querySelectorAll('#valueCards .value-card');
