@@ -386,10 +386,26 @@ main {
 .value-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  margin: 0 80px;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  position: relative;
   transition: grid-template-columns 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.value-cards::before,
+.value-cards::after {
+  content: "";
+  position: absolute;
+  left: -80px;
+  right: -80px;
+  height: 1px;
+  background: var(--border);
+  pointer-events: none;
+}
+
+.value-cards::before { top: 0; }
+.value-cards::after  { bottom: 0; }
 
 .value-cards:has(.value-card[data-card="0"].active) {
   grid-template-columns: 2.2fr 1fr 1fr;
@@ -406,8 +422,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 260px;
-  padding: 28px 32px 32px;
+  min-height: 170px;
+  padding: 20px 24px 22px;
   border: none;
   border-right: 1px solid rgba(255, 255, 255, 0.15);
   background: transparent;
@@ -476,6 +492,13 @@ main {
 @media (max-width: 1024px) {
   .value-cards {
     grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 48px;
+  }
+
+  .value-cards::before,
+  .value-cards::after {
+    left: -48px;
+    right: -48px;
   }
 }
 
@@ -483,6 +506,13 @@ main {
   .value-cards,
   .value-cards:has(.value-card.active) {
     grid-template-columns: 1fr;
+    margin: 0 24px;
+  }
+
+  .value-cards::before,
+  .value-cards::after {
+    left: -24px;
+    right: -24px;
   }
 
   .value-card {
