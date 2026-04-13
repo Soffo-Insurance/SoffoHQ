@@ -992,13 +992,21 @@ main {
 
 .footer-cta h2 {
   font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: clamp(26px, 2.8vw, 38px);
+  font-size: clamp(48px, 6vw, 84px);
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.15;
   letter-spacing: -0.02em;
   color: var(--text);
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
+}
+
+.cta-button--lg {
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: clamp(18px, 1.6vw, 22px);
+  padding: 16px 40px;
+  border-radius: 2px;
+  letter-spacing: 0;
 }
 
 .cta-button {
