@@ -998,8 +998,8 @@ main {
 
 .cta-button.cta-button--lg {
   font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: clamp(28px, 2.6vw, 40px);
-  padding: 36px 96px;
+  font-size: clamp(18px, 1.4vw, 22px);
+  padding: 18px 48px;
   border-radius: 0;
   letter-spacing: 0;
   line-height: 1;
@@ -1007,8 +1007,8 @@ main {
 
 @media (max-width: 768px) {
   .cta-button.cta-button--lg {
-    font-size: 22px;
-    padding: 24px 56px;
+    font-size: 16px;
+    padding: 14px 32px;
   }
 }
 
