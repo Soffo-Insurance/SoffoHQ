@@ -289,12 +289,15 @@
       const hero = document.getElementById('heroHeading');
       const heroText = 'AI intake analyst for denied home insurance claims';
       heroText.split(' ').forEach((word, i, arr) => {
-        if (word === 'for') hero.appendChild(document.createElement('br'));
         const span = document.createElement('span');
         span.className = 'word';
         span.textContent = word;
         hero.appendChild(span);
-        if (i < arr.length - 1) hero.appendChild(document.createTextNode(' '));
+        if (word === 'for') {
+          hero.appendChild(document.createElement('br'));
+        } else if (i < arr.length - 1) {
+          hero.appendChild(document.createTextNode(' '));
+        }
       });
 
       // --- Prepare .typewriter elements ---
