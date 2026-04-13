@@ -502,10 +502,8 @@ main {
   }
 }
 
-@media (max-width: 900px) {
-  .value-cards,
-  .value-cards:has(.value-card.active) {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  .value-cards {
     margin: 0 24px;
   }
 
@@ -516,22 +514,17 @@ main {
   }
 
   .value-card {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    min-height: 0;
-    padding: 20px 24px;
-    gap: 12px;
+    padding: 16px 14px;
+    min-height: 140px;
   }
 
-  .value-card:last-child {
-    border-bottom: none;
+  .value-card__body h3 {
+    font-size: 15px;
   }
 
   .value-card__body p {
-    opacity: 1;
-    max-height: 200px;
-    transform: none;
-    transition: none;
+    font-size: 10px;
+    line-height: 1.4;
   }
 }
 
