@@ -504,7 +504,9 @@ main {
 
 @media (max-width: 768px) {
   .value-cards,
-  .value-cards:has(.value-card.active) {
+  .value-cards:has(.value-card[data-card="0"].active),
+  .value-cards:has(.value-card[data-card="1"].active),
+  .value-cards:has(.value-card[data-card="2"].active) {
     grid-template-columns: 1fr;
     margin: 0 24px;
   }
