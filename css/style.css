@@ -1226,7 +1226,8 @@ main {
   .feature-text h2 br,
   .feature-text p br,
   .statement h2 br,
-  .tagline h2 br {
+  .tagline h2 br,
+  .hero-sub br {
     display: none;
   }
 
