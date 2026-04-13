@@ -219,8 +219,10 @@ main {
 
 .logo-wall {
   display: flex;
+  justify-content: space-between;
   margin: 0 80px;
   border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
   position: relative;
 }
 
@@ -274,8 +276,21 @@ main {
   padding: 0 32px;
   height: 72px;
   border-top: 1px solid var(--border);
-  border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: relative;
+  z-index: 2;
+}
+
+.logo-wall-logo::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -81px;
+  width: 81px;
+  height: 1px;
+  background: var(--border);
 }
 
 .logo-wall-logo img {
