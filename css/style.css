@@ -439,9 +439,9 @@ main {
   border-right: none;
 }
 
-.value-card--orange { background: #FF7A54; }
-.value-card--brown  { background: #4F2C1F; }
-.value-card--pink   { background: #F8629E; }
+.value-card--orange { background: #F45B2F; }
+.value-card--brown  { background: #391D13; }
+.value-card--pink   { background: #FF3988; }
 
 .value-card__icon {
   display: inline-flex;
