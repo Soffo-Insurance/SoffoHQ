@@ -356,11 +356,9 @@ main {
 .hero {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 260px 80px 320px;
-  min-height: 100vh;
-  box-sizing: border-box;
+  padding: 140px 80px 100px;
   gap: 28px;
 }
 
@@ -371,7 +369,7 @@ main {
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--text);
-  text-align: center;
+  text-align: left;
 }
 
 .hero-sub {
@@ -381,7 +379,6 @@ main {
   line-height: 1.55;
   color: var(--text);
   max-width: 640px;
-  text-align: center;
 }
 
 /* ---- Value Cards ---- */
