@@ -124,18 +124,18 @@
       <div class="iso-right">
         <div class="iso-text-item" data-layer="1">
           <span class="step-badge">Problem 1</span>
-          <h3>Intake is a broken cost center</h3>
-          <p>Lawyers spend hours evaluating denied home insurance claims, but reject most,<br>turning intake into a costly, time-intensive process that generates no revenue.</p>
+          <h3>Too small to analyze, too risky to skim</h3>
+          <p>Average homeowners claim severity was about $20,062 in 2023. Too small for deep review, too risky for shallow screening.</p>
         </div>
         <div class="iso-text-item" data-layer="2">
           <span class="step-badge">Problem 2</span>
-          <h3>Litigation is a dominated outcome</h3>
-          <p>Lawyers want early settlements, not litigation but generating the leverage to settle<br>requires the same deep analysis during intake, making intake the real bottleneck.</p>
+          <h3>Bad intake decisions kill case economics</h3>
+          <p>In Florida, average handling costs were $9,934 for litigated claims versus $1,576 for non-litigated, so weak cases quickly erode profitability.</p>
         </div>
         <div class="iso-text-item" data-layer="3">
           <span class="step-badge">Problem 3</span>
-          <h3>Millions of valid claims are abandoned</h3>
-          <p>Smaller claims are ignored not because they lack merit, but because intake cost exceeds<br>expected return, making them uneconomical before they are even evaluated.</p>
+          <h3>Catastrophe losses are raising claims</h3>
+          <p>U.S. severe convective storm insured losses exceeded $50B in 2023, driving more disputed property claims and raising the stakes of intake decisions.</p>
         </div>
       </div>
     </section>
@@ -188,33 +188,22 @@
         </section>
       </div>
 
-      <div class="diagram-spacer"></div>
-
-      <!-- Diagram -->
-      <section class="diagram">
-        <div class="diagram-col">
-          <span class="step-badge">Step 1</span>
-          <div class="diagram-icon">
-            <img src="assets/images/v1.webp" alt="Extraction" />
+      <!-- Carousel -->
+      <section class="carousel" id="carousel">
+        <button class="carousel-next" id="carouselNext" aria-label="Next slide">→</button>
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <h2>Built on public, inspectable sources</h2>
+            <p>Soffo is built on the same materials firms already rely on in intake: policies, case law, state regulations, weather data, inspections, and claim documents. It uses only public, verifiable information rather than hidden expert knowledge.</p>
           </div>
-          <h3>Extraction</h3>
-          <p>Ingests policies, inspections, estimates, and adjuster notes across formats, turning raw documents into structured inputs ready for case evaluation.</p>
-        </div>
-        <div class="diagram-col">
-          <span class="step-badge">Step 2</span>
-          <div class="diagram-icon">
-            <img src="assets/images/v2.webp" alt="Ontology" />
+          <div class="carousel-slide">
+            <h2>Reasoning you can inspect</h2>
+            <p>Soffo is not a black-box AI. It shows the documents, evidence, and legal support behind its reasoning, so firms can see why a conclusion was reached instead of just receiving an unexplained answer.</p>
           </div>
-          <h3>Ontology</h3>
-          <p>Maps each clause, fact, and timeline into Soffo's ontology, connecting causation, coverage, and denial logic to assess whether the claim is viable.</p>
-        </div>
-        <div class="diagram-col">
-          <span class="step-badge">Step 3</span>
-          <div class="diagram-icon">
-            <img src="assets/images/v3.webp" alt="Report" />
+          <div class="carousel-slide">
+            <h2>Judgment support, not judgment replacement</h2>
+            <p>Soffo does not make the final intake decision for the firm. It helps attorneys make that decision by showing evidence strength, viable rebuttal paths, and the level of legal support behind each path.</p>
           </div>
-          <h3>Report</h3>
-          <p>Outputs a decision-ready report with denial classifications, prioritized rebuttals, and supporting arguments, enabling fast, confident take-or-pass decisions.</p>
         </div>
       </section>
 
@@ -392,17 +381,19 @@
 
       document.querySelectorAll('.typewriter').forEach(el => typewriterObserver.observe(el));
 
-      // --- Diagram animation ---
-      const diagramObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
-            diagramObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-
-      document.querySelectorAll('.diagram').forEach(el => diagramObserver.observe(el));
+      // --- Carousel ---
+      (function() {
+        const track = document.getElementById('carouselTrack');
+        const btn = document.getElementById('carouselNext');
+        if (!track || !btn) return;
+        const slides = track.querySelectorAll('.carousel-slide');
+        let current = 0;
+        function goTo(idx) {
+          current = (idx + slides.length) % slides.length;
+          track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        }
+        btn.addEventListener('click', function() { goTo(current + 1); });
+      })();
 
       // --- Isometric layers scroll-driven animation ---
       const isoWrap = document.querySelector('.iso-scroll-wrap');
