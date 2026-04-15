@@ -39,7 +39,7 @@
     <!-- Hero Section -->
     <section class="hero">
       <h1 class="hero-heading" id="heroHeading"></h1>
-      <p class="hero-sub">Helps law firms decide in minutes whether a case is worth taking,<br>so they avoid wasting time on uneconomical cases.</p>
+      <p class="hero-sub">Soffo helps plaintiff-side law firms decide which denied or underpaid home insurance claims are worth<br>attorney time before weak files become uneconomical and viable claims get missed.</p>
     </section>
 
     <!-- Value Cards -->
@@ -80,6 +80,22 @@
       </div>
       <div class="logo-wall-logo">
         <img src="assets/images/image7.webp" alt="Society of Actuaries" />
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+      <div class="problem-item">
+        <h3>Too small to analyze, too risky to skim</h3>
+        <p>Average homeowners claim severity was about $20,062 in 2023. Too small for deep review, too risky for shallow screening.</p>
+      </div>
+      <div class="problem-item">
+        <h3>Bad intake decisions kill case economics</h3>
+        <p>In Florida, average handling costs were $9,934 for litigated claims versus $1,576 for non-litigated, so weak cases quickly erode profitability.</p>
+      </div>
+      <div class="problem-item">
+        <h3>Catastrophe losses are raising claims</h3>
+        <p>U.S. severe convective storm insured losses exceeded $50B in 2023, driving more disputed property claims and raising the stakes of intake decisions.</p>
       </div>
     </section>
 
@@ -134,15 +150,15 @@
           </div>
           <div class="feature-text">
             <h2 class="typewriter">Turn denial documents into<br>decision-ready case data</h2>
-            <p>Soffo reads denial letters and converts them into structured data mapped to its ontology, enabling fast, consistent case evaluation without manual review.</p>
+            <p>Soffo reads denial letters and converts them into<br>structured data mapped to its ontology, enabling fast,<br>consistent case evaluation without manual review.</p>
           </div>
         </section>
 
         <!-- Feature 2: Text left, image right -->
         <section class="feature feature-reverse">
           <div class="feature-text">
-            <h2 class="typewriter">Understand why the claim was denied<br>and if it's worth challenging</h2>
-            <p>Soffo identifies the exact reason for denial and highlights which claims are legally attackable, helping filter out weak cases early in intake decisions.</p>
+            <h2 class="typewriter">Understand why a claim was<br>denied and whether to challenge it</h2>
+            <p>Soffo identifies the exact reason for denial and<br>highlights which claims are legally attackable, helping<br>filter out weak cases early in intake decisions.</p>
           </div>
           <div class="feature-image">
             <img src="assets/images/image2.webp" alt="Review denial classifications" loading="lazy" decoding="async" width="6212" height="4020" />
@@ -155,16 +171,16 @@
             <img src="assets/images/image3.webp" alt="Draft demand letters" loading="lazy" decoding="async" width="6212" height="4020" />
           </div>
           <div class="feature-text">
-            <h2 class="typewriter">Estimate how strong the case is</h2>
-            <p>Each case is scored based on evidence, legal support, and strategy strength, giving a clear view of whether it is worth pursuing at the intake stage quickly.</p>
+            <h2 class="typewriter">Estimate how strong the case is,<br>economically and strategically.</h2>
+            <p>Soffo shows which rebuttal paths can actually work, what<br>evidence is missing, and what legal support exists behind them.</p>
           </div>
         </section>
 
         <!-- Feature 4: Text left, image right -->
         <section class="feature">
           <div class="feature-text">
-            <h2 class="typewriter">Show what a strong case would look like</h2>
-            <p>Soffo outlines the best way to argue the case upfront, helping attorneys judge whether it is likely to settle or stall before committing time and resources.</p>
+            <h2 class="typewriter">Show what a strong case<br>looks like in a concise report</h2>
+            <p>Soffo outlines the best way to argue the case upfront,<br>helping attorneys judge whether it is likely to settle or<br>stall before committing time and resources.</p>
           </div>
           <div class="feature-image">
             <img src="assets/images/newlight.png" alt="Generate structured reports" loading="lazy" decoding="async" width="6212" height="4020" />
@@ -288,7 +304,7 @@
     (function() {
       // --- Hero typewriter ---
       const hero = document.getElementById('heroHeading');
-      const heroText = 'AI intake analyst for denied home insurance claims';
+      const heroText = 'AI intake underwriting for denied home insurance claims';
       heroText.split(' ').forEach((word, i, arr) => {
         const span = document.createElement('span');
         span.className = 'word';
