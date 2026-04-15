@@ -382,41 +382,6 @@ main {
   max-width: 640px;
 }
 
-/* ---- Problem Section ---- */
-
-.problem-section {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.problem-item {
-  padding: 48px 40px;
-  border-right: 1px solid var(--border);
-}
-
-.problem-item:last-child {
-  border-right: none;
-}
-
-.problem-item h3 {
-  font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.3;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-
-.problem-item p {
-  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--text);
-  opacity: 0.55;
-}
 
 /* ---- Value Cards ---- */
 
@@ -900,7 +865,7 @@ main {
 .carousel-next {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 80px;
   width: 56px;
   height: 56px;
   background: #2b1f13;
@@ -926,8 +891,12 @@ main {
 
 .carousel-slide {
   min-width: 100%;
-  padding: 80px 80px 100px;
+  min-height: 360px;
+  padding: 80px 80px 80px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .carousel-slide h2 {
@@ -937,7 +906,7 @@ main {
   line-height: 1.1;
   color: var(--text);
   max-width: 700px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .carousel-slide p {
@@ -948,6 +917,10 @@ main {
   color: var(--text);
   opacity: 0.5;
   max-width: 540px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* ---- FAQ ---- */
@@ -992,10 +965,6 @@ main {
 }
 
 .faq-item {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  padding: 24px 80px 24px 40px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -1004,20 +973,53 @@ main {
 }
 
 .faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 80px 22px 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
   font-family: "Times New Roman", Times, Georgia, serif;
   font-size: 14px;
   font-weight: 400;
   color: var(--text);
   line-height: 1.4;
+  text-align: left;
+}
+
+.faq-q:hover {
+  background: var(--hover);
+}
+
+.faq-icon {
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform 0.2s;
 }
 
 .faq-a {
+  display: none;
   font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   line-height: 1.6;
   color: var(--text);
   opacity: 0.5;
+  padding: 0 80px 22px 40px;
+}
+
+.faq-item.open .faq-a {
+  display: block;
+}
+
+.faq-item.open .faq-icon {
+  content: "×";
 }
 
 /* ---- Footer CTA ---- */
@@ -1186,16 +1188,25 @@ main {
   }
 
 
+  .carousel-next {
+    right: 48px;
+  }
+
   .carousel-slide {
-    padding: 60px 48px 80px;
+    padding: 60px 48px 60px;
+    min-height: 300px;
   }
 
   .faq-label {
     padding: 40px 32px 40px 48px;
   }
 
-  .faq-item {
+  .faq-q {
     padding: 20px 48px 20px 32px;
+  }
+
+  .faq-a {
+    padding: 0 48px 20px 32px;
   }
 
   .footer-cta {
@@ -1252,8 +1263,13 @@ main {
     height: 200px;
   }
 
+  .carousel-next {
+    right: 24px;
+  }
+
   .carousel-slide {
-    padding: 48px 24px 64px;
+    padding: 48px 24px 48px;
+    min-height: 260px;
   }
 
   .feature {
@@ -1325,25 +1341,20 @@ main {
     border-bottom: 1px solid var(--border);
   }
 
+  .faq-q {
+    padding: 18px 24px;
+  }
+
+  .faq-a {
+    padding: 0 24px 18px;
+  }
+
   .faq-item {
     grid-template-columns: 1fr;
     gap: 8px;
     padding: 20px 24px;
   }
 
-  .problem-section {
-    grid-template-columns: 1fr;
-  }
-
-  .problem-item {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 32px 24px;
-  }
-
-  .problem-item:last-child {
-    border-bottom: none;
-  }
 
   .footer-cta {
     padding: 48px 24px 80px;

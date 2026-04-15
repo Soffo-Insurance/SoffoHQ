@@ -83,21 +83,6 @@
       </div>
     </section>
 
-    <!-- Problem Section -->
-    <section class="problem-section">
-      <div class="problem-item">
-        <h3>Too small to analyze, too risky to skim</h3>
-        <p>Average homeowners claim severity was about $20,062 in 2023. Too small for deep review, too risky for shallow screening.</p>
-      </div>
-      <div class="problem-item">
-        <h3>Bad intake decisions kill case economics</h3>
-        <p>In Florida, average handling costs were $9,934 for litigated claims versus $1,576 for non-litigated, so weak cases quickly erode profitability.</p>
-      </div>
-      <div class="problem-item">
-        <h3>Catastrophe losses are raising claims</h3>
-        <p>U.S. severe convective storm insured losses exceeded $50B in 2023, driving more disputed property claims and raising the stakes of intake decisions.</p>
-      </div>
-    </section>
 
     <!-- Isometric Layers Animation -->
     <div class="iso-scroll-wrap" id="problem">
@@ -221,24 +206,39 @@
         </div>
         <div class="faq-list">
           <div class="faq-item">
-            <p class="faq-q">What does Soffo do?</p>
-            <p class="faq-a">Soffo reads denial letters and case documents, then outputs a structured report showing whether a claim is worth taking, why it was denied, and what arguments could challenge it.</p>
+            <button class="faq-q" aria-expanded="false">
+              <span>What does Soffo do?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">Soffo reads denial letters and case documents, then outputs a structured report showing whether a claim is worth taking, why it was denied, and what arguments could challenge it.</div>
           </div>
           <div class="faq-item">
-            <p class="faq-q">Who is it for?</p>
-            <p class="faq-a">Plaintiff-side law firms handling denied or underpaid homeowners insurance claims that need to triage intake faster without expanding headcount.</p>
+            <button class="faq-q" aria-expanded="false">
+              <span>Who is it for?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">Plaintiff-side law firms handling denied or underpaid homeowners insurance claims that need to triage intake faster without expanding headcount.</div>
           </div>
           <div class="faq-item">
-            <p class="faq-q">Does Soffo decide which cases to take?</p>
-            <p class="faq-a">No. Soffo surfaces evidence strength, viable rebuttal paths, and legal support. The attorney makes the final take-or-pass decision.</p>
+            <button class="faq-q" aria-expanded="false">
+              <span>Does Soffo decide which cases to take?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">No. Soffo surfaces evidence strength, viable rebuttal paths, and legal support. The attorney makes the final take-or-pass decision.</div>
           </div>
           <div class="faq-item">
-            <p class="faq-q">What documents does it work with?</p>
-            <p class="faq-a">Denial letters, policy documents, inspection reports, adjuster notes, and estimates. Soffo accepts multiple formats and extracts structured data from each.</p>
+            <button class="faq-q" aria-expanded="false">
+              <span>What documents does it work with?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">Denial letters, policy documents, inspection reports, adjuster notes, and estimates. Soffo accepts multiple formats and extracts structured data from each.</div>
           </div>
           <div class="faq-item">
-            <p class="faq-q">Can we see why a conclusion was reached?</p>
-            <p class="faq-a">Yes. Every output is tied to a specific document, clause, or piece of evidence. There are no unexplained answers.</p>
+            <button class="faq-q" aria-expanded="false">
+              <span>Can we see why a conclusion was reached?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">Yes. Every output is tied to a specific document, clause, or piece of evidence. There are no unexplained answers.</div>
           </div>
         </div>
       </section>
@@ -399,6 +399,24 @@
         }
         btn.addEventListener('click', function() { goTo(current + 1); });
       })();
+
+      // --- FAQ accordion ---
+      document.querySelectorAll('.faq-q').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          const item = btn.closest('.faq-item');
+          const isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function(el) {
+            el.classList.remove('open');
+            el.querySelector('.faq-icon').textContent = '+';
+            el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('open');
+            btn.querySelector('.faq-icon').textContent = '×';
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
 
       // --- Isometric layers scroll-driven animation ---
       const isoWrap = document.querySelector('.iso-scroll-wrap');
