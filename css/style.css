@@ -712,7 +712,7 @@ main {
 /* ---- Section Spacer ---- */
 
 .section-spacer {
-  height: 400px;
+  height: 133px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -962,6 +962,7 @@ main {
 .faq-list {
   display: flex;
   flex-direction: column;
+  margin-right: 80px;
 }
 
 .faq-item {
@@ -978,7 +979,7 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 22px 80px 22px 40px;
+  padding: 22px 32px 22px 40px;
   background: none;
   border: none;
   cursor: pointer;
@@ -1011,7 +1012,7 @@ main {
   line-height: 1.6;
   color: var(--text);
   opacity: 0.5;
-  padding: 0 80px 22px 40px;
+  padding: 0 32px 22px 40px;
 }
 
 .faq-item.open .faq-a {
@@ -1201,12 +1202,16 @@ main {
     padding: 40px 32px 40px 48px;
   }
 
+  .faq-list {
+    margin-right: 48px;
+  }
+
   .faq-q {
-    padding: 20px 48px 20px 32px;
+    padding: 20px 24px 20px 32px;
   }
 
   .faq-a {
-    padding: 0 48px 20px 32px;
+    padding: 0 24px 20px 32px;
   }
 
   .footer-cta {
@@ -1260,7 +1265,7 @@ main {
   }
 
   .section-spacer {
-    height: 200px;
+    height: 100px;
   }
 
   .carousel-next {
