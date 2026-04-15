@@ -892,7 +892,7 @@ main {
 .carousel-slide {
   min-width: 100%;
   min-height: 360px;
-  padding: 80px 80px 80px;
+  padding: 80px 80px 48px 120px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
