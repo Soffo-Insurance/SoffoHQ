@@ -927,7 +927,7 @@ main {
 
 .faq {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 280px minmax(auto, 640px);
   border-bottom: 1px solid var(--border);
 }
 
@@ -938,7 +938,7 @@ main {
 
 .faq-label h3 {
   font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 400;
   color: var(--text);
   margin-bottom: 16px;
@@ -951,6 +951,10 @@ main {
   line-height: 1.6;
   color: var(--text);
   opacity: 0.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .faq-label a {
