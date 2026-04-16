@@ -988,13 +988,13 @@ main {
 }
 
 .faq-label {
-  padding: 48px 40px 48px 80px;
+  padding: 48px 40px 48px 112px;
   border-right: 1px solid var(--border);
 }
 
 .faq-label h3 {
   font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: 28px;
+  font-size: 56px;
   font-weight: 400;
   color: var(--text);
   margin-bottom: 16px;
@@ -1025,9 +1025,6 @@ main {
   border-bottom: 1px solid var(--border);
 }
 
-.faq-item:first-child {
-  border-top: 1px solid var(--border);
-}
 
 .faq-item:last-child {
   border-bottom: none;
@@ -1296,7 +1293,7 @@ main {
   }
 
   .faq-label {
-    padding: 40px 32px 40px 48px;
+    padding: 40px 32px 40px 72px;
   }
 
   .faq-list {
