@@ -938,8 +938,8 @@ main {
 
 .carousel-grid {
   position: absolute;
-  top: 70px;
-  right: 140px;
+  top: 150px;
+  right: 230px;
   width: 200px;
   height: 200px;
   pointer-events: none;
