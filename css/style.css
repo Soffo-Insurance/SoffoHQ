@@ -937,22 +937,36 @@ main {
   justify-content: flex-end;
   gap: 16px;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 
 .carousel-slide.active {
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
 }
 
 .carousel-slide.exit {
   opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(-14px);
+  transition: opacity 0.35s ease, transform 0.4s ease;
+}
+
+.carousel-slide.active h2 {
+  animation: carouselH2In 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.carousel-slide.active p {
+  animation: carouselPIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+@keyframes carouselH2In {
+  from { opacity: 0; transform: translateY(24px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes carouselPIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 0.5; transform: translateY(0); }
 }
 
 .carousel-slide h2 {
@@ -970,7 +984,6 @@ main {
   font-weight: 400;
   line-height: 1.6;
   color: var(--text);
-  opacity: 0.5;
   max-width: 540px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
