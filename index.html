@@ -437,16 +437,24 @@
               rafId = requestAnimationFrame(tick);
             } else if (current < slides.length - 1) {
               goTo(current + 1);
+            } else {
+              // Last slide done — mark done, stop cleanly
+              segs[current].classList.remove('active');
+              segs[current].classList.add('done');
             }
           }
           rafId = requestAnimationFrame(tick);
         }
 
         segs.forEach(function(seg, i) {
-          seg.addEventListener('click', function() { goTo(i); });
+          seg.addEventListener('click', function() {
+            if (i !== current) goTo(i);
+          });
         });
 
-        goTo(0);
+        // Clean init — slide 0 is already active in HTML
+        segs[0].classList.add('active');
+        startProgress();
       })();
 
       // --- FAQ accordion ---
