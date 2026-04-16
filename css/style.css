@@ -940,8 +940,8 @@ main {
   position: absolute;
   top: 70px;
   right: 140px;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   pointer-events: none;
 }
 
@@ -962,22 +962,22 @@ main {
 /* Chess movement keyframes */
 @keyframes chessRight {
   0%, 30%   { transform: translateX(0); }
-  48%, 62%  { transform: translateX(60px); }
+  48%, 62%  { transform: translateX(40px); }
   80%, 100% { transform: translateX(0); }
 }
 @keyframes chessLeft {
   0%, 30%   { transform: translateX(0); }
-  48%, 62%  { transform: translateX(-60px); }
+  48%, 62%  { transform: translateX(-40px); }
   80%, 100% { transform: translateX(0); }
 }
 @keyframes chessDown {
   0%, 30%   { transform: translateY(0); }
-  48%, 62%  { transform: translateY(60px); }
+  48%, 62%  { transform: translateY(40px); }
   80%, 100% { transform: translateY(0); }
 }
 @keyframes chessUp {
   0%, 30%   { transform: translateY(0); }
-  48%, 62%  { transform: translateY(-60px); }
+  48%, 62%  { transform: translateY(-40px); }
   80%, 100% { transform: translateY(0); }
 }
 
@@ -1001,9 +1001,9 @@ main {
 
 @media (max-width: 1024px) {
   .carousel-grid {
-    right: 100px;
-    width: 220px;
-    height: 220px;
+    right: 80px;
+    width: 160px;
+    height: 160px;
   }
 }
 
