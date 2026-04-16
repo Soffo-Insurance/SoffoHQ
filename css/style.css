@@ -896,7 +896,7 @@ main {
 }
 
 .carousel-inner {
-  height: 440px;
+  height: 500px;
   padding: 60px 80px 60px 120px;
   box-sizing: border-box;
   display: flex;
@@ -1392,7 +1392,7 @@ main {
 
   .carousel-inner {
     padding: 40px 24px 40px 40px;
-    height: 380px;
+    height: 440px;
   }
 
   .feature {
