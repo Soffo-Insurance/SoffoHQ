@@ -452,6 +452,10 @@
           });
         });
 
+        document.getElementById('carouselNext').addEventListener('click', function() {
+          if (current < slides.length - 1) goTo(current + 1);
+        });
+
         // Clean init — slide 0 is already active in HTML
         segs[0].classList.add('active');
         startProgress();
