@@ -421,7 +421,13 @@
 
           segs.forEach(function(s, i) {
             s.classList.remove('active', 'done');
-            if (i < current) s.classList.add('done');
+            var f = s.querySelector('.carousel-seg-fill');
+            if (i < current) {
+              s.classList.add('done');
+              f.style.transform = 'scaleX(1)';
+            } else {
+              f.style.transform = 'scaleX(0)';
+            }
           });
           segs[current].classList.add('active');
 
