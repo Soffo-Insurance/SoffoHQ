@@ -176,30 +176,33 @@
       <div class="section-spacer"></div>
 
       <!-- Carousel -->
-      <div class="carousel-scroll-wrap" id="carouselWrap">
-        <section class="carousel" id="carousel">
-          <button class="carousel-next" id="carouselNext" aria-label="Next slide">→</button>
-          <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-slide active">
-              <h2>Built on public, inspectable sources</h2>
-              <p>Soffo is built on the same materials firms already rely on in intake: policies, case law, state regulations, weather data, inspections, and claim documents. It uses only public, verifiable information rather than hidden expert knowledge.</p>
-            </div>
-            <div class="carousel-slide">
-              <h2>Reasoning you can inspect</h2>
-              <p>Soffo is not a black-box AI. It shows the documents, evidence, and legal support behind its reasoning, so firms can see why a conclusion was reached instead of just receiving an unexplained answer.</p>
-            </div>
-            <div class="carousel-slide">
-              <h2>Judgment support, not judgment replacement</h2>
-              <p>Soffo does not make the final intake decision for the firm. It helps attorneys make that decision by showing evidence strength, viable rebuttal paths, and the level of legal support behind each path.</p>
-            </div>
+      <section class="carousel" id="carousel">
+        <div class="carousel-progress" id="carouselProgress">
+          <button class="carousel-seg" data-index="0" aria-label="Slide 1">
+            <span class="carousel-seg-fill"></span>
+          </button>
+          <button class="carousel-seg" data-index="1" aria-label="Slide 2">
+            <span class="carousel-seg-fill"></span>
+          </button>
+          <button class="carousel-seg" data-index="2" aria-label="Slide 3">
+            <span class="carousel-seg-fill"></span>
+          </button>
+        </div>
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide active">
+            <h2>Built on public, inspectable sources</h2>
+            <p>Soffo is built on the same materials firms already rely on in intake: policies, case law, state regulations, weather data, inspections, and claim documents. It uses only public, verifiable information rather than hidden expert knowledge.</p>
           </div>
-          <div class="carousel-dots" id="carouselDots">
-            <span class="carousel-dot active"></span>
-            <span class="carousel-dot"></span>
-            <span class="carousel-dot"></span>
+          <div class="carousel-slide">
+            <h2>Reasoning you can inspect</h2>
+            <p>Soffo is not a black-box AI. It shows the documents, evidence, and legal support behind its reasoning, so firms can see why a conclusion was reached instead of just receiving an unexplained answer.</p>
           </div>
-        </section>
-      </div>
+          <div class="carousel-slide">
+            <h2>Judgment support, not judgment replacement</h2>
+            <p>Soffo does not make the final intake decision for the firm. It helps attorneys make that decision by showing evidence strength, viable rebuttal paths, and the level of legal support behind each path.</p>
+          </div>
+        </div>
+      </section>
 
       <div class="section-spacer"></div>
 
@@ -391,44 +394,62 @@
 
       document.querySelectorAll('.typewriter').forEach(el => typewriterObserver.observe(el));
 
-      // --- Carousel (scroll-driven + button) ---
+      // --- Carousel (progress bar + auto-advance) ---
       (function() {
-        const wrap = document.getElementById('carouselWrap');
-        const btn = document.getElementById('carouselNext');
         const track = document.getElementById('carouselTrack');
-        const dotsContainer = document.getElementById('carouselDots');
-        if (!wrap || !btn || !track) return;
+        const progressEl = document.getElementById('carouselProgress');
+        if (!track || !progressEl) return;
 
         const slides = Array.from(track.querySelectorAll('.carousel-slide'));
-        const dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('.carousel-dot')) : [];
+        const segs = Array.from(progressEl.querySelectorAll('.carousel-seg'));
+        const DURATION = 5000;
         let current = 0;
+        let timer = null;
+        let startTime = null;
+        let rafId = null;
 
-        function goTo(idx) {
+        function goTo(idx, restart) {
           const prev = current;
           current = (idx + slides.length) % slides.length;
-          if (prev === current) return;
 
           slides[prev].classList.add('exit');
           slides[prev].classList.remove('active');
           setTimeout(function() { slides[prev].classList.remove('exit'); }, 420);
-
           slides[current].classList.add('active');
-          dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+
+          segs.forEach(function(s, i) {
+            s.classList.remove('active', 'done');
+            if (i < current) s.classList.add('done');
+          });
+          segs[current].classList.add('active');
+
+          if (restart !== false) startProgress();
         }
 
-        btn.addEventListener('click', function() { goTo(current + 1); });
+        function startProgress() {
+          cancelAnimationFrame(rafId);
+          clearTimeout(timer);
+          startTime = performance.now();
+          const fill = segs[current].querySelector('.carousel-seg-fill');
 
-        // Scroll-driven
-        function onScroll() {
-          const rect = wrap.getBoundingClientRect();
-          const scrollable = wrap.offsetHeight - window.innerHeight;
-          const t = Math.max(0, Math.min(1, -rect.top / scrollable));
-          const idx = t < 0.33 ? 0 : t < 0.66 ? 1 : 2;
-          if (idx !== current) goTo(idx);
+          function tick(now) {
+            const elapsed = now - startTime;
+            const pct = Math.min(elapsed / DURATION, 1);
+            fill.style.transform = 'scaleX(' + pct + ')';
+            if (pct < 1) {
+              rafId = requestAnimationFrame(tick);
+            } else {
+              goTo(current + 1);
+            }
+          }
+          rafId = requestAnimationFrame(tick);
         }
 
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
+        segs.forEach(function(seg, i) {
+          seg.addEventListener('click', function() { goTo(i); });
+        });
+
+        goTo(0);
       })();
 
       // --- FAQ accordion ---

@@ -856,52 +856,53 @@ main {
   letter-spacing: 0.02em;
 }
 
-.carousel-scroll-wrap {
-  position: relative;
-  height: calc(480px * 3);
-}
-
 .carousel {
-  position: sticky;
-  top: 0;
-  height: 480px;
+  position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
   border-top: 1px solid var(--border);
 }
 
-.carousel-next {
-  position: absolute;
-  top: 0;
-  right: 80px;
-  width: 56px;
-  height: 56px;
-  background: #2b1f13;
-  color: #fff;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
+.carousel-progress {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transition: background 0.15s;
+  gap: 4px;
+  padding: 0 80px;
+  border-bottom: 1px solid var(--border);
 }
 
-.carousel-next:hover {
-  background: #3d2c1b;
+.carousel-seg {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-seg-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--text);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.carousel-seg.done .carousel-seg-fill {
+  transform: scaleX(1);
 }
 
 .carousel-track {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 420px;
 }
 
 .carousel-slide {
   position: absolute;
   inset: 0;
-  padding: 80px 80px 80px 120px;
+  padding: 60px 80px 60px 120px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -922,8 +923,7 @@ main {
 .carousel-slide.exit {
   opacity: 0;
   transform: translateY(-20px);
-  transition: opacity 0.4s ease,
-              transform 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .carousel-slide h2 {
@@ -950,33 +950,11 @@ main {
   overflow: hidden;
 }
 
-.carousel-dots {
-  position: absolute;
-  bottom: 40px;
-  left: 120px;
-  display: flex;
-  gap: 8px;
-}
-
-.carousel-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--text);
-  opacity: 0.2;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.carousel-dot.active {
-  opacity: 1;
-  transform: scale(1.3);
-}
-
 /* ---- FAQ ---- */
 
 .faq {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 360px 1fr;
   border-bottom: 1px solid var(--border);
 }
 
@@ -1000,10 +978,6 @@ main {
   line-height: 1.6;
   color: var(--text);
   opacity: 0.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .faq-label a {
@@ -1280,16 +1254,12 @@ main {
   }
 
 
-  .carousel-next {
-    right: 48px;
+  .carousel-progress {
+    padding: 0 48px;
   }
 
   .carousel-slide {
-    padding: 60px 48px 60px 80px;
-  }
-
-  .carousel-dots {
-    left: 80px;
+    padding: 48px 48px 48px 80px;
   }
 
   .faq-label {
@@ -1362,25 +1332,16 @@ main {
     height: 100px;
   }
 
-  .carousel-next {
-    right: 24px;
+  .carousel-progress {
+    padding: 0 24px;
   }
 
   .carousel-slide {
-    padding: 48px 24px 48px 40px;
+    padding: 40px 24px 40px 40px;
   }
 
-  .carousel-dots {
-    left: 40px;
-    bottom: 28px;
-  }
-
-  .carousel-scroll-wrap {
-    height: calc(400px * 3);
-  }
-
-  .carousel {
-    height: 400px;
+  .carousel-track {
+    height: 360px;
   }
 
   .feature {
@@ -1436,9 +1397,9 @@ main {
     padding: 48px 0;
   }
 
-  .carousel-next {
-    width: 48px;
-    height: 48px;
+  .carousel-seg {
+    height: 2px;
+  }
     font-size: 16px;
   }
 
