@@ -896,6 +896,7 @@ main {
 .carousel-progress {
   display: flex;
   gap: 6px;
+  max-width: 420px;
 }
 
 .carousel-seg {
@@ -981,7 +982,8 @@ main {
 
 .faq {
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: 40% 60%;
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
@@ -1021,6 +1023,10 @@ main {
 
 .faq-item {
   border-bottom: 1px solid var(--border);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--border);
 }
 
 .faq-item:last-child {

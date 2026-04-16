@@ -435,7 +435,7 @@
             fill.style.transform = 'scaleX(' + pct + ')';
             if (pct < 1) {
               rafId = requestAnimationFrame(tick);
-            } else {
+            } else if (current < slides.length - 1) {
               goTo(current + 1);
             }
           }
