@@ -192,7 +192,7 @@
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-slide active">
               <h2>Built on public, inspectable sources</h2>
-              <p>Soffo is built on the same materials firms already rely on in intake: policies, case law, state regulations, weather data, inspections, and claim documents. It uses only public, verifiable information rather than hidden expert knowledge.</p>
+              <p>Soffo is built on the same materials firms already rely on in intake: policies, case law, state regulations, weather data, inspections, and claim documents.</p>
             </div>
             <div class="carousel-slide">
               <h2>Reasoning you can inspect</h2>
@@ -264,7 +264,7 @@
     <div class="footer-logo" id="footerLogo">
       <span class="footer-letter" data-target="s">s</span><span class="footer-letter" data-target="o">o</span><span class="footer-letter" data-target="f">f</span><span class="footer-letter" data-target="f">f</span><span class="footer-letter" data-target="o">o</span>
     </div>
-    <p class="footer-copy">&copy; Copyright 2026. All Rights Reserved.</p>
+    <p class="footer-copy">&copy; 2026 Soffo. All rights reserved.</p>
   </footer>
   </main>
 
@@ -287,16 +287,28 @@
     });
 
     // Smooth scroll for in-page nav links & update toggle label
+    function easedScrollTo(targetY, duration) {
+      const startY = window.scrollY;
+      const delta = targetY - startY;
+      let startTime = null;
+      function step(ts) {
+        if (!startTime) startTime = ts;
+        const t = Math.min((ts - startTime) / duration, 1);
+        const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        window.scrollTo(0, startY + delta * ease);
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
     document.querySelectorAll('.nav-dropdown-inner a[data-scroll]').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const href = link.getAttribute('href');
-        if (href === '#') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          const target = document.querySelector(href);
-          if (target) target.scrollIntoView({ behavior: 'smooth' });
-        }
+        const targetY = href === '#'
+          ? 0
+          : (document.querySelector(href)?.getBoundingClientRect().top ?? 0) + window.scrollY;
+        easedScrollTo(targetY, 800);
         // Close dropdown & update toggle text
         dropdownOpen = false;
         headerRight.classList.remove('open');
