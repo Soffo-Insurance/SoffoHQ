@@ -248,7 +248,7 @@
               <span>Can we see why a conclusion was reached?</span>
               <span class="faq-icon"></span>
             </button>
-            <div class="faq-a-wrap"><div class="faq-a">Yes. Every output is tied to a specific document, clause, or piece of evidence. There are no unexplained answers.</div></div>
+            <div class="faq-a-wrap"><div class="faq-a">Yes. Every output is tied to a specific document, clause, or piece of evidence. There are no unexplained answers, assumptions, or opaque reasoning steps involved.</div></div>
           </div>
         </div>
       </section>
@@ -446,12 +446,8 @@
             fill.style.transform = 'scaleX(' + pct + ')';
             if (pct < 1) {
               rafId = requestAnimationFrame(tick);
-            } else if (current < slides.length - 1) {
-              goTo(current + 1);
             } else {
-              // Last slide done — mark done, stop cleanly
-              segs[current].classList.remove('active');
-              segs[current].classList.add('done');
+              goTo(current + 1);
             }
           }
           rafId = requestAnimationFrame(tick);
@@ -464,7 +460,7 @@
         });
 
         document.getElementById('carouselNext').addEventListener('click', function() {
-          if (current < slides.length - 1) goTo(current + 1);
+          goTo(current + 1);
         });
 
         // Clean init — slide 0 is already active in HTML
