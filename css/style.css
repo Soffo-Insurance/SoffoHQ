@@ -858,13 +858,13 @@ main {
 
 .carousel-scroll-wrap {
   position: relative;
-  height: 300vh;
+  height: calc(480px * 3);
 }
 
 .carousel {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 480px;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
   border-top: 1px solid var(--border);
@@ -976,7 +976,7 @@ main {
 
 .faq {
   display: grid;
-  grid-template-columns: 280px minmax(auto, 640px);
+  grid-template-columns: 280px 1fr;
   border-bottom: 1px solid var(--border);
 }
 
@@ -1376,7 +1376,11 @@ main {
   }
 
   .carousel-scroll-wrap {
-    height: 250vh;
+    height: calc(400px * 3);
+  }
+
+  .carousel {
+    height: 400px;
   }
 
   .feature {
