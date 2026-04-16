@@ -936,6 +936,40 @@ main {
   transform: scaleX(1);
 }
 
+.carousel-grid {
+  width: 260px;
+  height: 260px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  pointer-events: none;
+}
+
+.grid-shapes {
+  opacity: 0;
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grid-shapes.active {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .carousel-grid {
+    right: 48px;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-grid {
+    display: none;
+  }
+}
+
 .carousel-track {
   position: relative;
   flex: 1;

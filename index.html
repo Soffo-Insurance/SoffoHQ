@@ -189,7 +189,33 @@
             <button class="carousel-seg" data-index="1" aria-label="Slide 2"><span class="carousel-seg-fill"></span></button>
             <button class="carousel-seg" data-index="2" aria-label="Slide 3"><span class="carousel-seg-fill"></span></button>
           </div>
-          <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-grid" id="carouselGrid">
+          <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <path d="M0,0 L300,0 M0,60 L300,60 M0,120 L300,120 M0,180 L300,180 M0,240 L300,240 M0,300 L300,300 M0,0 L0,300 M60,0 L60,300 M120,0 L120,300 M180,0 L180,300 M240,0 L240,300 M300,0 L300,300" stroke="#e5e5e5" stroke-width="1"/>
+            <!-- Slide 0: Built on public, inspectable sources -->
+            <g class="grid-shapes active" data-slide="0">
+              <rect x="124" y="64" width="52" height="52" fill="#D9D9D9" fill-opacity="0.5"/>
+              <circle cx="270" cy="90" r="26" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+              <circle cx="150" cy="210" r="26" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+              <rect x="244" y="184" width="52" height="52" fill="#D9D9D9" fill-opacity="0.5"/>
+            </g>
+            <!-- Slide 1: Reasoning you can inspect -->
+            <g class="grid-shapes" data-slide="1">
+              <rect x="4" y="4" width="52" height="52" fill="#D9D9D9" fill-opacity="0.5"/>
+              <circle cx="210" cy="30" r="26" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+              <circle cx="90" cy="150" r="26" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+              <rect x="244" y="244" width="52" height="52" fill="#D9D9D9" fill-opacity="0.5"/>
+            </g>
+            <!-- Slide 2: Judgment support, not judgment replacement -->
+            <g class="grid-shapes" data-slide="2">
+              <circle cx="150" cy="30" r="26" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+              <rect x="4" y="124" width="52" height="52" fill="#D9D9D9" fill-opacity="0.5"/>
+              <rect x="244" y="124" width="52" height="52" fill="#D9D9D9" fill-opacity="0.5"/>
+              <circle cx="150" cy="270" r="26" stroke="#1a1a1a" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
+            </g>
+          </svg>
+        </div>
+        <div class="carousel-track" id="carouselTrack">
             <div class="carousel-slide active">
               <h2>Built on public, inspectable sources</h2>
               <p>Soffo works from materials firms use in intake: policies, case law, state rules, weather data, inspections, and supporting claim documents. The system depends on public, verifiable information, not hidden know-how.</p>
@@ -416,6 +442,7 @@
 
         const slides = Array.from(track.querySelectorAll('.carousel-slide'));
         const segs = Array.from(progressEl.querySelectorAll('.carousel-seg'));
+        const gridShapes = Array.from(document.querySelectorAll('.grid-shapes'));
         const DURATION = 5000;
         let current = 0;
         let timer = null;
@@ -430,6 +457,10 @@
           slides[prev].classList.remove('active');
           setTimeout(function() { slides[prev].classList.remove('exit'); }, 420);
           slides[current].classList.add('active');
+
+          gridShapes.forEach(function(g) {
+            g.classList.toggle('active', parseInt(g.dataset.slide) === current);
+          });
 
           segs.forEach(function(s, i) {
             s.classList.remove('active', 'done');
