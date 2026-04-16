@@ -937,13 +937,11 @@ main {
 }
 
 .carousel-grid {
-  width: 260px;
-  height: 260px;
-  flex-shrink: 0;
-  align-self: flex-start;
   position: absolute;
-  top: 60px;
-  right: 80px;
+  top: 70px;
+  right: 140px;
+  width: 300px;
+  height: 300px;
   pointer-events: none;
 }
 
@@ -956,11 +954,56 @@ main {
   opacity: 1;
 }
 
+.grid-shapes rect,
+.grid-shapes circle {
+  will-change: transform;
+}
+
+/* Chess movement keyframes */
+@keyframes chessRight {
+  0%, 30%   { transform: translateX(0); }
+  48%, 62%  { transform: translateX(60px); }
+  80%, 100% { transform: translateX(0); }
+}
+@keyframes chessLeft {
+  0%, 30%   { transform: translateX(0); }
+  48%, 62%  { transform: translateX(-60px); }
+  80%, 100% { transform: translateX(0); }
+}
+@keyframes chessDown {
+  0%, 30%   { transform: translateY(0); }
+  48%, 62%  { transform: translateY(60px); }
+  80%, 100% { transform: translateY(0); }
+}
+@keyframes chessUp {
+  0%, 30%   { transform: translateY(0); }
+  48%, 62%  { transform: translateY(-60px); }
+  80%, 100% { transform: translateY(0); }
+}
+
+/* Slide 0: horizontal pairs converge toward col 3 */
+.grid-shapes[data-slide="0"].active > :nth-child(1) { animation: chessRight 7s ease-in-out 0s    infinite; }
+.grid-shapes[data-slide="0"].active > :nth-child(2) { animation: chessLeft  7s ease-in-out 1.75s infinite; }
+.grid-shapes[data-slide="0"].active > :nth-child(3) { animation: chessRight 7s ease-in-out 0.875s infinite; }
+.grid-shapes[data-slide="0"].active > :nth-child(4) { animation: chessLeft  7s ease-in-out 2.625s infinite; }
+
+/* Slide 1: vertical pairs converge */
+.grid-shapes[data-slide="1"].active > :nth-child(1) { animation: chessDown 7s ease-in-out 0s   infinite; }
+.grid-shapes[data-slide="1"].active > :nth-child(2) { animation: chessDown 7s ease-in-out 2s   infinite; }
+.grid-shapes[data-slide="1"].active > :nth-child(3) { animation: chessUp   7s ease-in-out 1s   infinite; }
+.grid-shapes[data-slide="1"].active > :nth-child(4) { animation: chessUp   7s ease-in-out 3s   infinite; }
+
+/* Slide 2: cross convergence — in from top/bottom, out from sides */
+.grid-shapes[data-slide="2"].active > :nth-child(1) { animation: chessDown  7s ease-in-out 0s infinite; }
+.grid-shapes[data-slide="2"].active > :nth-child(2) { animation: chessRight 7s ease-in-out 1s infinite; }
+.grid-shapes[data-slide="2"].active > :nth-child(3) { animation: chessLeft  7s ease-in-out 2s infinite; }
+.grid-shapes[data-slide="2"].active > :nth-child(4) { animation: chessUp    7s ease-in-out 3s infinite; }
+
 @media (max-width: 1024px) {
   .carousel-grid {
-    right: 48px;
-    width: 200px;
-    height: 200px;
+    right: 100px;
+    width: 220px;
+    height: 220px;
   }
 }
 
