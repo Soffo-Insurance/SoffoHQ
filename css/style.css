@@ -928,11 +928,11 @@ main {
 
 .carousel-slide h2 {
   font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: clamp(28px, 3.2vw, 48px);
+  font-size: clamp(24px, 2.6vw, 40px);
   font-weight: 400;
   line-height: 1.1;
   color: var(--text);
-  max-width: 700px;
+  white-space: nowrap;
   margin-bottom: 20px;
 }
 
@@ -1037,7 +1037,7 @@ main {
   border: none;
   cursor: pointer;
   font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
   color: var(--text);
   line-height: 1.4;
@@ -1444,6 +1444,10 @@ main {
 
   .faq {
     grid-template-columns: 1fr;
+  }
+
+  .faq-list {
+    margin-right: 0;
   }
 
   .faq-label {
