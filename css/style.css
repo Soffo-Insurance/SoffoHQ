@@ -983,7 +983,6 @@ main {
 .faq {
   display: grid;
   grid-template-columns: 40% 60%;
-  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
