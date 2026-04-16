@@ -177,7 +177,12 @@
 
       <!-- Carousel -->
       <section class="carousel" id="carousel">
-        <button class="carousel-next" id="carouselNext" aria-label="Next slide">→</button>
+        <button class="carousel-next" id="carouselNext" aria-label="Next slide">
+          <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="8" x2="22" y2="8" stroke="white" stroke-width="1.2"/>
+            <polyline points="15,1 22,8 15,15" fill="none" stroke="white" stroke-width="1.2" stroke-linejoin="miter"/>
+          </svg>
+        </button>
         <div class="carousel-inner">
           <div class="carousel-progress" id="carouselProgress">
             <button class="carousel-seg" data-index="0" aria-label="Slide 1"><span class="carousel-seg-fill"></span></button>
