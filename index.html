@@ -176,23 +176,30 @@
       <div class="section-spacer"></div>
 
       <!-- Carousel -->
-      <section class="carousel" id="carousel">
-        <button class="carousel-next" id="carouselNext" aria-label="Next slide">→</button>
-        <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide">
-            <h2>Built on public, inspectable sources</h2>
-            <p>Soffo is built on the same materials firms already rely on in intake: policies, case law, state regulations, weather data, inspections, and claim documents. It uses only public, verifiable information rather than hidden expert knowledge.</p>
+      <div class="carousel-scroll-wrap" id="carouselWrap">
+        <section class="carousel" id="carousel">
+          <button class="carousel-next" id="carouselNext" aria-label="Next slide">→</button>
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide active">
+              <h2>Built on public, inspectable sources</h2>
+              <p>Soffo is built on the same materials firms already rely on in intake: policies, case law, state regulations, weather data, inspections, and claim documents. It uses only public, verifiable information rather than hidden expert knowledge.</p>
+            </div>
+            <div class="carousel-slide">
+              <h2>Reasoning you can inspect</h2>
+              <p>Soffo is not a black-box AI. It shows the documents, evidence, and legal support behind its reasoning, so firms can see why a conclusion was reached instead of just receiving an unexplained answer.</p>
+            </div>
+            <div class="carousel-slide">
+              <h2>Judgment support, not judgment replacement</h2>
+              <p>Soffo does not make the final intake decision for the firm. It helps attorneys make that decision by showing evidence strength, viable rebuttal paths, and the level of legal support behind each path.</p>
+            </div>
           </div>
-          <div class="carousel-slide">
-            <h2>Reasoning you can inspect</h2>
-            <p>Soffo is not a black-box AI. It shows the documents, evidence, and legal support behind its reasoning, so firms can see why a conclusion was reached instead of just receiving an unexplained answer.</p>
+          <div class="carousel-dots" id="carouselDots">
+            <span class="carousel-dot active"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
           </div>
-          <div class="carousel-slide">
-            <h2>Judgment support, not judgment replacement</h2>
-            <p>Soffo does not make the final intake decision for the firm. It helps attorneys make that decision by showing evidence strength, viable rebuttal paths, and the level of legal support behind each path.</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       <div class="section-spacer"></div>
 
@@ -206,37 +213,37 @@
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
               <span>What does Soffo do?</span>
-              <span class="faq-icon">+</span>
+              <span class="faq-icon"></span>
             </button>
-            <div class="faq-a">Soffo reads denial letters and case documents, then outputs a structured report showing whether a claim is worth taking, why it was denied, and what arguments could challenge it.</div>
+            <div class="faq-a-wrap"><div class="faq-a">Soffo reads denial letters and case documents, then outputs a structured report showing whether a claim is worth taking, why it was denied, and what arguments could challenge it.</div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
               <span>Who is it for?</span>
-              <span class="faq-icon">+</span>
+              <span class="faq-icon"></span>
             </button>
-            <div class="faq-a">Plaintiff-side law firms handling denied or underpaid homeowners insurance claims that need to triage intake faster without expanding headcount.</div>
+            <div class="faq-a-wrap"><div class="faq-a">Plaintiff-side law firms handling denied or underpaid homeowners insurance claims that need to triage intake faster without expanding headcount.</div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
               <span>Does Soffo decide which cases to take?</span>
-              <span class="faq-icon">+</span>
+              <span class="faq-icon"></span>
             </button>
-            <div class="faq-a">No. Soffo surfaces evidence strength, viable rebuttal paths, and legal support. The attorney makes the final take-or-pass decision.</div>
+            <div class="faq-a-wrap"><div class="faq-a">No. Soffo surfaces evidence strength, viable rebuttal paths, and legal support. The attorney makes the final take-or-pass decision.</div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
               <span>What documents does it work with?</span>
-              <span class="faq-icon">+</span>
+              <span class="faq-icon"></span>
             </button>
-            <div class="faq-a">Denial letters, policy documents, inspection reports, adjuster notes, and estimates. Soffo accepts multiple formats and extracts structured data from each.</div>
+            <div class="faq-a-wrap"><div class="faq-a">Denial letters, policy documents, inspection reports, adjuster notes, and estimates. Soffo accepts multiple formats and extracts structured data from each.</div></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
               <span>Can we see why a conclusion was reached?</span>
-              <span class="faq-icon">+</span>
+              <span class="faq-icon"></span>
             </button>
-            <div class="faq-a">Yes. Every output is tied to a specific document, clause, or piece of evidence. There are no unexplained answers.</div>
+            <div class="faq-a-wrap"><div class="faq-a">Yes. Every output is tied to a specific document, clause, or piece of evidence. There are no unexplained answers.</div></div>
           </div>
         </div>
       </section>
@@ -384,18 +391,44 @@
 
       document.querySelectorAll('.typewriter').forEach(el => typewriterObserver.observe(el));
 
-      // --- Carousel ---
+      // --- Carousel (scroll-driven + button) ---
       (function() {
-        const track = document.getElementById('carouselTrack');
+        const wrap = document.getElementById('carouselWrap');
         const btn = document.getElementById('carouselNext');
-        if (!track || !btn) return;
-        const slides = track.querySelectorAll('.carousel-slide');
+        const track = document.getElementById('carouselTrack');
+        const dotsContainer = document.getElementById('carouselDots');
+        if (!wrap || !btn || !track) return;
+
+        const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+        const dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('.carousel-dot')) : [];
         let current = 0;
+
         function goTo(idx) {
+          const prev = current;
           current = (idx + slides.length) % slides.length;
-          track.style.transform = 'translateX(-' + (current * 100) + '%)';
+          if (prev === current) return;
+
+          slides[prev].classList.add('exit');
+          slides[prev].classList.remove('active');
+          setTimeout(function() { slides[prev].classList.remove('exit'); }, 420);
+
+          slides[current].classList.add('active');
+          dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
         }
+
         btn.addEventListener('click', function() { goTo(current + 1); });
+
+        // Scroll-driven
+        function onScroll() {
+          const rect = wrap.getBoundingClientRect();
+          const scrollable = wrap.offsetHeight - window.innerHeight;
+          const t = Math.max(0, Math.min(1, -rect.top / scrollable));
+          const idx = t < 0.33 ? 0 : t < 0.66 ? 1 : 2;
+          if (idx !== current) goTo(idx);
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
       })();
 
       // --- FAQ accordion ---
@@ -405,12 +438,10 @@
           const isOpen = item.classList.contains('open');
           document.querySelectorAll('.faq-item.open').forEach(function(el) {
             el.classList.remove('open');
-            el.querySelector('.faq-icon').textContent = '+';
             el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
           });
           if (!isOpen) {
             item.classList.add('open');
-            btn.querySelector('.faq-icon').textContent = '×';
             btn.setAttribute('aria-expanded', 'true');
           }
         });

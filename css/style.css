@@ -856,10 +856,18 @@ main {
   letter-spacing: 0.02em;
 }
 
-.carousel {
+.carousel-scroll-wrap {
   position: relative;
+  height: 300vh;
+}
+
+.carousel {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
 }
 
 .carousel-next {
@@ -885,18 +893,37 @@ main {
 }
 
 .carousel-track {
-  display: flex;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .carousel-slide {
-  min-width: 100%;
-  min-height: 360px;
-  padding: 80px 80px 48px 120px;
+  position: absolute;
+  inset: 0;
+  padding: 80px 80px 80px 120px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.carousel-slide.exit {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease,
+              transform 0.4s ease;
 }
 
 .carousel-slide h2 {
@@ -921,6 +948,28 @@ main {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 40px;
+  left: 120px;
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text);
+  opacity: 0.2;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-dot.active {
+  opacity: 1;
+  transform: scale(1.3);
 }
 
 /* ---- FAQ ---- */
@@ -995,36 +1044,74 @@ main {
   text-align: left;
 }
 
-.faq-q:hover {
-  background: var(--hover);
+.faq-icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
-.faq-icon {
-  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1;
-  flex-shrink: 0;
-  transition: transform 0.2s;
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--text);
+  border-radius: 1px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+.faq-icon::before {
+  width: 14px;
+  height: 1px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.faq-icon::after {
+  width: 1px;
+  height: 14px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.faq-item.open .faq-icon::before {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-item.open .faq-icon::after {
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.faq-a-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.open .faq-a-wrap {
+  grid-template-rows: 1fr;
 }
 
 .faq-a {
-  display: none;
+  overflow: hidden;
   font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: 1.6;
   color: var(--text);
-  opacity: 0.5;
-  padding: 0 32px 22px 40px;
+  opacity: 0;
+  padding: 0 32px 0 40px;
+  transform: translateY(-6px);
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .faq-item.open .faq-a {
-  display: block;
-}
-
-.faq-item.open .faq-icon {
-  content: "×";
+  opacity: 0.5;
+  transform: translateY(0);
+  padding-bottom: 24px;
+  transition: opacity 0.35s ease 0.1s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
 }
 
 /* ---- Footer CTA ---- */
@@ -1198,8 +1285,11 @@ main {
   }
 
   .carousel-slide {
-    padding: 60px 48px 60px;
-    min-height: 300px;
+    padding: 60px 48px 60px 80px;
+  }
+
+  .carousel-dots {
+    left: 80px;
   }
 
   .faq-label {
@@ -1277,8 +1367,16 @@ main {
   }
 
   .carousel-slide {
-    padding: 48px 24px 48px;
-    min-height: 260px;
+    padding: 48px 24px 48px 40px;
+  }
+
+  .carousel-dots {
+    left: 40px;
+    bottom: 28px;
+  }
+
+  .carousel-scroll-wrap {
+    height: 250vh;
   }
 
   .feature {
