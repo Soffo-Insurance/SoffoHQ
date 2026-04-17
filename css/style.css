@@ -856,24 +856,14 @@ main {
   letter-spacing: 0.02em;
 }
 
-.why-trust-label {
-  padding: 64px 80px 24px 120px;
-  border-bottom: 1px solid var(--border);
-}
-
 .why-trust-heading {
   font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: clamp(40px, 5vw, 72px);
+  font-size: clamp(20px, 2.5vw, 36px);
   font-weight: 400;
   line-height: 1.0;
   color: var(--text);
   margin: 0;
-}
-
-@media (max-width: 768px) {
-  .why-trust-label {
-    padding: 48px 24px 20px 24px;
-  }
+  flex-shrink: 0;
 }
 
 .carousel {
