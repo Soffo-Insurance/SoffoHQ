@@ -863,9 +863,6 @@ main {
   line-height: 1.0;
   color: var(--text);
   margin: 0;
-  position: absolute;
-  right: 230px;
-  top: 70px;
 }
 
 .carousel {
@@ -1363,11 +1360,6 @@ main {
     padding: 48px 48px 48px 80px;
   }
 
-  .why-trust-heading {
-    right: 80px;
-    top: 60px;
-  }
-
   .faq-label {
     padding: 40px 32px 40px 72px;
   }
@@ -1445,11 +1437,6 @@ main {
   .carousel-inner {
     padding: 40px 24px 40px 40px;
     height: 440px;
-  }
-
-  .why-trust-heading {
-    position: static;
-    margin-bottom: 4px;
   }
 
   .feature {
