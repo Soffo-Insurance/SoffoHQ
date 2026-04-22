@@ -1325,13 +1325,18 @@ main {
 .footer-status {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   color: var(--muted);
   text-decoration: none;
+  background: #f2f2f2;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 8px;
 }
 
 .footer-status:hover {
   color: var(--text);
+  background: #ebebeb;
 }
 
 .footer-status-dot {
