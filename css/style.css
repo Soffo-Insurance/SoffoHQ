@@ -1586,6 +1586,12 @@ main {
     margin-right: -24px;
     padding-left: 40px;
     padding-right: 40px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-status {
+    display: none;
   }
 }
 
