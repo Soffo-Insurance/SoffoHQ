@@ -71,11 +71,14 @@ header {
   user-select: none;
   -webkit-user-select: none;
   line-height: 42px;
-  transition: color 0.25s ease;
+  background: #fff;
+  padding: 4px 8px;
+  transition: color 0.25s ease, background 0.25s ease;
 }
 
 .logo--light {
   color: #fff;
+  background: transparent;
 }
 
 .header-right {
