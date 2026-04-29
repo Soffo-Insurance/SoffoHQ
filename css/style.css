@@ -290,7 +290,46 @@ main {
   max-width: 640px;
 }
 
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
 
+.hero-btn {
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 3px;
+  letter-spacing: 0.01em;
+  transition: opacity 0.15s ease, background 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  display: inline-block;
+}
+
+.hero-btn--ghost {
+  background: #fff;
+  color: #1a1a1a;
+  border: 1px solid #e5e5e5;
+}
+
+.hero-btn--ghost:hover {
+  opacity: 0.75;
+}
+
+.hero-btn--solid {
+  background: #1a1a1a;
+  color: #fff;
+  border: 1px solid #1a1a1a;
+}
+
+.hero-btn--solid:hover {
+  opacity: 0.8;
+}
 
 .word {
   display: inline-block;
