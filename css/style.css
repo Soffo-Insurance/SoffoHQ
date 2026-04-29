@@ -71,6 +71,11 @@ header {
   user-select: none;
   -webkit-user-select: none;
   line-height: 42px;
+  transition: color 0.25s ease;
+}
+
+.logo--light {
+  color: #fff;
 }
 
 .header-right {
