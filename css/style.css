@@ -293,17 +293,20 @@ main {
 }
 
 .hero-btn {
-  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 15px;
   font-weight: 400;
   text-decoration: none;
   padding: 10px 22px;
-  border-radius: 3px;
+  border-radius: 0;
   letter-spacing: 0.01em;
-  transition: opacity 0.15s ease, background 0.15s ease;
+  transition: opacity 0.15s ease, background 0.15s ease, padding-right 0.2s ease;
   user-select: none;
   -webkit-user-select: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
 }
 
 .hero-btn--ghost {
@@ -322,8 +325,20 @@ main {
   border: 1px solid #1a1a1a;
 }
 
-.hero-btn--solid:hover {
-  opacity: 0.8;
+.hero-btn--solid::after {
+  content: "→";
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width 0.2s ease, opacity 0.2s ease, margin-left 0.2s ease;
+  margin-left: 0;
+  white-space: nowrap;
+}
+
+.hero-btn--solid:hover::after {
+  max-width: 20px;
+  opacity: 1;
+  margin-left: 8px;
 }
 
 .word {

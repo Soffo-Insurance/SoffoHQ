@@ -22,7 +22,7 @@
           </svg>
         </div>
         <div class="header-spacer"></div>
-        <a href="mailto:seungyong@getsoffo.com" class="cta">Book a demo</a>
+        <a href="mailto:hello@getsoffo.com" class="cta">Book a demo</a>
       </div>
       <div class="nav-dropdown" id="navDropdown">
         <div class="nav-dropdown-inner">
@@ -43,7 +43,7 @@
       <p class="hero-sub">Soffo helps plaintiff-side law firms decide which denied or underpaid home insurance claims are worth<br>attorney time before weak files become uneconomical and viable claims get missed.</p>
       <div class="hero-actions">
         <a href="#problem" class="hero-btn hero-btn--ghost" data-scroll>Learn More</a>
-        <a href="mailto:seungyong@getsoffo.com" class="hero-btn hero-btn--solid">Book a Demo</a>
+        <a href="mailto:hello@getsoffo.com" class="hero-btn hero-btn--solid">Book a Demo</a>
       </div>
     </section>
 
@@ -208,7 +208,7 @@
       <section class="faq">
         <div class="faq-label">
           <h3>FAQs</h3>
-          <p>Still have questions? Please contact<br>us at <a href="mailto:seungyong@getsoffo.com">seungyong@getsoffo.com</a></p>
+          <p>Still have questions? Please contact<br>us at <a href="mailto:hello@getsoffo.com">hello@getsoffo.com</a></p>
         </div>
         <div class="faq-list">
           <div class="faq-item">
@@ -252,7 +252,7 @@
       <!-- Footer CTA -->
       <section class="footer-cta">
         <h2>Win With Soffo</h2>
-        <a href="mailto:seungyong@getsoffo.com" class="cta-button cta-button--lg" id="bigCta"><span class="cta-text" data-text="Book a Demo">Book a Demo</span></a>
+        <a href="mailto:hello@getsoffo.com" class="cta-button cta-button--lg" id="bigCta"><span class="cta-text" data-text="Book a Demo">Book a Demo</span></a>
       </section>
     </div>
 
@@ -303,7 +303,7 @@
       requestAnimationFrame(step);
     }
 
-    document.querySelectorAll('.nav-dropdown-inner a[data-scroll]').forEach(link => {
+    document.querySelectorAll('a[data-scroll]').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const href = link.getAttribute('href');
@@ -311,10 +311,12 @@
           ? 0
           : (document.querySelector(href)?.getBoundingClientRect().top ?? 0) + window.scrollY;
         easedScrollTo(targetY, 800);
-        // Close dropdown & update toggle text
-        dropdownOpen = false;
-        headerRight.classList.remove('open');
-        navToggle.querySelector('span').textContent = link.textContent;
+        // Close dropdown if open
+        if (headerRight.contains(link)) {
+          dropdownOpen = false;
+          headerRight.classList.remove('open');
+          navToggle.querySelector('span').textContent = link.textContent;
+        }
       });
     });
 
