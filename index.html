@@ -490,9 +490,16 @@
           goTo(current + 1);
         });
 
-        // Clean init — slide 0 is already active in HTML
+        // Clean init — start progress only when carousel enters viewport
         segs[0].classList.add('active');
-        startProgress();
+        const carouselSection = document.getElementById('carousel');
+        const carouselObserver = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting) {
+            startProgress();
+            carouselObserver.disconnect();
+          }
+        }, { threshold: 0.3 });
+        carouselObserver.observe(carouselSection);
       })();
 
       // --- FAQ accordion ---
