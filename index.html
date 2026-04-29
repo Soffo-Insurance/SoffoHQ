@@ -288,6 +288,12 @@
       }
     });
 
+    // Header border on scroll
+    const headerEl = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      headerEl.classList.toggle('scrolled', window.scrollY > 0);
+    }, { passive: true });
+
     // Smooth scroll for in-page nav links & update toggle label
     function easedScrollTo(targetY, duration) {
       const startY = window.scrollY;
