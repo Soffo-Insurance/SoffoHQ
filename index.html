@@ -42,37 +42,6 @@
       <p class="hero-sub">Soffo helps plaintiff-side law firms decide which denied or underpaid home insurance claims are worth<br>attorney time before weak files become uneconomical and viable claims get missed.</p>
     </section>
 
-    <!-- Value Cards -->
-    <section class="value-cards" id="valueCards">
-      <button class="value-card value-card--orange active" data-card="0" type="button">
-        <span class="value-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 22,9.5 18,21.5 6,21.5 2,9.5"/></svg>
-        </span>
-        <div class="value-card__body">
-          <h3>Take or pass, with confidence.</h3>
-          <p>Soffo turns dense denial files into clear take-or-pass calls backed by evidence and law.</p>
-        </div>
-      </button>
-      <button class="value-card value-card--brown" data-card="1" type="button">
-        <span class="value-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-        </span>
-        <div class="value-card__body">
-          <h3>Rely on at every step</h3>
-          <p>AI you can rely on, with control at every step. Review and intervene anytime as decisions are made.</p>
-        </div>
-      </button>
-      <button class="value-card value-card--pink" data-card="2" type="button">
-        <span class="value-card__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 23,21.5 1,21.5"/></svg>
-        </span>
-        <div class="value-card__body">
-          <h3>Maximize Returns</h3>
-          <p>Soffo is built to maximize returns for property insurance lawyers from day one.</p>
-        </div>
-      </button>
-    </section>
-
     <!-- Logo Wall -->
     <section class="logo-wall">
       <div class="logo-wall-label">
@@ -633,14 +602,7 @@
         });
       }
 
-      // --- Value cards expand/collapse ---
-      const valueCards = document.querySelectorAll('#valueCards .value-card');
-      valueCards.forEach(card => {
-        card.addEventListener('click', () => {
-          valueCards.forEach(c => c.classList.remove('active'));
-          card.classList.add('active');
-        });
-      });
+
     })();
 
 
