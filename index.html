@@ -38,13 +38,13 @@
   <main>
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-bg" aria-hidden="true">
-        <img src="hero.gif" alt="" draggable="false" oncontextmenu="return false;" onmousedown="return false;">
-      </div>
+
       <h1 class="hero-heading" id="heroHeading"></h1>
       <p class="hero-sub">Soffo helps plaintiff-side law firms decide which denied or underpaid home insurance claims are worth<br>attorney time before weak files become uneconomical and viable claims get missed.</p>
     </section>
 
+
+    <hr class="section-divider">
 
     <!-- Isometric Layers Animation -->
     <div class="iso-scroll-wrap" id="problem">
@@ -532,18 +532,6 @@
       window.addEventListener('scroll', updateIsoLayers, { passive: true });
       updateIsoLayers();
 
-      // --- Hero background scroll fade ---
-      const heroBg = document.querySelector('.hero-bg');
-      if (heroBg) {
-        const heroEl = document.querySelector('.hero');
-        function updateHeroBg() {
-          const heroH = heroEl.offsetHeight;
-          const progress = Math.min(window.scrollY / heroH, 1);
-          heroBg.style.opacity = (1 - progress) * 0.22;
-        }
-        window.addEventListener('scroll', updateHeroBg, { passive: true });
-        updateHeroBg();
-      }
 
       // --- Footer scramble animation ---
       const footerLogo = document.getElementById('footerLogo');
