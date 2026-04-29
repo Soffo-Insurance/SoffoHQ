@@ -226,15 +226,19 @@ main {
   position: relative;
 }
 
+.logo-wall::before,
 .logo-wall::after {
   content: "";
   position: absolute;
-  bottom: 0;
   left: -80px;
   right: -80px;
   height: 1px;
   background: var(--border);
+  z-index: 1;
 }
+
+.logo-wall::before { top: 0; }
+.logo-wall::after  { bottom: 0; }
 
 .logo-wall-label {
   flex-shrink: 0;
@@ -250,15 +254,6 @@ main {
   position: relative;
 }
 
-.logo-wall-label::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: -81px;
-  width: 81px;
-  height: 1px;
-  background: var(--border);
-}
 
 .logo-wall-label span {
   font-family: "Times New Roman", Times, Georgia, serif;
@@ -283,15 +278,6 @@ main {
   z-index: 2;
 }
 
-.logo-wall-logo::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  right: -81px;
-  width: 81px;
-  height: 1px;
-  background: var(--border);
-}
 
 .logo-wall-logo img {
   max-width: 90px;
@@ -358,7 +344,7 @@ main {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 140px 80px 100px;
+  padding: 200px 80px 160px;
   gap: 28px;
 }
 
