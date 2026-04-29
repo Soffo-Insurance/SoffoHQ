@@ -55,7 +55,7 @@ header {
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--bg);
+  background: transparent;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -344,10 +344,9 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 200px 80px 160px;
+  padding: 320px 80px 280px;
   gap: 28px;
   position: relative;
-  overflow: hidden;
   text-align: center;
 }
 
