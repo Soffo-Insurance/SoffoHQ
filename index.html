@@ -536,20 +536,6 @@
       window.addEventListener('scroll', updateIsoLayers, { passive: true });
       updateIsoLayers();
 
-      // --- Logo color inversion over feature images ---
-      const logoEl = document.querySelector('.logo');
-      const featureImages = document.querySelectorAll('.feature-image');
-      function updateLogoColor() {
-        const lr = logoEl.getBoundingClientRect();
-        let onImage = false;
-        featureImages.forEach(img => {
-          const r = img.getBoundingClientRect();
-          if (r.top < lr.bottom && r.bottom > lr.top) onImage = true;
-        });
-        logoEl.classList.toggle('logo--light', onImage);
-      }
-      window.addEventListener('scroll', updateLogoColor, { passive: true });
-      updateLogoColor();
 
       // --- Footer scramble animation ---
       const footerLogo = document.getElementById('footerLogo');

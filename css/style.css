@@ -55,11 +55,13 @@ header {
   left: 0;
   right: 0;
   z-index: 100;
-  background: transparent;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 28px 80px;
+  padding: 0 80px;
+  height: 60px;
 }
 
 .logo {
@@ -70,15 +72,6 @@ header {
   text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
-  line-height: 42px;
-  background: #fff;
-  padding: 4px 8px;
-  transition: color 0.25s ease, background 0.25s ease;
-}
-
-.logo--light {
-  color: #fff;
-  background: transparent;
 }
 
 .header-right {
