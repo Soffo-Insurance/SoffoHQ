@@ -1040,13 +1040,6 @@ main {
   will-change: transform;
 }
 
-.cta-button.cta-button--lg:hover .cta-letter {
-  transform: translateY(-6px);
-}
-
-.cta-button.cta-button--lg:not(:hover) .cta-letter {
-  transition-delay: calc((10 - var(--i)) * 25ms);
-}
 
 .cta-arrow {
   display: inline-block;
