@@ -35,6 +35,25 @@
     </div>
   </header>
 
+  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <filter id="text-inner-shadow" x="-10%" y="-30%" width="120%" height="160%">
+        <feComponentTransfer in="SourceAlpha" result="inverted">
+          <feFuncA type="table" tableValues="1 0"/>
+        </feComponentTransfer>
+        <feOffset in="inverted" dx="0" dy="3" result="offset"/>
+        <feGaussianBlur in="offset" stdDeviation="4" result="blurred"/>
+        <feComposite in="blurred" in2="SourceAlpha" operator="in" result="clipped"/>
+        <feFlood flood-color="rgba(0,0,0,0.45)" result="color"/>
+        <feComposite in="color" in2="clipped" operator="in" result="shadow"/>
+        <feMerge>
+          <feMergeNode in="SourceGraphic"/>
+          <feMergeNode in="shadow"/>
+        </feMerge>
+      </filter>
+    </defs>
+  </svg>
+
   <main>
     <!-- Hero Section -->
     <section class="hero">
