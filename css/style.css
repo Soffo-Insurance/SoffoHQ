@@ -272,6 +272,9 @@ main {
   padding: 3px 0;
   background: #fff;
   overflow: hidden;
+  border-top: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
 }
 
 .boxes-row {
@@ -289,7 +292,7 @@ main {
   transition: flex-grow 1.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.box--fill  { background: #EFEFEF; }
+.box--fill  { background: #EFEFEF; box-shadow: inset 0 0 0 1px #e5e5e5; }
 .box--empty { background: transparent; }
 
 .section-divider {

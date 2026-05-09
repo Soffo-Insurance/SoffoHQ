@@ -49,28 +49,28 @@
 
 
     <!-- Animated Grey Boxes Art -->
+    <!-- Strict checkerboard: filled boxes only ever share corners, never edges -->
     <section class="boxes-art" id="boxesArt" aria-hidden="true">
-      <div class="boxes-row">
+      <div class="boxes-row" data-row="0">
         <div class="box box--fill"></div>
         <div class="box box--empty"></div>
         <div class="box box--fill"></div>
         <div class="box box--empty"></div>
         <div class="box box--fill"></div>
       </div>
-      <div class="boxes-row">
+      <div class="boxes-row" data-row="1">
         <div class="box box--empty"></div>
         <div class="box box--fill"></div>
         <div class="box box--empty"></div>
         <div class="box box--fill"></div>
         <div class="box box--empty"></div>
-        <div class="box box--fill"></div>
       </div>
-      <div class="boxes-row">
+      <div class="boxes-row" data-row="2">
         <div class="box box--fill"></div>
+        <div class="box box--empty"></div>
         <div class="box box--fill"></div>
         <div class="box box--empty"></div>
         <div class="box box--fill"></div>
-        <div class="box box--empty"></div>
       </div>
     </section>
 
@@ -648,20 +648,24 @@
     (function () {
       const rows = Array.from(document.querySelectorAll('.boxes-art .boxes-row'));
       if (!rows.length) return;
+      const COL_COUNT = 5;
 
       function rand(min, max) { return min + Math.random() * (max - min); }
 
       function animate() {
-        rows.forEach(row => {
-          // Animate row height (vertical resize)
-          row.style.height = Math.round(rand(36, 96)) + 'px';
+        // One shared set of column widths — keeps columns aligned so filled cells
+        // only ever meet at corners (checkerboard), never along edges.
+        const grows = Array.from({ length: COL_COUNT }, () => rand(0.4, 3.2));
+        const sum = grows.reduce((a, b) => a + b, 0);
+        const normalized = grows.map(g => ((g / sum) * COL_COUNT).toFixed(3));
 
-          // Animate each box width (horizontal resize)
-          const boxes = Array.from(row.querySelectorAll('.box'));
-          const grows = boxes.map(() => rand(0.3, 3.5));
-          const sum = grows.reduce((a, b) => a + b, 0);
-          grows.forEach((g, i) => {
-            boxes[i].style.flexGrow = ((g / sum) * boxes.length).toFixed(3);
+        rows.forEach(row => {
+          // Each row gets its own random height (vertical resize)
+          row.style.height = Math.round(rand(40, 96)) + 'px';
+
+          // Same column widths applied to every row
+          Array.from(row.querySelectorAll('.box')).forEach((box, i) => {
+            box.style.flexGrow = normalized[i];
           });
         });
       }
