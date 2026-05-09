@@ -278,16 +278,19 @@ main {
   display: flex;
   gap: 3px;
   height: 64px;
+  transition: height 1.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .box {
-  background: #EFEFEF;
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0;
   min-width: 0;
   transition: flex-grow 1.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.box--fill  { background: #EFEFEF; }
+.box--empty { background: transparent; }
 
 .section-divider {
   border: none;
