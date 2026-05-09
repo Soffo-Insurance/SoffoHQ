@@ -48,6 +48,34 @@
     </section>
 
 
+    <!-- Animated Grey Boxes Art -->
+    <section class="boxes-art" id="boxesArt" aria-hidden="true">
+      <div class="boxes-row" id="boxesRow1">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+      <div class="boxes-row" id="boxesRow2">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+      <div class="boxes-row" id="boxesRow3">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </section>
+
     <hr class="section-divider">
 
     <!-- Isometric Layers Animation -->
@@ -616,6 +644,45 @@
       }
 
 
+    })();
+
+    // --- Animated grey boxes art ---
+    (function () {
+      const rows = [
+        document.getElementById('boxesRow1'),
+        document.getElementById('boxesRow2'),
+        document.getElementById('boxesRow3'),
+      ];
+      if (!rows[0]) return;
+
+      function randomGrow(min, max) {
+        return +(min + Math.random() * (max - min)).toFixed(3);
+      }
+
+      function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      }
+
+      function assignGrows() {
+        rows.forEach(row => {
+          const boxes = Array.from(row.querySelectorAll('.box'));
+          const n = boxes.length;
+          // Generate varied grow values, ensuring range contrast
+          const grows = boxes.map(() => randomGrow(0.3, 3.5));
+          // Normalize so they add up to n (keeps total width stable)
+          const sum = grows.reduce((a, b) => a + b, 0);
+          grows.forEach((g, i) => {
+            boxes[i].style.flexGrow = ((g / sum) * n).toFixed(3);
+          });
+        });
+      }
+
+      assignGrows();
+      setInterval(assignGrows, 3200);
     })();
 
 
