@@ -1093,30 +1093,6 @@ main {
   border-top: 1px solid var(--border);
 }
 
-.footer-ascii-wrap {
-  box-sizing: border-box;
-  width: 100%;
-  overflow: hidden;
-  margin-bottom: 24px;
-}
-
-.footer-ascii {
-  display: block;
-  margin: 0;
-  padding: 0;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 8px;
-  line-height: 0.78;
-  font-weight: normal;
-  white-space: pre;
-  color: #4f1910;
-  background: transparent;
-  transform-origin: left top;
-  user-select: none;
-  -webkit-user-select: none;
-  pointer-events: none;
-}
-
 .footer-logo {
   font-family: "Times New Roman", Times, Georgia, serif;
   font-size: clamp(140px, 22vw, 360px);
@@ -1436,3 +1412,4 @@ main {
     display: none;
   }
 }
+
