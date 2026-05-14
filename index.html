@@ -257,8 +257,8 @@
     </div>
 
   <footer class="footer content-border">
-    <div class="footer-logo" id="footerLogo">
-      <span class="footer-letter" data-target="s">s</span><span class="footer-letter" data-target="o">o</span><span class="footer-letter" data-target="f">f</span><span class="footer-letter" data-target="f">f</span><span class="footer-letter" data-target="o">o</span>
+    <div class="footer-ascii">
+      <pre id="footerAscii"></pre>
     </div>
     <div class="footer-copy">
       <span>&copy; 2026 Soffo. All rights reserved.</span>
@@ -270,6 +270,7 @@
   </footer>
   </main>
 
+  <script src="js/ascii-frames.js"></script>
   <script>
     // Navigation dropdown
     const navToggle = document.getElementById('navToggle');
@@ -552,54 +553,6 @@
       updateIsoLayers();
 
 
-      // --- Footer scramble animation ---
-      const footerLogo = document.getElementById('footerLogo');
-      const letters = footerLogo.querySelectorAll('.footer-letter');
-      const alpha = 'abcdefghijklmnopqrstuvwxyz';
-
-      function scrambleLetter(el) {
-        return new Promise(resolve => {
-          const target = el.dataset.target;
-          const targetIndex = alpha.indexOf(target);
-          let current = 0;
-          el.textContent = alpha[0];
-          el.classList.add('visible');
-
-          const interval = setInterval(() => {
-            if (current >= targetIndex) {
-              el.textContent = target;
-              el.style.opacity = '1';
-              clearInterval(interval);
-              resolve();
-            } else {
-              current++;
-              el.style.opacity = '0.3';
-              setTimeout(() => {
-                el.textContent = alpha[current];
-                el.style.opacity = '1';
-              }, 20);
-            }
-          }, 60);
-        });
-      }
-
-      async function runScramble() {
-        for (const el of letters) {
-          await scrambleLetter(el);
-        }
-        footerLogo.classList.add('ready');
-      }
-
-      const footerObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            runScramble();
-            footerObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-
-      footerObserver.observe(footerLogo);
 
       // --- Big CTA letter animation ---
       const ctaText = document.querySelector('#bigCta .cta-text');
@@ -618,7 +571,61 @@
 
     })();
 
+    // --- Footer ASCII animation ---
+    (function() {
+      const container = document.querySelector('.footer-ascii');
+      const pre = document.getElementById('footerAscii');
+      if (!pre || !container) return;
 
+      let naturalW = 0;
+      let naturalH = 0;
+
+      function applyScale() {
+        if (!naturalW) {
+          naturalW = pre.scrollWidth;
+          naturalH = pre.scrollHeight;
+        }
+        const available = container.clientWidth;
+        if (available > 0 && naturalW > 0) {
+          const scale = available / naturalW;
+          pre.style.transform = 'scale(' + scale + ')';
+          container.style.height = (naturalH * scale) + 'px';
+        }
+      }
+
+      function startAscii() {
+        const frames = window.ASCII_FRAMES;
+        if (!frames || !frames.length) return;
+
+        const FPS = 30;
+        const frameDuration = 1000 / FPS;
+        let currentFrame = 0;
+        let lastTime = 0;
+
+        pre.textContent = frames[0];
+        applyScale();
+
+        window.addEventListener('resize', applyScale, { passive: true });
+
+        function animate(time) {
+          if (!lastTime) lastTime = time;
+          const delta = time - lastTime;
+          if (delta >= frameDuration) {
+            currentFrame = (currentFrame + 1) % frames.length;
+            pre.textContent = frames[currentFrame];
+            lastTime = time - (delta % frameDuration);
+          }
+          requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+      }
+
+      if (window.ASCII_FRAMES) {
+        startAscii();
+      } else {
+        document.querySelector('script[src="js/ascii-frames.js"]').addEventListener('load', startAscii);
+      }
+    })();
 
   </script>
 </body>
