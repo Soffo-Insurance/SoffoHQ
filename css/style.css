@@ -257,8 +257,8 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 320px 80px 280px;
+  justify-content: flex-start;
+  padding: 80px 80px 60px;
   gap: 28px;
   text-align: center;
 }
@@ -344,6 +344,30 @@ main {
   max-width: 20px;
   opacity: 1;
   margin-left: 8px;
+}
+
+.hero-ascii {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+.hero-ascii pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 5.33px;
+  line-height: 0.78;
+  white-space: pre;
+  margin: 0;
+  padding: 0;
+  color: #533a12;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0;
+  display: inline-block;
+  vertical-align: top;
+  transform-origin: 0 0;
 }
 
 .word {

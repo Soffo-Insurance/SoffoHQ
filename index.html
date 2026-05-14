@@ -47,6 +47,9 @@
       </div>
     </section>
 
+    <div class="hero-ascii">
+      <pre id="heroAscii"></pre>
+    </div>
 
     <hr class="section-divider">
 
@@ -256,10 +259,7 @@
       </section>
     </div>
 
-  <footer class="footer content-border">
-    <div class="footer-ascii">
-      <pre id="footerAscii"></pre>
-    </div>
+  <footer class="footer">
     <div class="footer-copy">
       <span>&copy; 2026 Soffo. All rights reserved.</span>
       <a class="footer-status" href="https://status.getsoffo.com" target="_blank" rel="noopener">
@@ -571,10 +571,10 @@
 
     })();
 
-    // --- Footer ASCII animation ---
+    // --- Hero ASCII animation ---
     (function() {
-      const container = document.querySelector('.footer-ascii');
-      const pre = document.getElementById('footerAscii');
+      const container = document.querySelector('.hero-ascii');
+      const pre = document.getElementById('heroAscii');
       if (!pre || !container) return;
 
       let naturalW = 0;
@@ -626,6 +626,7 @@
         document.querySelector('script[src="js/ascii-frames.js"]').addEventListener('load', startAscii);
       }
     })();
+
 
   </script>
 </body>
