@@ -101,6 +101,7 @@
         <section class="feature">
           <div class="feature-image">
             <img src="assets/images/image1.webp" alt="Classify denials from the source document" loading="eager" fetchpriority="high" decoding="async" width="6212" height="4020" />
+            <button class="feature-expand" aria-label="Expand image">Expand</button>
           </div>
           <div class="feature-text">
             <h2 class="typewriter">Turn denial documents into<br>decision-ready case data</h2>
@@ -116,6 +117,7 @@
           </div>
           <div class="feature-image">
             <img src="assets/images/image2.webp" alt="Review denial classifications" loading="lazy" decoding="async" width="6212" height="4020" />
+            <button class="feature-expand" aria-label="Expand image">Expand</button>
           </div>
         </section>
 
@@ -123,6 +125,7 @@
         <section class="feature">
           <div class="feature-image">
             <img src="assets/images/image3.webp" alt="Draft demand letters" loading="lazy" decoding="async" width="6212" height="4020" />
+            <button class="feature-expand" aria-label="Expand image">Expand</button>
           </div>
           <div class="feature-text">
             <h2 class="typewriter">Estimate how strong the case is,<br>economically and strategically.</h2>
@@ -138,6 +141,7 @@
           </div>
           <div class="feature-image">
             <img src="assets/images/newlight.webp" alt="Generate structured reports" loading="lazy" decoding="async" width="6212" height="4020" />
+            <button class="feature-expand" aria-label="Expand image">Expand</button>
           </div>
         </section>
       </div>
@@ -262,6 +266,14 @@
         <a href="mailto:hello@getsoffo.com?subject=Demo%20Request%20%E2%80%94%20Soffo&body=Hi%2C%0A%0AI%27d%20like%20to%20book%20a%20demo%20of%20Soffo.%0A%0AName%3A%20%0AFirm%3A%20%0A%0ALooking%20forward%20to%20hearing%20from%20you." class="cta-button cta-button--lg" id="bigCta"><span class="cta-text" data-text="Book a Demo">Book a Demo</span><span class="cta-arrow">→</span></a>
       </section>
     </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    </div>
+  </div>
 
   <footer class="footer content-border">
     <div class="footer-copy">
@@ -623,6 +635,40 @@
       }
     })();
 
+    // Lightbox
+    (function() {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+
+      function openLightbox(src, alt) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.feature-expand').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const img = btn.closest('.feature-image').querySelector('img');
+          openLightbox(img.src, img.alt);
+        });
+      });
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.querySelector('.lightbox-backdrop').addEventListener('click', closeLightbox);
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    })();
 
   </script>
 </body>
