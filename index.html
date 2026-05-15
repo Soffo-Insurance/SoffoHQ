@@ -153,12 +153,6 @@
           </svg>
         </button>
         <div class="carousel-inner">
-          <div class="carousel-progress" id="carouselProgress">
-            <button class="carousel-seg" data-index="0" aria-label="Slide 1"><span class="carousel-seg-fill"></span></button>
-            <button class="carousel-seg" data-index="1" aria-label="Slide 2"><span class="carousel-seg-fill"></span></button>
-            <button class="carousel-seg" data-index="2" aria-label="Slide 3"><span class="carousel-seg-fill"></span></button>
-          </div>
-          <h2 class="why-trust-heading typewriter">Why Trust Soffo</h2>
           <div class="carousel-grid" id="carouselGrid">
           <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <path d="M0,0 L300,0 M0,60 L300,60 M0,120 L300,120 M0,180 L300,180 M0,240 L300,240 M0,300 L300,300 M0,0 L0,300 M60,0 L60,300 M120,0 L120,300 M180,0 L180,300 M240,0 L240,300 M300,0 L300,300" stroke="#e5e5e5" stroke-width="1"/>
@@ -188,7 +182,9 @@
             </g>
           </svg>
         </div>
-        <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-content-group">
+          <span class="step-badge carousel-badge">Why Trust Soffo</span>
+          <div class="carousel-track" id="carouselTrack">
             <div class="carousel-slide active">
               <h2>Built on public, inspectable sources</h2>
               <p>Soffo works from materials firms use in intake: policies, case law, state rules, weather data, inspections, and supporting claim documents. The system depends on public, verifiable information, not hidden know-how.</p>
@@ -200,6 +196,14 @@
             <div class="carousel-slide">
               <h2>Supports judgment, not replaces it</h2>
               <p>Soffo does not make the final intake decision for the firm. It helps attorneys make that decision by showing evidence strength, viable rebuttal paths, and the level of legal support behind each path.</p>
+            </div>
+          </div>
+        </div>
+          <div class="carousel-loader-wrap">
+            <div class="carousel-loader" id="carouselProgress">
+              <button class="loader-seg active" data-index="0"><span class="loader-seg-fill"></span></button>
+              <button class="loader-seg" data-index="1"><span class="loader-seg-fill"></span></button>
+              <button class="loader-seg" data-index="2"><span class="loader-seg-fill"></span></button>
             </div>
           </div>
         </div>
@@ -259,7 +263,7 @@
       </section>
     </div>
 
-  <footer class="footer">
+  <footer class="footer content-border">
     <div class="footer-copy">
       <span>&copy; 2026 Soffo. All rights reserved.</span>
       <a class="footer-status" href="https://status.getsoffo.com" target="_blank" rel="noopener">
@@ -426,15 +430,14 @@
         if (!track || !progressEl) return;
 
         const slides = Array.from(track.querySelectorAll('.carousel-slide'));
-        const segs = Array.from(progressEl.querySelectorAll('.carousel-seg'));
+        const segs = Array.from(progressEl.querySelectorAll('.loader-seg'));
         const gridShapes = Array.from(document.querySelectorAll('.grid-shapes'));
         const DURATION = 5000;
         let current = 0;
-        let timer = null;
         let startTime = null;
         let rafId = null;
 
-        function goTo(idx, restart) {
+        function goTo(idx) {
           const prev = current;
           current = (idx + slides.length) % slides.length;
 
@@ -448,25 +451,19 @@
           });
 
           segs.forEach(function(s, i) {
-            s.classList.remove('active', 'done');
-            var f = s.querySelector('.carousel-seg-fill');
-            if (i < current) {
-              s.classList.add('done');
-              f.style.transform = 'scaleX(1)';
-            } else {
-              f.style.transform = 'scaleX(0)';
-            }
+            s.classList.remove('active');
+            s.querySelector('.loader-seg-fill').style.transform = 'scaleX(0)';
           });
           segs[current].classList.add('active');
 
-          if (restart !== false) startProgress();
+          startProgress();
         }
 
         function startProgress() {
           cancelAnimationFrame(rafId);
-          clearTimeout(timer);
           startTime = performance.now();
-          const fill = segs[current].querySelector('.carousel-seg-fill');
+          const fill = segs[current].querySelector('.loader-seg-fill');
+          fill.style.transform = 'scaleX(0)';
 
           function tick(now) {
             const elapsed = now - startTime;
@@ -492,7 +489,6 @@
         });
 
         // Clean init — start progress only when carousel enters viewport
-        segs[0].classList.add('active');
         const carouselSection = document.getElementById('carousel');
         const carouselObserver = new IntersectionObserver(function(entries) {
           if (entries[0].isIntersecting) {
