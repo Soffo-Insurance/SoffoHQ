@@ -330,11 +330,7 @@
       }
     });
 
-    const headerEl = document.querySelector('header');
-    headerEl.classList.add('scrolled');
-    window.addEventListener('scroll', () => {
-      headerEl.classList.toggle('scrolled', window.scrollY > 0);
-    }, { passive: true });
+    document.querySelector('header').classList.add('scrolled');
   </script>
 
 </body>
