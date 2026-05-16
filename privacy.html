@@ -173,13 +173,25 @@
 </head>
 <body>
 
-  <header id="siteHeader">
+  <header>
     <a href="/" class="logo">Soffo</a>
-    <div class="header-right">
+    <div class="header-right" id="headerRight">
       <div class="header-bar">
-        <a href="/" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);text-decoration:none;">← Back to home</a>
+        <div class="nav-toggle" id="navToggle">
+          <span>Home</span>
+          <svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M2.5 3.75L5 6.25L7.5 3.75" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div class="header-spacer"></div>
         <a href="mailto:hello@getsoffo.com?subject=Demo%20Request%20%E2%80%94%20Soffo&body=Hi%2C%0A%0AI%27d%20like%20to%20book%20a%20demo%20of%20Soffo.%0A%0AName%3A%20%0AFirm%3A%20%0A%0ALooking%20forward%20to%20hearing%20from%20you." class="cta">Book a demo</a>
+      </div>
+      <div class="nav-dropdown" id="navDropdown">
+        <div class="nav-dropdown-inner">
+          <a href="/">Home</a>
+          <a href="/#problem">Problem</a>
+          <a href="/#product">Product</a>
+        </div>
       </div>
     </div>
   </header>
@@ -302,11 +314,27 @@
   </main>
 
   <script>
-    const header = document.getElementById('siteHeader');
-    header.classList.add('scrolled');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 10);
+    const navToggle = document.getElementById('navToggle');
+    const headerRight = document.getElementById('headerRight');
+    let dropdownOpen = false;
+
+    navToggle.addEventListener('click', () => {
+      dropdownOpen = !dropdownOpen;
+      headerRight.classList.toggle('open', dropdownOpen);
     });
+
+    document.addEventListener('click', (e) => {
+      if (!headerRight.contains(e.target)) {
+        dropdownOpen = false;
+        headerRight.classList.remove('open');
+      }
+    });
+
+    const headerEl = document.querySelector('header');
+    headerEl.classList.add('scrolled');
+    window.addEventListener('scroll', () => {
+      headerEl.classList.toggle('scrolled', window.scrollY > 0);
+    }, { passive: true });
   </script>
 
 </body>
