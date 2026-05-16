@@ -345,6 +345,19 @@
     });
 
     document.querySelector('header').classList.add('scrolled');
+
+    const h1 = document.querySelector('.privacy-wrap h1');
+    h1.innerHTML = '';
+    'Privacy Policy'.split(' ').forEach((word, i) => {
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = word;
+      h1.appendChild(span);
+      if (i === 0) h1.appendChild(document.createTextNode(' '));
+    });
+    h1.querySelectorAll('.word').forEach((w, i) => {
+      setTimeout(() => w.classList.add('visible'), i * 120);
+    });
   </script>
 
 </body>

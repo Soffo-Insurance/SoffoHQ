@@ -246,6 +246,19 @@
   </footer>
 
   <script>
+    const h1 = document.querySelector('.privacy-wrap h1');
+    h1.innerHTML = '';
+    'Terms of Service'.split(' ').forEach((word, i, arr) => {
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = word;
+      h1.appendChild(span);
+      if (i < arr.length - 1) h1.appendChild(document.createTextNode(' '));
+    });
+    h1.querySelectorAll('.word').forEach((w, i) => {
+      setTimeout(() => w.classList.add('visible'), i * 120);
+    });
+
     const navToggle = document.getElementById('navToggle');
     const headerRight = document.getElementById('headerRight');
     let dropdownOpen = false;
